@@ -212,7 +212,7 @@ footer {
 
 .buscador-input{
     border-radius: 15px;
-    background: url(buscar.png) no-repeat right 8px center; /*el right 8px es para que se separe del fondo y el center es para que este alineado verticalmente en el centro */    
+    background: url() no-repeat right 8px center; /*el right 8px es para que se separe del fondo y el center es para que este alineado verticalmente en el centro */    
     background-size: 14px;
     padding-left: 5px;
 }
