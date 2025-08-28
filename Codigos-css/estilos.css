@@ -315,10 +315,11 @@ body {
 h1, h2 {
   font-family: 'Playfair Display', serif;
   color: #A0522D; /* Siena tostado para el títulos */
+  padding: 0px 0px 10px 0px;
 }
 
 /* Lo siguiente le da el fondo a donde va el texto del formulario */
-form {
+.formulario-contacto {
   background: white;
   padding: 20px;
   margin: 20px auto;
@@ -327,7 +328,7 @@ form {
 }
 
 /* lo siguiente le da forma a las cajitas que contienen la info y los botenes tambien */
-input, textarea, button {
+.Username, .Usermail, .MensajedeContacto, .boton_enviar, .boton_resetear {
   width: 100%;
   margin-top: 5px;
   padding: 8px;
@@ -335,7 +336,7 @@ input, textarea, button {
   border-radius: 6px;
 }
 /* lo siguiente le da forma a los botones enviar y resetear, ademas de cambier el cursor al posar en ellos */
-button {
+.boton_enviar, .boton_resetear {
   background: #A0522D;
   color: white;
   border: none;
@@ -344,6 +345,6 @@ button {
 }
 
 /* lo siguiente sirve para que el usuario no pueda manipular el textarea */
-textarea {
+.Mensajedecontacto {
   resize: none;
 }
