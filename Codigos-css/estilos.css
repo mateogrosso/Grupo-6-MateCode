@@ -300,3 +300,50 @@ footer {
   text-align: center;
 }
 
+/* aca empieza el estileado del formulario */
+
+/* Establecemos la tipografía para texto base */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #F5E6D3; /* Alabastro Cálido como fondo */
+  color: #2B2B2B;
+  margin: 0;
+  padding: 0;
+}
+
+/* Establecemos la tipografías para títulos */
+h1, h2 {
+  font-family: 'Playfair Display', serif;
+  color: #A0522D; /* Siena tostado para el títulos */
+}
+
+/* Lo siguiente le da el fondo a donde va el texto del formulario */
+form {
+  background: white;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 600px;
+  border-radius: 8px;
+}
+
+/* lo siguiente le da forma a las cajitas que contienen la info y los botenes tambien */
+input, textarea, button {
+  width: 100%;
+  margin-top: 5px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+/* lo siguiente le da forma a los botones enviar y resetear, ademas de cambier el cursor al posar en ellos */
+button {
+  background: #A0522D;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+/* lo siguiente sirve para que el usuario no pueda manipular el textarea */
+textarea {
+  resize: none;
+}
