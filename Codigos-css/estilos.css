@@ -302,19 +302,10 @@ footer {
 
 /* aca empieza el estileado del formulario */
 
-/* Establecemos la tipografía para texto base */
-body {
-  font-family: 'Inter', sans-serif;
-  background-color: #F5E6D3; /* Alabastro Cálido como fondo */
-  color: #2B2B2B;
-  margin: 0;
-  padding: 0;
-}
-
-/* Establecemos la tipografías para títulos */
-h1, h2 {
+/* Establecemos lo visual para títulos */
+.formulario-titulo {
   font-family: 'Playfair Display', serif;
-  color: #A0522D; /* Siena tostado para el títulos */
+  color: #A0522D; 
   padding: 0px 0px 10px 0px;
 }
 
@@ -331,7 +322,7 @@ h1, h2 {
 .Username, .Usermail, .MensajedeContacto, .boton_enviar, .boton_resetear {
   width: 100%;
   margin-top: 5px;
-  padding: 8px;
+  padding: 10px;
   border: 1px solid #ccc;
   border-radius: 6px;
 }
@@ -345,6 +336,6 @@ h1, h2 {
 }
 
 /* lo siguiente sirve para que el usuario no pueda manipular el textarea */
-.Mensajedecontacto {
+.MensajedeContacto {
   resize: none;
 }
