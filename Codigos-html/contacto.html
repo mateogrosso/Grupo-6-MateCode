@@ -32,18 +32,19 @@
 </header>
 
 <main>
-    <form action="donde se va a mandar los datos" method="POST">
+    <form class="formulario-contacto" action="donde se va a mandar los datos" method="POST">
+        <h2 class="formulario-titulo">Formulario de Contacto</h2>
         <label for="nombre">Nombre Completo</label>
-        <input type="text" name="nombre" id="nombre" required>
+        <input type="text" name="nombre" id="nombre" class="Username"required>
 
         <label for="email">Email</label>
-        <input type="email" name="emial" id="email" required>
+        <input type="email" name="emial" id="email" class="Usermail"required>
 
         <label for="mensaje">Mensaje</label>
-        <textarea name="mensaje" id="mensaje" rows="5" cols="50"></textarea>
-        
-        <button type="submit">Enviar</button>
-        <button type="reset">Reestablecer</button>
+        <textarea name="mensaje" id="mensaje" rows="5" cols="50" class="MensajedeContacto"></textarea>
+
+        <button type="submit" class="boton_enviar">Enviar</button>
+        <button type="reset" class="boton_resetear">Reestablecer</button>
     </form>
 </main>
     
