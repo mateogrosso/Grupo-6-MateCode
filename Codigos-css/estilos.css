@@ -5,6 +5,7 @@
 }
 
 html, body {
+    font-size: 16px; /*Esto es para que 1rem = 16px*/
     height: 100%;      /* que el body ocupe toda la altura */
     margin: 0;
     display: flex;
@@ -26,8 +27,7 @@ header {
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
     width: 100%;
-    padding: 15px 30px;
-    /*background-color:rgb(246, 213, 151);*/
+    padding: 1rem 2rem;
 }
 
 .header-titulo {
@@ -38,15 +38,16 @@ header {
     font-family: Georgia;
     font-weight: 400;
     color: 	#A0522D;
-    font-size: 0,1em;
+    font-size: 2rem; /*2rem = 2font size, osea 2.16px = 32px*/
 }
 
 .header-logo {
     justify-self: center;
+    width: 7.5rem; /*Si se quiere cambiar el tamaño del logo, se cambia aca*/
 }
 
 .header-logo img{
-    width: 120px;
+    width: 100%;
     height: auto;
 } 
 
@@ -59,14 +60,14 @@ header {
     flex-direction: row;
     list-style: none;
     align-items: center;
-    gap: 30px;
+    gap: 2rem;
 }
 
 .header-lista a{
     text-decoration: none;
     font-family: Georgia;
     font-weight: 400;
-    font-size: 0.8rem;
+    font-size: 0.875rem; /*0.875rem = 14px*/
     color: #A0522D;
 }
 
@@ -75,7 +76,7 @@ header {
 }
 
 .carritoCompras-logo{
-    width: 20px;
+    width: 1.25rem; /*1.25rem = 20px*/
     height: auto;
 }
 
@@ -85,11 +86,10 @@ footer {
     display: flex;
     flex-direction: column;
     width: 100%;
-
     /*background-color:rgb(246, 213, 151);*/
-    font-size: 12px;  
+    font-size: 0.75rem;  
     color: #A0522D;      
-    padding: 10px 0px;
+    padding: 0.625rem 0;  /*0.625rem = 10px*/
 }
 
 .footer-lista{
@@ -98,8 +98,8 @@ footer {
     align-items: center;
     justify-content: center;
     list-style: none;
-    gap: 80px;
-    margin-bottom: 15px;
+    gap: 5rem;
+    padding-bottom: 1rem;
 }
 
 .footer-lista a {
@@ -126,7 +126,7 @@ footer {
 }
 
 .hero-banner-logo {
-    max-width: 350px;
+    max-width: 21.875rem;
     width: 100%;
     height: auto;
 }
@@ -140,27 +140,30 @@ footer {
 .producto-destacado {
     display: grid;
     grid-template-columns: 1fr auto; 
+
     align-items: center;
+    justify-content: center;
     text-align: center;
-    width: 780px;
-    height: 500px;
-    padding: 30px 30px;
-    border: 1px solid #cccccc;
-    box-shadow: 20px 20px 40px #e0e0e0;
+
+    width: 48,75rem; /*Modifica el ancho del contenedor del producto*/
+    height: 31,25rem; /*Modifica el alto del contenedor del producto*/
+    padding: 2rem;
+
+    border: 0.0625rem solid #cccccc;
+    box-shadow: 1.25rem 1.25rem 2.5rem #e0e0e0;
     background-color: bisque;
 }
 
-.producto-destacado img{  /*revisar align, justify (innecesarios)*/
-    width: 80%;
+.producto-destacado img{ 
+    max-width: 31.25rem; /*La imagen no puede ocupar mas que este parametro, aunque el contenedor lo permita. Desde aca se cambia el tamaño de la imagen*/
+    width: 100%;
     height: auto;
-    align-items: center;
-    justify-items: center;
 }
 
 .info-destacada {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 1.25rem;
 }
 
 .info-destacada a{
@@ -178,11 +181,11 @@ footer {
 }
 
 .producto-destacado:nth-child(odd) {
-    margin-left: -350px;
+    margin-left: -21.875rem;
 }
 
 .producto-destacado:nth-child(even) {
-    margin-right: -350px;
+    margin-right: -21.875rem;
 }
 
 /*PRODUCTOS*/
@@ -192,7 +195,7 @@ footer {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
     width: 100%;
-    padding: 30px 30px;
+    padding: 2rem;
 }
 
 .catalogo h2{
@@ -200,40 +203,42 @@ footer {
     font-weight: bold(700);
     color: #A0522D;
     font-style: italic;
-    padding-bottom: 20px;
+    padding-bottom: 1.25rem;
 }
 
 .buscador-producto {
     display: flex;
     align-items: center;
     justify-content: right;
-    padding: 0px 52px 40px;
+    padding: 0 3.25rem 2.5rem;
 }
 
 .buscador-input{
-    border-radius: 15px;
-    background: url() no-repeat right 8px center; /*el right 8px es para que se separe del fondo y el center es para que este alineado verticalmente en el centro */    
-    background-size: 14px;
-    padding-left: 5px;
+    border-radius: 1rem;
+    background: url() no-repeat right 0.5rem center; /*el right 8px es para que se separe del fondo y el center es para que este alineado verticalmente en el centro */    
+    background-size: 1.15rem;
+    padding-left: 0.325rem;
 }
 
 .catalogo-productos {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     justify-items: center;
-    gap: 20px;
+    gap: 1.25rem;
 }
 
 .productoIndividual {
     display: flex;
     flex-direction: column; 
     align-items: center;
+    justify-content: center;
     text-align: center;
-    width: 500px;
-    height: 500px;
+
+    width: 31.25rem; /*Modifica el ancho del contenedor del producto*/
+    height: 31.25rem; /*Modifica el alto del contenedor del producto*/
  
-    border: 1px solid #cccccc;
-    box-shadow: 20px 20px 40px #e0e0e0;
+    border: 0.0625rem solid #cccccc;
+    box-shadow: 1.25rem 1.25rem 2.5rem #e0e0e0;
     background-color: bisque;
 }
 
@@ -246,11 +251,10 @@ footer {
     text-decoration: underline;
 }
 
-.productoIndividual img{
-    width: 80%;
+.productoIndividual img{ /*La imagen no puede ocupar mas que este parametro, aunque el contenedor lo permita. Desde aca se cambia el tamaño de la imagen*/
+    max-width: 25rem;
+    width: 100%;
     height: auto;
-    align-items: center;
-    justify-items: center;
 }
 
 /*PRODUCTO*/
@@ -259,7 +263,6 @@ footer {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    gap:0px;
 }
 
 .imagen-producto {
@@ -269,7 +272,7 @@ footer {
 }
 
 .imagen-producto img {
-    max-width: 600px;
+    max-width: 37,5rem;
     width: 100%;
     height: auto;
 }
@@ -279,7 +282,7 @@ footer {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap:10px;
+    gap:0.625rem;
 }
 
 .nombre-producto {
@@ -293,7 +296,7 @@ footer {
 }
 
 .info-detallada-producto button {
-  width: 120px;     
+  width: 7.5rem;     
   background: white;     
   color: black;
   cursor: pointer;
@@ -306,25 +309,25 @@ footer {
 .formulario-titulo {
   font-family: 'Playfair Display', serif;
   color: #A0522D; 
-  padding: 0px 0px 10px 0px;
+  padding-left: 0.0625rem;
 }
 
 /* Lo siguiente le da el fondo a donde va el texto del formulario */
 .formulario-contacto {
   background: white;
-  padding: 20px;
-  margin: 20px auto;
-  max-width: 600px;
-  border-radius: 8px;
+  padding: 1.25rem;
+  margin: 1.25rem auto;
+  max-width: 37.5rem;
+  border-radius: 0.5rem;
 }
 
 /* lo siguiente le da forma a las cajitas que contienen la info y los botenes tambien */
 .Username, .Usermail, .MensajedeContacto, .boton_enviar, .boton_resetear {
   width: 100%;
-  margin-top: 5px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  margin-top: 0.3125rem;
+  padding: 0.625rem;
+  border: 0.0625rem solid #ccc;
+  border-radius: 0.5rem;
 }
 /* lo siguiente le da forma a los botones enviar y resetear, ademas de cambier el cursor al posar en ellos */
 .boton_enviar, .boton_resetear {
@@ -332,7 +335,7 @@ footer {
   color: white;
   border: none;
   cursor: pointer;
-  margin-top: 15px;
+  margin-top: 1rem;
 }
 
 /* lo siguiente sirve para que el usuario no pueda manipular el textarea */
