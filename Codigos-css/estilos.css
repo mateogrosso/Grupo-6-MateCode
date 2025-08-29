@@ -353,7 +353,7 @@ footer {
 /* ====== Campos de usuario (nombre, email, mensaje) y botones ====== */
 .Username, .Usermail, .MensajedeContacto, .boton_enviar, .boton_resetear {
   width: 100%;
-  font-family: sans-serif;
+  font-family: inter bold;
   margin-top: 0.3125rem;
   padding: 0.625rem;
   border: 0.0625rem solid #ccc;
