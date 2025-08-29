@@ -20,6 +20,7 @@ main {
 footer {
     margin-top: auto;  /* empuja el footer al final */
 }
+
 /*HEADER*/
 
 header {
@@ -119,10 +120,12 @@ footer {
 
 /* HERO BANNER */
 
-.hero-banner { /*Probar hacerlo como grilla de 3 columnas*/
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around; 
+.hero-banner {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+    padding: 1rem;
+    gap: 1rem;
 }
 
 .hero-banner-logo {
@@ -133,6 +136,22 @@ footer {
 
 /*PRODUCTOS DESTACADOS*/
 
+.catalogo{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    width: 100%;
+    padding: 2rem;
+}
+
+.catalogo h2{
+    font-family:  Georgia;
+    font-weight: bold(700);
+    color: #A0522D;
+    font-style: italic;
+    padding-bottom: 1.25rem;
+}
+
 #catalogo-productos-index{
     grid-template-columns: repeat(1, 1fr);
 }
@@ -142,7 +161,7 @@ footer {
     grid-template-columns: 1fr auto; 
 
     align-items: center;
-    justify-content: center;
+    justify-content: center; /* creo que no hace nada. Para que aplique: justify-item:center*/
     text-align: center;
 
     width: 48,75rem; /*Modifica el ancho del contenedor del producto*/
@@ -342,3 +361,81 @@ footer {
 .MensajedeContacto {
   resize: none;
 }
+
+@media (max-width: 480px) {
+    html {
+        font-size: 12px;
+    }
+
+    /*HEADER*/
+
+    .header-titulo h1 {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .header-logo {
+        width: 5rem;
+    }
+
+    .header-lista {
+        gap: 0.5rem;
+    }
+
+    .header-lista a {
+        font-size: 0.75rem;
+    }
+
+    /* HERO BANNER */
+
+    .hero-banner-logo {
+        max-width: 14rem;
+    }
+}
+
+    /* PRODUCTOS DESTACADOS */
+
+    .catalogo {
+        padding: 0.5rem;
+    }
+
+    .producto-destacado {
+        width: 25rem;
+        height: 15rem;
+        padding: 0.5rem;
+        justify-items: center;
+    }
+
+    .producto-destacado img{ 
+        max-width: 12rem; /*La imagen no puede ocupar mas que este parametro, aunque el contenedor lo permita. Desde aca se cambia el tamaño de la imagen*/
+    }
+
+    .info-destacada {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    }
+
+    .info-destacada a{
+    font-family: Sans-Serif;
+    font-weight: 500;
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: #A0522D;
+    }
+
+    .precio-destacado {
+    font-family: Sans-Serif;
+    font-weight: 750;
+    font-size: 1rem;
+    text-decoration: none;
+    color: #A0522D;
+    }
+
+    .producto-destacado:nth-child(odd) {
+        margin-left: 0;
+    }
+
+    .producto-destacado:nth-child(even) {
+        margin-right: 0;
+    }
