@@ -136,7 +136,7 @@ footer {
 
 /*PRODUCTOS DESTACADOS*/
 
-.catalogo{
+.seccion-destacados{
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
@@ -144,7 +144,7 @@ footer {
     padding: 2rem;
 }
 
-.catalogo h2{
+.seccion-destacados h2{
     font-family:  Georgia;
     font-weight: bold(700);
     color: #A0522D;
@@ -152,8 +152,11 @@ footer {
     padding-bottom: 1.25rem;
 }
 
-#catalogo-productos-index{
+.catalogo-productos-index {
+    display: grid;
     grid-template-columns: repeat(1, 1fr);
+    justify-items: center;
+    gap: 1.25rem;
 }
 
 .producto-destacado {
@@ -209,7 +212,7 @@ footer {
 
 /*PRODUCTOS*/
 
-.catalogo{
+.seccion-productos {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
@@ -217,7 +220,7 @@ footer {
     padding: 2rem;
 }
 
-.catalogo h2{
+.seccion-productos h2{
     font-family:  Georgia;
     font-weight: bold(700);
     color: #A0522D;
@@ -228,14 +231,14 @@ footer {
 .buscador-producto {
     display: flex;
     align-items: center;
-    justify-content: right;
+    justify-content: flex-end;
     padding: 0 3.25rem 2.5rem;
 }
 
 .buscador-input{
     border-radius: 1rem;
-    background: url() no-repeat right 0.5rem center; /*el right 8px es para que se separe del fondo y el center es para que este alineado verticalmente en el centro */    
-    background-size: 1.15rem;
+    background: url("../Kit de imágenes/buscar.png") no-repeat right 0.5rem center; /*el right 8px es para que se separe del fondo y el center es para que este alineado verticalmente en el centro */    
+    background-size: 0.85rem;
     padding-left: 0.325rem;
 }
 
@@ -251,6 +254,7 @@ footer {
     flex-direction: column; 
     align-items: center;
     justify-content: center;
+    justify-items: center;
     text-align: center;
 
     width: 31.25rem; /*Modifica el ancho del contenedor del producto*/
@@ -278,25 +282,25 @@ footer {
 
 /*PRODUCTO*/
 
-.seccion-producto {
+.seccion-productoIndividual {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
 }
 
-.imagen-producto {
+.imagen-productoIndividual {
     display: flex;
     align-items: center;
     justify-content: flex-end;
 }
 
-.imagen-producto img {
+.imagen-productoIndividual img {
     max-width: 37,5rem;
     width: 100%;
     height: auto;
 }
 
-.info-detallada-producto {
+.info-detallada-productoIndividual {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -304,17 +308,17 @@ footer {
     gap:0.625rem;
 }
 
-.nombre-producto {
+.nombre-productoIndividual {
   font-size: 1.8rem;
   margin: 0;
 }
 
-.precio {
+.precioIndividual {
   font-weight: bold;
   font-size: 1.2rem;
 }
 
-.info-detallada-producto button {
+.info-detallada-productoIndividual button {
   width: 7.5rem;     
   background: white;     
   color: black;
@@ -422,12 +426,22 @@ footer {
     .hero-banner-logo {
         max-width: 14rem;
     }
-}
+
 
     /* PRODUCTOS DESTACADOS */
 
-    .catalogo {
+    .seccion-destacados {
         padding: 0.5rem;
+    }
+
+    .seccion-destacados h2{
+        font-size: 1rem;
+        padding: 0.8rem;
+    }
+
+    .catalogo-productos-index{
+        justify-content: center;
+        gap:1rem;
     }
 
     .producto-destacado {
@@ -470,3 +484,49 @@ footer {
     .producto-destacado:nth-child(even) {
         margin-right: 0;
     }
+
+    /*SECCION PRODUCTOS*/
+
+    .seccion-productos {
+        padding: 0;
+    }
+    
+    .seccion-productos h2 {
+        padding-left: 0.8rem;
+        font-size: 1rem;
+    }
+
+    .buscador-producto {
+        justify-content: center;
+        padding-left: 18rem;
+    }
+
+    .buscador-input {
+        font-size: 0.8rem;
+    }
+
+    .catalogo-productos {
+        display: grid;
+        max-width: 100vw;
+        width: 100%;
+        grid-template-columns: repeat(2, auto);
+        justify-content: center;
+        gap:1rem;
+    }
+
+    .productoIndividual {
+        width: 12rem;
+        height: 18rem;
+    }
+    .productoIndividual a {
+        font-size: 0.8rem;
+    }
+    .productoIndividual p{
+        font-size: 0.8rem;
+    }
+    .productoIndividual img {
+        max-width: 11.8rem;
+        width: 100%;
+        height: auto;
+    }
+}
