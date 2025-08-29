@@ -322,16 +322,24 @@ footer {
   text-align: center;
 }
 
-/* aca empieza el estileado del formulario */
+/* =======================================================
+   Formulario de Contacto - Estilos
+   Objetivo:
+   - Crear una tarjeta centrada con fondo blanco
+   - Usar tipografía Inter (texto) y Playfair Display (títulos)
+   - Campos consistentes, bordes redondeados
+   - Botones diferenciados (enviar principal, reset secundario)
+   - Mantener layout estable (textarea sin resize)
+======================================================= */
 
-/* Establecemos lo visual para títulos */
+/* ====== Título del formulario ====== */
 .formulario-titulo {
   font-family: 'Playfair Display', serif;
   color: #A0522D; 
-  padding-left: 0.0625rem;
+  padding-bottom: 0.6rem;
 }
 
-/* Lo siguiente le da el fondo a donde va el texto del formulario */
+/* ====== Caja del formulario ====== */
 .formulario-contacto {
   background: white;
   padding: 1.25rem;
@@ -339,28 +347,51 @@ footer {
   max-width: 37.5rem;
   border-radius: 0.5rem;
 }
-
-/* lo siguiente le da forma a las cajitas que contienen la info y los botenes tambien */
+.MensajedeContacto {
+  resize: none; /* Evitamos que el usuario agrande el textarea y rompa el layout */
+}
+/* ====== Campos de usuario (nombre, email, mensaje) y botones ====== */
 .Username, .Usermail, .MensajedeContacto, .boton_enviar, .boton_resetear {
   width: 100%;
+  font-family: sans-serif;
   margin-top: 0.3125rem;
   padding: 0.625rem;
   border: 0.0625rem solid #ccc;
   border-radius: 0.5rem;
 }
-/* lo siguiente le da forma a los botones enviar y resetear, ademas de cambier el cursor al posar en ellos */
-.boton_enviar, .boton_resetear {
+/* ====== Botones ====== */
+.boton_enviar, .boton_resetear{
+  background: #A0522D;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 1rem;
+  padding: 0.8rem 1rem;
+}
+.boton_enviar {
+  background: #A0522D; 
+  color: white;
+}
+.boton_enviar:hover {
+  background: #D4A437;
+}
+.boton_resetear {
   background: #A0522D;
   color: white;
   border: none;
   cursor: pointer;
   margin-top: 1rem;
 }
-
-/* lo siguiente sirve para que el usuario no pueda manipular el textarea */
-.MensajedeContacto {
-  resize: none;
+.boton_resetear {
+  background: #D4A437;
+  color: rgba(0, 0, 0, 0.532); 
 }
+.boton_resetear:hover {
+  background: #A0522D; /* Se invierte respecto a enviar para dar feedback */
+  color: white;
+}
+
 
 @media (max-width: 480px) {
     html {
