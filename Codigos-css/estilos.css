@@ -529,4 +529,26 @@ footer {
         width: 100%;
         height: auto;
     }
+
+  /* Formulario de Contacto */
+
+  .formulario-contacto {
+    margin: 0.5rem;
+    padding: 0.8rem;
+    border-radius: 0.4rem;
+  }
+
+  .formulario-titulo {
+    font-size: 1.25rem;
+  }
+
+  .Username, .Usermail, .MensajedeContacto {
+    font-size: 0.9rem;
+    padding: 0.45rem;
+  }
+
+  .boton_enviar, .boton_resetear {
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
 }
