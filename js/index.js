@@ -12,28 +12,28 @@ document.addEventListener('DOMContentLoaded', async () => {
       {
         id: 'copacabana',
         nombre: 'Sillón Copacabana',
-        precio: 200000,
+        precio: 199990,
         img: '/media/Sillón Copacabana.png',
         href: 'producto.html?id=copacabana'
       },
       {
         id: 'costa',
         nombre: 'Escritorio Costa',
-        precio: 375000,
+        precio: 374990,
         img: '/media/Escritorio Costa.png',
         href: 'producto.html?id=costa'
       },
       {
         id: 'patagonia',
         nombre: 'Sofá Patagonia',
-        precio: 700000,
+        precio: 699990,
         img: '/media/Sofá Patagonia.png',
         href: 'producto.html?id=patagonia'
       },
       {
         id: 'recoleta',
         nombre: 'Biblioteca Recoleta',
-        precio: 340000,
+        precio: 349990,
         img: '/media/Biblioteca Recoleta.png',
         href: 'producto.html?id=recoleta'
       }
@@ -42,7 +42,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     //Utilidades
     //Formatea números como ARS
     const aMonedaARS = (n) =>
-      new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', maximumFractionDigits: 0 }).format(n);
+      new Intl.NumberFormat('es-AR', { 
+        style: 'currency', 
+        currency: 'ARS', 
+        maximumFractionDigits: 0 
+      }).format(n);
   
     // Devuelve el HTML de UNA tarjeta de producto destacado
     const renderTarjetaProducto = (prod) => `
