@@ -167,8 +167,8 @@ footer {
     justify-content: center; /* creo que no hace nada. Para que aplique: justify-item:center*/
     text-align: center;
 
-    width: 48,75rem; /*Modifica el ancho del contenedor del producto*/
-    height: 31,25rem; /*Modifica el alto del contenedor del producto*/
+    width: 48.75rem; /*Modifica el ancho del contenedor del producto*/
+    height: 31.25rem; /*Modifica el alto del contenedor del producto*/
     padding: 2rem;
 
     border: 0.0625rem solid #cccccc;
@@ -237,7 +237,7 @@ footer {
 
 .buscador-input{
     border-radius: 1rem;
-    background: url("../Kit de imágenes/buscar.png") no-repeat right 0.5rem center; /*el right 8px es para que se separe del fondo y el center es para que este alineado verticalmente en el centro */    
+    background: url("../media/buscar.png") no-repeat right 0.5rem center; /*el right 8px es para que se separe del fondo y el center es para que este alineado verticalmente en el centro */    
     background-size: 0.85rem;
     padding-left: 0.325rem;
 }
@@ -295,7 +295,7 @@ footer {
 }
 
 .imagen-productoIndividual img {
-    max-width: 37,5rem;
+    max-width: 37.5rem;
     width: 100%;
     height: auto;
 }
@@ -326,76 +326,70 @@ footer {
   text-align: center;
 }
 
-/* =======================================================
-   Formulario de Contacto - Estilos
-   Objetivo:
-   - Crear una tarjeta centrada con fondo blanco
-   - Usar tipografía Inter (texto) y Playfair Display (títulos)
-   - Campos consistentes, bordes redondeados
-   - Botones diferenciados (enviar principal, reset secundario)
-   - Mantener layout estable (textarea sin resize)
-======================================================= */
-
-/* ====== Título del formulario ====== */
-.formulario-titulo {
-  font-family: 'Playfair Display', serif;
-  color: #A0522D; 
-  padding-bottom: 0.6rem;
-}
-
-/* ====== Caja del formulario ====== */
-.formulario-contacto {
-  background: white;
-  padding: 1.25rem;
-  margin: 1.25rem auto;
-  max-width: 37.5rem;
-  border-radius: 0.5rem;
-}
-.MensajedeContacto {
-  resize: none; /* Evitamos que el usuario agrande el textarea y rompa el layout */
-}
-/* ====== Campos de usuario (nombre, email, mensaje) y botones ====== */
-.Username, .Usermail, .MensajedeContacto, .boton_enviar, .boton_resetear {
-  width: 100%;
-  font-family: inter bold;
-  margin-top: 0.3125rem;
-  padding: 0.625rem;
-  border: 0.0625rem solid #ccc;
-  border-radius: 0.5rem;
-}
-/* ====== Botones ====== */
-.boton_enviar, .boton_resetear{
-  background: #A0522D;
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  margin-top: 1rem;
-  padding: 0.8rem 1rem;
-}
-.boton_enviar {
-  background: #A0522D; 
-  color: white;
-}
-.boton_enviar:hover {
-  background: #D4A437;
-}
-.boton_resetear {
-  background: #A0522D;
-  color: white;
-  border: none;
-  cursor: pointer;
-  margin-top: 1rem;
-}
-.boton_resetear {
-  background: #D4A437;
-  color: rgba(0, 0, 0, 0.532); 
-}
-.boton_resetear:hover {
-  background: #A0522D; /* Se invierte respecto a enviar para dar feedback */
-  color: white;
-}
-
+/* ===== NAV: botones tipo "pill" + activo + carrito ===== */
+.header-lista .nav-btn{
+    display:inline-block;
+    padding:.45rem .9rem;
+    border-radius:999px;
+    border:2px solid #A0522D;
+    color:#A0522D;
+    background: transparent;
+    font-family: Georgia, serif;
+    font-weight: 400;
+    font-size: 0.875rem;
+    text-decoration:none;
+    box-shadow: 0 2px 10px rgba(0,0,0,.04);
+    transition: background-color .2s, color .2s, border-color .2s,
+                transform .12s, box-shadow .12s;
+  }
+  
+  .header-lista .nav-btn:hover{
+    background:#A0522D;
+    color:#fff;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(0,0,0,.12);
+  }
+  
+  /* Página activa */
+  .header-lista a[aria-current="page"].nav-btn{
+    background:#A0522D;
+    color:#fff;
+    border-color:#A0522D;
+  }
+  
+  /* Accesibilidad: foco visible */
+  .header-lista .nav-btn:focus-visible{
+    outline:3px solid rgba(160,82,45,.35);
+    outline-offset:2px;
+  }
+  
+  /* Carrito con badge */
+  .nav-cart{
+    position:relative;
+    display:inline-flex;
+    align-items:center;
+    padding:.25rem .4rem;
+  }
+  .cart-count{
+    position:absolute;
+    top:-6px; right:-8px;
+    min-width:18px; height:18px;
+    border-radius:999px;
+    background:#D4A437;
+    color:#fff;
+    font-size:.75rem; font-weight:700;
+    display:grid; place-items:center;
+    box-shadow:0 2px 8px rgba(0,0,0,.2);
+  }
+  
+  /* Responsive nav pills */
+  @media (max-width: 600px){
+    .header-lista{ gap: .75rem; }
+    .header-lista .nav-btn{
+      padding:.35rem .7rem;
+      font-size:.8rem;
+    }
+  }  
 
 @media (max-width: 480px) {
     html {
@@ -403,23 +397,20 @@ footer {
     }
 
     /*HEADER*/
-
     .header-titulo h1 {
         font-size: 1rem;
         text-align: center;
     }
 
-    .header-logo {
-        width: 5rem;
-    }
+    .header-logo { width: 5rem; }
+    .header-lista {gap: 0.5rem;}
 
-    .header-lista {
-        gap: 0.5rem;
-    }
-
-    .header-lista a {
-        font-size: 0.75rem;
-    }
+    .header-lista .nav-btn{
+        font-size: .75rem;
+        padding: .3rem .6rem;
+      }
+      
+    .header-lista a {font-size: 0.75rem;}
 
     /* HERO BANNER */
 
@@ -529,26 +520,4 @@ footer {
         width: 100%;
         height: auto;
     }
-
-  /* Formulario de Contacto */
-
-  .formulario-contacto {
-    margin: 0.5rem;
-    padding: 0.8rem;
-    border-radius: 0.4rem;
-  }
-
-  .formulario-titulo {
-    font-size: 1.25rem;
-  }
-
-  .Username, .Usermail, .MensajedeContacto {
-    font-size: 0.9rem;
-    padding: 0.45rem;
-  }
-
-  .boton_enviar, .boton_resetear {
-    font-size: 0.9rem;
-    padding: 0.6rem;
-  }
 }
