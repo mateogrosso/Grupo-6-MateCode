@@ -1,8 +1,8 @@
 /* Tarjeta del formulario (más cálida + sombra + acento) */
 .formulario-contacto{
     background: linear-gradient(180deg, #FFF7EE 0%, #FFFFFF 100%);
-    border: 1px solid rgba(160,82,45,.15);   /* siena muy suave */
-    border-left: 6px solid #A0522D;          /* acento de marca */
+    border: 1px solid rgba(160,82,45,.15);   
+    border-left: 6px solid #A0522D;        
     border-radius: 12px;
     box-shadow: 0 12px 30px rgba(0,0,0,.08);
     max-width: 37.5rem;     /* 600px */
@@ -12,7 +12,7 @@
   
   /* Título */
   .formulario-contacto .formulario-titulo{
-    font-family: Georgia, serif;   /* misma familia que venías usando */
+    font-family: Georgia, serif;
     color:#A0522D;
     padding-bottom:.6rem;
   }
@@ -32,7 +32,7 @@
     width:100%;
     margin-top:.4rem;
     padding:.75rem .9rem;
-    border:1.5px solid #E6D6C9;   /* tono madera claro */
+    border:1.5px solid #E6D6C9; 
     border-radius:10px;
     background:#fff;
     color:#333;
@@ -51,7 +51,7 @@
     background:#fff;
   }
   
-  /* Mensajitos bajo cada campo */
+
   .formulario-contacto .error-message{
     display:block;
     min-height:18px;
@@ -60,26 +60,26 @@
     margin-top:4px;
   }
   
-  /* Botones (centrados, más chicos y con sombra) */
+  /* Botones*/
   .formulario-contacto .acciones-form{
     display:flex;
     gap:10px;
     align-items:center;
     flex-wrap:wrap;
     margin-top:16px;
-    justify-content:center;              /* centra el grupo de botones */
+    justify-content:center;              
   }
   
   .formulario-contacto .boton_enviar,
   .formulario-contacto .boton_resetear{
-    width:auto;                          /* dejan de ocupar el 100% */
-    min-width:11rem;                     /* tamaño parejo */
+    width:auto;                         
+    min-width:11rem;                     
     padding:.7rem 1.1rem;
     border-radius:.5rem;
     border:0;
     cursor:pointer;
     font-weight:700;
-    box-shadow:0 6px 16px rgba(0,0,0,.12);        /* sombra */
+    box-shadow:0 6px 16px rgba(0,0,0,.12);       
     transition: transform .12s ease, box-shadow .12s ease, background-color .2s;
   }
   
@@ -105,11 +105,11 @@
   /* Accesibilidad: foco visible */
   .formulario-contacto .boton_enviar:focus-visible,
   .formulario-contacto .boton_resetear:focus-visible{
-    outline:3px solid rgba(160,82,45,.35);  /* siena */
+    outline:3px solid rgba(160,82,45,.35);  
     outline-offset:2px;
   }
   
-  /* Estados de validación (si usás contacto.js) */
+  /* Estados de validación */
   .formulario-contacto .is-invalid{
     border-color:#C47A6D !important;
     box-shadow:0 0 0 3px rgba(196,122,109,.18) !important;
@@ -119,7 +119,7 @@
     box-shadow:0 0 0 3px rgba(135,169,107,.18) !important;
   }
   
-  /* Feedback global del form (con barra lateral) */
+  /* Feedback global del form */
   .formulario-contacto #form-feedback{
     display:none;
     margin-top:12px;
@@ -143,7 +143,7 @@
   }
 
   
-  /* Responsive del bloque */
+ 
   @media (max-width:480px){
     .formulario-contacto{ margin:.5rem; padding:.8rem; border-radius:.4rem; }
     .formulario-contacto .formulario-titulo{ font-size:1.25rem; }
@@ -151,7 +151,7 @@
     .formulario-contacto .Usermail,
     .formulario-contacto .MensajedeContacto{ font-size:.9rem; padding:.6rem; }
 
-    /* En mobile sí ocupan todo el ancho para mejor UX */
+
     .formulario-contacto .boton_enviar,
     .formulario-contacto .boton_resetear{
       width:100%;
