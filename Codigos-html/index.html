@@ -2,15 +2,16 @@
 <html lang="es">
 <head>
     <link rel="stylesheet" href="/css/estilos.css">
+    <link rel="stylesheet" href="/css/index.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--esto es para diseño responsivo-->
     <meta charset="UTF-8">
-    <title>Muebleria Hermanos Jota</title>
+    <title>Mueblería Hermanos Jota</title>
 </head>
 <body>
 <!--/* aca va el encabezado */-->
 <header>
     <div class="header-titulo">
-        <h1>Muebleria Hermanos Jota</h1>
+        <h1>Mueblería Hermanos Jota</h1>
     </div>
     <div class="header-logo">
         <img src="/media/logo.svg" alt="Logo">
@@ -22,8 +23,12 @@
                 <li><a class="nav-btn" href="index.html" aria-current="page">Inicio</a> </li>
                 <li><a class="nav-btn" href="productos.html">Productos</a> </li>
                 <li><a class="nav-btn" href="contacto.html">Contacto</a> </li>
-                <li><a class="nav-btn" href="carrito_de_compras.html"> <img class="carritoCompras-logo" src="/media/carrito-de-compras.png"
-                            alt="Carrito de compras"></a> </li>
+                <li>
+                    <a href="#" class="nav-cart" aria-label="Carrito">
+                      <img class="carritoCompras-logo" src="/media/carrito-de-compras.png" alt="Carrito de compras">
+                      <span id="cart-count" class="cart-count">0</span>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>
@@ -40,42 +45,7 @@
     <section class="seccion-destacados">
         <h2>Productos Destacados</h2>
         
-        <div class="catalogo-productos-index"> 
-
-            <article class="producto-destacado">
-                <img class="imagen-destacada" src="/media/Sillón Copacabana.png" alt="Imagen del producto">
-
-                <div class="info-destacada">
-                    <a href="producto.html">
-                        <h3>SILLON COPACABANA</h3>
-                    </a>
-                    <p class="precio-destacado">$560.000</p>
-                </div>
-            </article>
-        
-            <article class="producto-destacado">
-                <img class="imagen-destacada" src="/media/Escritorio Costa.png" alt="Imagen del producto">
-
-                <div class="info-destacada">
-                    <a href="producto.html">
-                        <h3>ESCRITORIO COSTA</h3>
-                    </a>
-                    <p class="precio-destacado">$560.000</p>
-                </div>
-            </article>
-
-            <article class="producto-destacado">
-                <img class="imagen-destacada" src="/media/Sofá Patagonia.png" alt="Imagen del producto">
-
-                <div class="info-destacada">
-                    <a href="producto.html">
-                        <h3>SOFA PATAGONIA</h3>
-                    </a>
-                    <p class="precio-destacado">$560.000</p>
-                </div>
-            </article>
-        </div>
-
+        <div id="destacados-grid" class="destacados-grid" aria-live="polite"></div>
     </section>
     
 </main>
@@ -92,5 +62,6 @@
         <p class="footer-copyright">&copy; Todos los derechos reservados - 2025</p>
 
     </footer>
+    <script src="/js/index.js" defer></script>
 </body>
 </html>

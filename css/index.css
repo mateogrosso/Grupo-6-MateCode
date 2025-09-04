@@ -1,0 +1,119 @@
+.hero-banner{
+    grid-template-columns: repeat(3, minmax(160px, 1fr));
+    align-items: end;
+    gap: 1.25rem;
+    max-width: min(1200px, 92vw);
+    margin: 0 auto 1rem;
+  }
+  .hero-banner-logo{
+    width: clamp(160px, 26vw, 360px);
+    filter: drop-shadow(0 12px 22px rgba(0,0,0,.12));
+  }
+  
+  /* TITULAR */
+  .seccion-destacados{
+    padding: 1rem 0 2.5rem;
+  }
+  .seccion-destacados h2{
+    font-family: Georgia, serif;
+    color: #A0522D;
+    font-style: italic;
+    font-weight: 700;
+    width: min(1100px, 92vw);
+    margin: 0 auto .8rem;
+  }
+  
+  /* GRID DE TARJETAS */
+  .destacados-grid{
+    width: min(1100px, 92vw);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 22px;
+  }
+  
+  /* TARJETA */
+  .destacados-card{
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    align-items: center;
+    gap: 14px;
+  
+    background: linear-gradient(180deg, #FFE8C9, #FFE1BE);
+    border: 1px solid rgba(160,82,45,.14);
+    border-radius: 14px;
+    box-shadow: 0 12px 26px rgba(0,0,0,.10);
+    padding: 16px;
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+  .destacados-card:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 18px 34px rgba(0,0,0,.14);
+  }
+  
+  /* IMAGEN */
+  .destacados-img{
+    width: 100%;
+    max-width: 280px;
+    justify-self: center;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 18px rgba(0,0,0,.15));
+  }
+  
+  /* INFO */
+  .destacados-info{
+    display: grid;
+    gap: 8px;
+    justify-items: start;
+  }
+  .destacados-title{
+    font-family: Georgia, serif;
+    color: #7A3E22;
+    font-size: 1rem;
+    letter-spacing: .02em;
+  }
+  .destacados-price{
+    color: #7A3E22;
+    font-weight: 700;
+    font-size: .95rem;
+  }
+  
+  /* ACCIONES */
+  .destacados-actions{
+    display: flex;
+    gap: 10px;
+    margin-top: 6px;
+    flex-wrap: wrap;
+  }
+  .btn-link{
+    display:inline-block;
+    padding: .5rem .75rem;
+    border-radius: 999px;
+    text-decoration: none;
+    background: #fff;
+    border: 2px solid #A0522D;
+    color: #A0522D;
+    font-weight: 600;
+  }
+  .btn-link:hover{ background:#A0522D; color:#fff; }
+  
+  .btn-add{
+    padding: .5rem .8rem;
+    border-radius: 10px;
+    border: 0;
+    background: #A0522D;
+    color:#fff;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow: 0 6px 16px rgba(0,0,0,.12);
+  }
+  .btn-add:hover{ background:#8d4929; }
+  
+  /* RESPONSIVE */
+  @media (max-width: 640px){
+    .destacados-card{
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+    .destacados-info{ justify-items: center; }
+  }
