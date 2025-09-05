@@ -113,15 +113,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     /*CARRITO*/
     const refrescarContadorCarrito = () => {
         if (!badgeCarrito) return;
-        const valor = Number(localStorage.getItem(CLAVE_CARRITO) || 0);
+        const valor = Number(sessionStorage.getItem(CLAVE_CARRITO) || 0);
         badgeCarrito.textContent = String(valor);
     };
 
     // Suma 1 al carrito y actualiza el badge
     const sumarAlCarrito = () => {
-        const actual = Number(localStorage.getItem(CLAVE_CARRITO) || 0);
+        const actual = Number(sessionStorage.getItem(CLAVE_CARRITO) || 0);
         const nuevo = actual + 1;
-        localStorage.setItem(CLAVE_CARRITO, String(nuevo));
+        sessionStorage.setItem(CLAVE_CARRITO, String(nuevo));
         refrescarContadorCarrito();
     };
 
