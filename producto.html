@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
     <link rel="stylesheet" href="/css/estilos.css">
+    <link rel="stylesheet" href="/css/detalle_producto.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--esto es para diseño responsivo-->    
     <meta charset="UTF-8">
     <title>Producto - Mueblería Hermanos Jota</title>
@@ -10,7 +11,7 @@
 
 <header>
     <div class="header-titulo">
-        <h1>Muebleria Hermanos Jota</h1>
+        <h1>Mueblería Hermanos Jota</h1>
     </div>
     <div class="header-logo">
         <img src="/media/logo.svg" alt="Logo">
@@ -32,30 +33,24 @@
         </nav>
     </div>
 </header>
-
-
 <main>
-    <div class="seccion-productoIndividual">
-
-        
-
-        <div class="imagen-productoIndividual">
-            <img src="/media/Mesa de Centro Araucaria.png" alt="Imagen del producto">
-        </div>
-
-        <div class="info-detallada-productoIndividual">
-            <h2 class="nombre-productoIndividual">Nombre del producto</h2>
-            <p>Descripcion del producto</p>
-            <p>Descripcion de fabricacion</p>
-            <p class="precioIndividual">Precio: $650.000</p>
-            <button type="button" id="añadir-al-carrito">Añadir al carrito</button>
-        </div>
-
-        
-
-    </div>   
+    <section class="seccion-productoIndividual">
+      <div class="imagen-productoIndividual">
+        <img id="prod-img" src="" alt="">
+      </div>
+  
+      <div class="info-detallada-productoIndividual">
+        <h2 id="prod-nombre" class="nombre-productoIndividual"></h2>
+        <p id="prod-desc" class="prod-desc"></p>
+  
+        <h3 class="ficha-titulo">Ficha técnica</h3>
+        <ul id="prod-ficha" class="ficha-list"></ul>
+  
+        <p id="prod-precio" class="precioIndividual"></p>
+        <a href="productos.html" class="btn-volver"> Volver al catálogo</a>
+      </div>
+    </section>
 </main>
-
 
     <footer>
         <ul class="footer-lista">
@@ -67,6 +62,7 @@
 
         <p class="footer-copyright">&copy; Todos los derechos reservados - 2025</p>
     </footer>
-
+    <script src="/js/data/catalogo.js" defer></script>
+    <script src="/js/detalle_producto.js" defer></script>
 </body>
 </html>
