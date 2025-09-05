@@ -118,152 +118,6 @@ footer {
     justify-content: center;
 }
 
-/*PRODUCTOS DESTACADOS*/
-
-.seccion-destacados{
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-    width: 100%;
-    padding: 2rem;
-}
-
-.seccion-destacados h2{
-    font-family:  Georgia;
-    font-weight: bold(700);
-    color: #A0522D;
-    font-style: italic;
-    padding-bottom: 1.25rem;
-}
-
-.catalogo-productos-index {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    justify-items: center;
-    gap: 1.25rem;
-}
-
-.producto-destacado {
-    display: grid;
-    grid-template-columns: 1fr auto; 
-
-    align-items: center;
-    justify-content: center; /* creo que no hace nada. Para que aplique: justify-item:center*/
-    text-align: center;
-
-    width: 48.75rem; /*Modifica el ancho del contenedor del producto*/
-    height: 31.25rem; /*Modifica el alto del contenedor del producto*/
-    padding: 2rem;
-
-    border: 0.0625rem solid #cccccc;
-    box-shadow: 1.25rem 1.25rem 2.5rem #e0e0e0;
-    background-color: bisque;
-}
-
-.producto-destacado img{ 
-    max-width: 31.25rem; /*La imagen no puede ocupar mas que este parametro, aunque el contenedor lo permita. Desde aca se cambia el tamaño de la imagen*/
-    width: 100%;
-    height: auto;
-}
-
-.info-destacada {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-}
-
-.info-destacada a{
-    font-family: Sans-Serif;
-    font-weight: 500;
-    text-decoration: none;
-    color: #A0522D;
-}
-
-.precio-destacado {
-    font-family: Sans-Serif;
-    font-weight: 750;
-    text-decoration: none;
-    color: #A0522D;
-}
-
-.producto-destacado:nth-child(odd) {
-    margin-left: -21.875rem;
-}
-
-.producto-destacado:nth-child(even) {
-    margin-right: -21.875rem;
-}
-
-/*PRODUCTOS*/
-
-.seccion-productos {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-    width: 100%;
-    padding: 2rem;
-}
-
-.seccion-productos h2{
-    font-family:  Georgia;
-    font-weight: bold(700);
-    color: #A0522D;
-    font-style: italic;
-    padding-bottom: 1.25rem;
-}
-
-.buscador-producto {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding: 0 3.25rem 2.5rem;
-}
-
-.buscador-input{
-    border-radius: 1rem;
-    background: url("../media/buscar.png") no-repeat right 0.5rem center; /*el right 8px es para que se separe del fondo y el center es para que este alineado verticalmente en el centro */    
-    background-size: 0.85rem;
-    padding-left: 0.325rem;
-}
-
-.catalogo-productos {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    justify-items: center;
-    gap: 1.25rem;
-}
-
-.productoIndividual {
-    display: flex;
-    flex-direction: column; 
-    align-items: center;
-    justify-content: center;
-    justify-items: center;
-    text-align: center;
-
-    width: 31.25rem; /*Modifica el ancho del contenedor del producto*/
-    height: 31.25rem; /*Modifica el alto del contenedor del producto*/
- 
-    border: 0.0625rem solid #cccccc;
-    box-shadow: 1.25rem 1.25rem 2.5rem #e0e0e0;
-    background-color: bisque;
-}
-
-.productoIndividual a{
-    text-decoration: none;
-    color: #C47A6D;
-}
-
-.productoIndividual a:hover{
-    text-decoration: underline;
-}
-
-.productoIndividual img{ /*La imagen no puede ocupar mas que este parametro, aunque el contenedor lo permita. Desde aca se cambia el tamaño de la imagen*/
-    max-width: 25rem;
-    width: 100%;
-    height: auto;
-}
-
 /*PRODUCTO*/
 
 .seccion-productoIndividual {
@@ -368,21 +222,19 @@ footer {
 
   
   /* Responsive nav pills */
-  @media (max-width: 600px){
+ /* @media (max-width: 600px){
     .header-lista{ gap: .75rem; }
     .header-lista .nav-btn{
       padding:.35rem .7rem;
       font-size:.8rem;
     }
-  }  
+  }     */
 
 @media (max-width: 480px) {
     html {
         font-size: 12px;
     }
-
-    /*HEADER*/
-    .header-titulo h1 {
+     .header-titulo h1 {
         font-size: 1rem;
         text-align: center;
     }
@@ -397,112 +249,4 @@ footer {
       
     .header-lista a {font-size: 0.75rem;}
 
-    /* HERO BANNER */
-
-    .hero-banner-logo {
-        max-width: 14rem;
-    }
-
-
-    /* PRODUCTOS DESTACADOS */
-
-    .seccion-destacados {
-        padding: 0.5rem;
-    }
-
-    .seccion-destacados h2{
-        font-size: 1rem;
-        padding: 0.8rem;
-    }
-
-    .catalogo-productos-index{
-        justify-content: center;
-        gap:1rem;
-    }
-
-    .producto-destacado {
-        width: 25rem;
-        height: 15rem;
-        padding: 0.5rem;
-        justify-items: center;
-    }
-
-    .producto-destacado img{ 
-        max-width: 12rem; /*La imagen no puede ocupar mas que este parametro, aunque el contenedor lo permita. Desde aca se cambia el tamaño de la imagen*/
-    }
-
-    .info-destacada {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-    }
-
-    .info-destacada a{
-    font-family: Sans-Serif;
-    font-weight: 500;
-    font-size: 0.8rem;
-    text-decoration: none;
-    color: #A0522D;
-    }
-
-    .precio-destacado {
-    font-family: Sans-Serif;
-    font-weight: 750;
-    font-size: 1rem;
-    text-decoration: none;
-    color: #A0522D;
-    }
-
-    .producto-destacado:nth-child(odd) {
-        margin-left: 0;
-    }
-
-    .producto-destacado:nth-child(even) {
-        margin-right: 0;
-    }
-
-    /*SECCION PRODUCTOS*/
-
-    .seccion-productos {
-        padding: 0;
-    }
-    
-    .seccion-productos h2 {
-        padding-left: 0.8rem;
-        font-size: 1rem;
-    }
-
-    .buscador-producto {
-        justify-content: center;
-        padding-left: 18rem;
-    }
-
-    .buscador-input {
-        font-size: 0.8rem;
-    }
-
-    .catalogo-productos {
-        display: grid;
-        max-width: 100vw;
-        width: 100%;
-        grid-template-columns: repeat(2, auto);
-        justify-content: center;
-        gap:1rem;
-    }
-
-    .productoIndividual {
-        width: 12rem;
-        height: 18rem;
-    }
-    .productoIndividual a {
-        font-size: 0.8rem;
-    }
-    .productoIndividual p{
-        font-size: 0.8rem;
-    }
-    .productoIndividual img {
-        max-width: 11.8rem;
-        width: 100%;
-        height: auto;
-    }
-}
+} 

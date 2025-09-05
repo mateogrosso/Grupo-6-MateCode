@@ -1,3 +1,4 @@
+
 .hero-banner{
   width: 100vw;
   margin-inline: calc(50% - 50vw);
@@ -19,7 +20,12 @@
   
   /* TITULAR */
   .seccion-destacados{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
     padding: 1rem 0 2.5rem;
+    width: 100%;
+    padding: 2rem;
   }
   .seccion-destacados h2{
     font-family: Georgia, serif;
@@ -28,6 +34,7 @@
     font-weight: 700;
     width: min(1100px, 92vw);
     margin: 0 auto .8rem;
+    padding-bottom: 1.25rem;
   }
   
   /* GRID DE TARJETAS */
@@ -125,12 +132,22 @@
     .destacados-info{ justify-items: center; }
   }
 
-  
-
 /* Ajustes responsive */
 @media (max-width: 768px){
   .hero-banner{ height: clamp(160px, 28vh, 300px); }
 }
+
 @media (max-width: 480px){
   .hero-banner{ height: clamp(140px, 26vh, 260px); }
+  .hero-banner-logo { max-width: 14rem; } 
+
+  .seccion-destacados {
+    padding: 0.5rem;
+  }
+
+ .seccion-destacados h2 {
+   font-size: 1.5rem;
+   padding: 0.8rem;
+ }
+
 }

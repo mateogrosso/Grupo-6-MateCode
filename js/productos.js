@@ -57,8 +57,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     };
   
     // “Fetch” simulado del catálogo global 
-    const traerCatalogo = () =>
+      const traerCatalogo = () =>
       new Promise((ok) => setTimeout(() => ok(window.CATALOGO || []), 400));
+    // const traerCatalogo = () => new Promise((resolve, reject) => {
+    //   setTimeout(() => { 
+    //     if (window.CATALOGO) {
+    //       resolve(window.CATALOGO);
+    //     } else {
+    //       reject(new Error("No se encontró el catálogo"));
+    //     }
+    //   }, 400);
+    // });
   
     // Flujo principal 
     try {
@@ -72,7 +81,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (btn) sumarAlCarrito();
       });
   
-      // Buscador (con acentos)
+      // Buscador 
       inputBuscador.addEventListener('input', () => {
         const q = normalizarTexto(inputBuscador.value.trim());
         if (q === '') {
