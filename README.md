@@ -43,10 +43,9 @@ Toda la lógica se implementa con **tecnologías del lado del cliente** (HTML, C
 ---
 
 ## Tecnologías Utilizadas
-- **HTML5** → estructura semántica de todas las páginas:contentReference[oaicite:0]{index=0}.  
-- **CSS3** → estilos responsivos, flexbox, grid, sombras y gradientes:contentReference[oaicite:1]{index=1}.  
-- **JavaScript (ES6+)** → lógica de interactividad, render dinámico de productos, manejo del carrito y validación de formularios:contentReference[oaicite:2]{index=2}.  
-- **LocalStorage** → simulación de persistencia para el carrito.  
+- **HTML5**   
+- **CSS** 
+- **JavaScript**
 
 ---
 
