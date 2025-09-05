@@ -120,7 +120,7 @@ footer {
 
 /* HERO BANNER */
 
-.hero-banner {
+/*.hero-banner {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     justify-items: center;
@@ -132,7 +132,7 @@ footer {
     max-width: 21.875rem;
     width: 100%;
     height: auto;
-}
+}*/
 
 /*PRODUCTOS DESTACADOS*/
 
