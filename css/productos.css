@@ -27,11 +27,18 @@
     padding: 6px 28px 6px 12px;
     color: #7A3E22;
     font-family: Georgia, serif;
+    transition: transform .12s ease, box-shadow .12s ease;
 }
 
 .buscador-input::placeholder {
     color: #A0522D;
     font-style: italic;
+}
+
+.buscador-input:focus {
+  outline: none;        
+  border: 2px solid #A0522D; 
+  box-shadow: 0 0 5px rgba(160, 82, 45, 0.5);
 }
 
 /* GRID DE TARJETAS*/

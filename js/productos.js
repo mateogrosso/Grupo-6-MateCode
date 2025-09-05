@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         </div>
       </article>
     `;
-
+    /*CARRITO*/
     const refrescarContadorCarrito = () => {
         if (!badgeCarrito) return;
         const valor = Number(localStorage.getItem(CLAVE_CARRITO) || 0);
@@ -131,6 +131,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         new Promise((resolver) => {
             setTimeout(() => resolver(catalogoProductos), 400);
         });
+
 
     // Ciclo principal: traigo → renderizo → engancho eventos
     try {
@@ -158,4 +159,44 @@ document.addEventListener('DOMContentLoaded', async () => {
         </p>
       `;
     }
+
+    /*Funcionalidad del buscador*/
+
+    const inputBuscador = document.getElementById('buscador-producto');
+    const renderProductos = (lista) => {
+        if (!lista.length) {
+            contenedorProductos.innerHTML = `<p>No se encontraron productos.</p>`;
+            return;
+        }
+        contenedorProductos.innerHTML = lista.map(renderTarjetaProducto).join('');
+    };
+
+    function normalizarTexto(str) {
+        return str
+            .toLowerCase()
+            .normalize("NFD")                // separa letras y acentos
+            .replace(/[\u0300-\u036f]/g, ""); // elimina los diacríticos
+    }
+
+
+
+    const filtrarCatalogo = () => {
+        let texto = normalizarTexto(inputBuscador.value.trim());
+
+        if (texto === '') {
+            renderProductos(catalogoProductos);
+            return;
+        }
+
+        const filtrados = catalogoProductos.filter(p => {
+            return normalizarTexto(p.nombre).includes(texto);
+        });
+
+        renderProductos(filtrados);
+    };
+
+    inputBuscador.addEventListener('input', filtrarCatalogo);
+
 });
+
+
