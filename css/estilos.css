@@ -118,22 +118,6 @@ footer {
     justify-content: center;
 }
 
-/* HERO BANNER */
-
-/*.hero-banner {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    justify-items: center;
-    padding: 1rem;
-    gap: 1rem;
-}
-
-.hero-banner-logo {
-    max-width: 21.875rem;
-    width: 100%;
-    height: auto;
-}*/
-
 /*PRODUCTOS DESTACADOS*/
 
 .seccion-destacados{
