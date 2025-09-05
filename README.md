@@ -2,11 +2,11 @@
 # Grupo 6 - CodeMate
 
 ## Integrantes
-- [Ballardini, Florencia]  
-- [Ferreyra. Tomás Alejo]  
-- [García, Franco]  
-- [Grosso, Mateo]  
-- [Pereson, Mariano]  
+- Grosso, Mateo 
+- Ferreyra. Tomás Alejo
+- Pereson, Mariano
+- García, Franco
+- Ballardini, Florencia 
 
 ---
 
