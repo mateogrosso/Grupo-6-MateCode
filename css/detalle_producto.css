@@ -1,40 +1,37 @@
-
-/*Layout general */
 .seccion-productoIndividual{
   width: min(1100px, 92vw);
   margin: 1.5rem auto 2.5rem;
   display: grid;
-  grid-template-columns: 1.1fr 1.1fr;
+  grid-template-columns: 1fr;     
   gap: clamp(20px, 4vw, 40px);
   align-items: start;
 }
 
-/*Imagen: marco suave + sombra*/
+/* Imagen */
 .imagen-productoIndividual{
-  justify-self: center;          /* eje horizontal del grid */
+  justify-self: center;
   display: grid;
   place-items: center;
 }
 .imagen-productoIndividual img{
-  width: clamp(380px, 36vw, 560px);
+  width: clamp(260px, 92vw, 560px); /*No se desborda en el celular*/
   height: auto;
   display: block;
   border-radius: 14px;
-  background:#fff;                
+  background:#fff;
   border: 10px solid #fff;
   outline: 2px solid rgba(160,82,45,.12);
   box-shadow: 0 14px 28px rgba(0,0,0,.12);
 }
 
-/*Columna de info*/
+/* Columna de info */
 .info-detallada-productoIndividual{
   display: grid;
   gap: 1rem;
 }
 
-/* Título con subrayado dorado */
+/* Título */
 .nombre-productoIndividual{
-  font-family: Georgia, serif;
   color:#A0522D;
   font-size: clamp(2rem, 4vw, 2.75rem);
   line-height: 1.12;
@@ -52,7 +49,7 @@
   box-shadow: 0 2px 0 rgba(0,0,0,.03) inset;
 }
 
-/* Descripción corta */
+/* Descripción */
 .prod-desc{
   color:#5A3E2A;
   line-height: 1.75;
@@ -60,9 +57,8 @@
   margin-top: .25rem;
 }
 
-/* Ficha técnica (estilo tabla)*/
+/* Ficha técnica */
 .ficha-titulo{
-  font-family: Georgia, serif;
   color:#7A3E22;
   text-transform: uppercase;
   letter-spacing: .08em;
@@ -81,56 +77,47 @@
   box-shadow: 0 12px 26px rgba(0,0,0,.10);
 }
 
-/* Cada fila: 2 columnas (etiqueta / valor) */
+/*Celular: etiqueta arriba, valor abajo (1 columna) */
 .ficha-list li{
   display: grid;
-  grid-template-columns: 180px 1fr;
-  column-gap: 16px;                              /* separa etiqueta y valor */
-  align-items: center;                           /* centra vertical ambos */
+  grid-template-columns: 1fr;   /* 1 columna en móvil */
+  align-items: center;
+  background: #fff;             /* <- sin degradado en móvil */
+  padding: 0;                   /* dejamos el padding a sus hijos */
   min-height: 52px;
-  padding-right: 16px;                           /* aire lado derecho */
-  background: linear-gradient(
-    to right,
-    #F2DEC8 0 180px,                             
-    #FFFFFF 180px 100%                           
-  );
 }
 .ficha-list li + li{ border-top: 1px solid #F0E6DA; }
 
-/* Columna izquierda (etiqueta) */
+/* Etiqueta */
 .ficha-list li strong{
-  padding: 16px;
+  display: block;
+  padding: 14px 18px;
   color:#7A3E22;
   text-transform: uppercase;
   letter-spacing: .06em;
   font-size: .85rem;
-  display:flex;
-  align-items:center;
+  background:#F2DEC8;           
+  border-bottom: 1px solid #F0E6DA;
 }
-/* sin puntitos decorativos */
-.ficha-list li strong::after{ content:none; }
 
-/* Columna derecha (valor) */
+
 .ficha-list li .f-value{
-  padding: 16px;
+  display:block;
+  padding: 14px 18px;   
   color:#3C2A1F;
-  line-height: 1.55;
-  display:flex;
-  align-items:center;                             
+  line-height: 1.65;    
 }
 
-/* Precio + botón*/
 .info-detallada-productoIndividual .ficha-list,
 .info-detallada-productoIndividual .precioIndividual,
-.info-detallada-productoIndividual .precio-card{  
-  max-width: 640px;
+.info-detallada-productoIndividual .acciones-detalle{
   width: 100%;
-  justify-self: start;
+  max-width: 100%;
+  justify-self: center;
 }
 
-/* Tarjetita de precio (aplica a .precioIndividual y .precio-card) */
-.precioIndividual,
-.precio-card{
+/* Tarjeta de precio */
+.precioIndividual{
   margin-top: 12px;
   padding: 12px 16px;
   background: linear-gradient(180deg,#FFFFFF 0%, #FFF7EE 100%);
@@ -139,21 +126,29 @@
   border-radius:12px;
   box-shadow:0 12px 26px rgba(0,0,0,.08);
   color:#7A3E22;
-  font-family: Georgia, serif;
   text-align:center;
   font-weight:800;
   font-size: clamp(1.1rem, 2.3vw, 1.35rem);
 }
 
+.acciones-detalle{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-top: .5rem;
+}
+.acciones-detalle > *{
+  display:flex; justify-content:center; align-items:center;
+  text-align:center; font: inherit;
+  min-height: 42px; border-radius: 999px; padding: .75rem 1rem;
+  font-weight: 700;
+}
+
 /* Botón “Añadir” */
 #btn-add{
-  width: fit-content;
-  padding: .8rem 1.2rem;
-  border: 0;
-  border-radius: 12px;
-  background:#A0522D;
-  color:#fff;
-  font-weight: 700;
+  border: 2px solid #A0522D;
+  background: #A0522D;
+  color: #fff;
   cursor: pointer;
   box-shadow: 0 8px 22px rgba(0,0,0,.14);
   transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
@@ -161,19 +156,10 @@
 #btn-add:hover{ background:#8d4929; transform: translateY(-1px); }
 #btn-add:active{ transform: translateY(0); box-shadow: 0 6px 16px rgba(0,0,0,.12); }
 
-/* Botón “Volver al catálogo” */
+/* Botón “Volver” */
 .btn-volver{
-  display:inline-flex;
-  align-items:center;
-  gap:.5rem;
-  width: fit-content;
-  margin-top: 6px;
-  padding:.65rem 1rem;
-  border-radius:999px;
-  border:2px solid #A0522D;
-  color:#A0522D;
-  background:#fff;
-  font-weight:700;
+  display:flex; align-items:center; justify-content:center; gap:.5rem;
+  border:2px solid #A0522D; color:#A0522D; background:#fff;
   text-decoration:none;
   box-shadow:0 8px 20px rgba(0,0,0,.06);
   transition: background .2s, color .2s, transform .12s, box-shadow .12s;
@@ -183,32 +169,41 @@
   transform: translateY(-1px);
   box-shadow:0 12px 26px rgba(0,0,0,.12);
 }
-.btn-volver:active{ transform: translateY(0); }
-.btn-volver .arrow{ font-size:1rem; line-height:1; }
 
-/*Responsive*/
-@media (max-width: 900px){
-  .seccion-productoIndividual{ grid-template-columns: 1fr; }
-  .imagen-productoIndividual{ order: -1; margin-bottom: .75rem; }
+@media (min-width: 560px){
+  
   .ficha-list li{
     grid-template-columns: 150px 1fr;
     background: linear-gradient(to right, #F2DEC8 0 150px, #FFFFFF 150px 100%);
+    column-gap: 16px;
   }
-  .info-detallada-productoIndividual .ficha-list,
-  .info-detallada-productoIndividual .precioIndividual,
-  .info-detallada-productoIndividual .precio-card{
-    max-width: 100%;
+  .ficha-list li strong{
+    background: transparent;
+    border-bottom: 0;
+  }
+
+  /* Botones lado a lado */
+  .acciones-detalle{
+    grid-template-columns: 1fr 1fr;
   }
 }
 
-@media (max-width: 560px){
+@media (min-width: 900px){
+
+  .seccion-productoIndividual{ grid-template-columns: 1.1fr 1.1fr; }
+
   .ficha-list li{
-    grid-template-columns: 1fr;
-    background:#fff;                     
+    grid-template-columns: 180px 1fr;
+    background: linear-gradient(to right, #F2DEC8 0 180px, #FFFFFF 180px 100%);
   }
-  .ficha-list li strong{
-    background:#F2DEC8;
-    border-bottom: 1px solid #F0E6DA;
+
+  .info-detallada-productoIndividual .ficha-list,
+  .info-detallada-productoIndividual .precioIndividual,
+  .info-detallada-productoIndividual .acciones-detalle{
+    max-width: 640px;
   }
-  .ficha-list li .f-value{ padding-top: 12px; }
+
+  .imagen-productoIndividual img{
+    width: clamp(380px, 36vw, 560px);
+  }
 }

@@ -1,12 +1,10 @@
-
 /* TITULAR */
 .seccion-productos {
     padding: 0;
 }
 
 .seccion-productos h2 {
-    font-family: Georgia, serif;
-    font-weight: 700;
+    font-weight: 500;
     color: #A0522D;
     font-style: italic;
     width: 92vw;
@@ -30,7 +28,6 @@
     background: #FFF6ED;
     padding: 6px 28px 6px 12px;
     color: #7A3E22;
-    font-family: Georgia, serif;
     transition: transform .12s ease, box-shadow .12s ease;
 }
 
@@ -97,7 +94,6 @@
 }
 
 .producto-title {
-    font-family: Georgia, serif;
     color: #7A3E22;
     font-size: 1rem;
     letter-spacing: .02em;
@@ -133,20 +129,6 @@
     color: #fff;
 }
 
-.btn-add {
-    padding: .5rem .8rem;
-    border-radius: 10px;
-    border: 0;
-    background: #A0522D;
-    color: #fff;
-    font-weight: 700;
-    cursor: pointer;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, .12);
-}
-
-.btn-add:hover {
-    background: #8d4929;
-}
 
 @media (min-width: 768px) {
   .seccion-productos {
