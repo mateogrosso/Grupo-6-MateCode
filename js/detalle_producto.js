@@ -1,4 +1,3 @@
-// /js/producto.js
 document.addEventListener('DOMContentLoaded', () => {
     // DOM
     const imgEl    = document.getElementById('prod-img');
@@ -58,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Ficha técnica (si hay datos, los listamos)
     if (Array.isArray(prod.ficha) && prod.ficha.length) {
       fichaEl.innerHTML = prod.ficha
-        .map(item => `<li><strong>${item.label}:</strong> ${item.valor}</li>`)
+        .map(item => `<li><strong>${item.label}:</strong> <span class="f-value">${item.valor}</span></li>`)
         .join('');
     } else {
       fichaEl.innerHTML = '<li>—</li>';

@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
 }
 
 html, body {
@@ -36,10 +37,9 @@ header {
 }
 
 .header-titulo h1{
-    font-family: Georgia;
-    font-weight: 400;
+    font-weight: 700; 
     color: 	#A0522D;
-    font-size: 2rem; /*2rem = 2font size, osea 2.16px = 32px*/
+    font-size: 2rem; 
 }
 
 .header-logo {
@@ -66,7 +66,6 @@ header {
 
 .header-lista a{
     text-decoration: none;
-    font-family: Georgia;
     font-weight: 400;
     font-size: 0.875rem; /*0.875rem = 14px*/
     color: #A0522D;
@@ -118,53 +117,7 @@ footer {
     justify-content: center;
 }
 
-/*PRODUCTO*/
-
-.seccion-productoIndividual {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-}
-
-.imagen-productoIndividual {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-}
-
-.imagen-productoIndividual img {
-    max-width: 37.5rem;
-    width: 100%;
-    height: auto;
-}
-
-.info-detallada-productoIndividual {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap:0.625rem;
-}
-
-.nombre-productoIndividual {
-  font-size: 1.8rem;
-  margin: 0;
-}
-
-.precioIndividual {
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-
-.info-detallada-productoIndividual button {
-  width: 7.5rem;     
-  background: white;     
-  color: black;
-  cursor: pointer;
-  text-align: center;
-}
-
-/* ===== NAV: botones tipo "pill" + activo + carrito ===== */
+/* NAV: botones tipo "pill" + activo + carrito */
 .header-lista .nav-btn{
     display:inline-block;
     padding:.45rem .9rem;
@@ -172,7 +125,6 @@ footer {
     border:2px solid #A0522D;
     color:#A0522D;
     background: transparent;
-    font-family: Georgia, serif;
     font-weight: 400;
     font-size: 0.875rem;
     text-decoration:none;
@@ -219,16 +171,6 @@ footer {
     display:grid; place-items:center;
     box-shadow:0 2px 8px rgba(0,0,0,.2);
   }
-
-  
-  /* Responsive nav pills */
- /* @media (max-width: 600px){
-    .header-lista{ gap: .75rem; }
-    .header-lista .nav-btn{
-      padding:.35rem .7rem;
-      font-size:.8rem;
-    }
-  }     */
 
 @media (max-width: 480px) {
     html {

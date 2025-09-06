@@ -21,7 +21,6 @@ document.addEventListener('DOMContentLoaded', async () => {
           <p class="producto-price">${aMonedaARS(prod.precio)}</p>
           <div class="producto-actions">
             <a class="btn-link" href="${prod.href}">Ver producto</a>
-            <button class="btn-add" data-id="${prod.id}">Añadir</button>
           </div>
         </div>
       </article>
@@ -57,29 +56,23 @@ document.addEventListener('DOMContentLoaded', async () => {
     };
   
     // “Fetch” simulado del catálogo global 
-      const traerCatalogo = () =>
-      new Promise((ok) => setTimeout(() => ok(window.CATALOGO || []), 400));
-    // const traerCatalogo = () => new Promise((resolve, reject) => {
-    //   setTimeout(() => { 
-    //     if (window.CATALOGO) {
-    //       resolve(window.CATALOGO);
-    //     } else {
-    //       reject(new Error("No se encontró el catálogo"));
-    //     }
-    //   }, 400);
-    // });
+     // const traerCatalogo = () =>
+      //new Promise((ok) => setTimeout(() => ok(window.CATALOGO || []), 400));
+    const traerCatalogo = () => new Promise((resolve, reject) => {
+       setTimeout(() => { 
+         if (window.CATALOGO) {
+           resolve(window.CATALOGO);
+         } else {
+           reject(new Error("No se encontró el catálogo"));
+         }
+       }, 400);
+     });
   
     // Flujo principal 
     try {
       const catalogo = await traerCatalogo();
       renderProductos(catalogo);
       refrescarContador();
-  
-      // Delegación: Añadir al carrito
-      contenedorProductos.addEventListener('click', (e) => {
-        const btn = e.target.closest('.btn-add');
-        if (btn) sumarAlCarrito();
-      });
   
       // Buscador 
       inputBuscador.addEventListener('input', () => {

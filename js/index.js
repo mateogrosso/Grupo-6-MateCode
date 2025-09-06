@@ -52,20 +52,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     return (window.CATALOGO || []).slice(0, 4);
   };
 
-  // Emula la latencia de red (400ms) con una Promesa y setTimeout
-  const traerDestacados = () =>
-    new Promise((ok) => setTimeout(() => ok(obtenerDestacados()), 400));
-  
-    // const traerDestacados = () => new Promise((resolve, reject) => {
-    //   setTimeout(() => { 
-    //     const lista = obtenerDestacados();
-    //     if (lista && lista.length>0) {
-    //       resolve(lista);
-    //     } else {
-    //       reject(new Error("No se encontró el catálogo"));
-    //     }
-    //   }, 400);
-    // });
+
+    const traerDestacados = () => new Promise((resolve, reject) => {
+       setTimeout(() => { 
+         const lista = obtenerDestacados();
+         if (lista && lista.length>0) {
+           resolve(lista);
+         } else {
+           reject(new Error("No se encontró el catálogo"));
+         }
+       }, 400);
+     });
 
   // Flujo principal: traigo → renderizo → engancho eventos
   try {

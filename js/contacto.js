@@ -13,6 +13,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const errEmail = document.getElementById('error-email');
     const errMensaje = document.getElementById('error-mensaje');
 
+    const badge = document.getElementById('cart-count');
+    const CLAVE_CARRITO = 'hj_cart_count';
+    const refrescarContador = () => {
+      if (!badge) return;
+      const valor = Number(sessionStorage.getItem(CLAVE_CARRITO) || 0);
+      badge.textContent = String(valor);
+    };
+    refrescarContador();
+    
     // Define las validaciones
     // Las validaciones se definen como funciones que reciben el valor del campo y retornan un mensaje de error si el valor no es válido
     // Si el valor es válido, retorna una cadena vacía ''
