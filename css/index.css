@@ -17,7 +17,6 @@
   object-position: center;
 }
   
-  /* TITULAR */
   .seccion-destacados{
     display: grid;
     grid-template-columns: 1fr;
@@ -121,13 +120,13 @@
   .btn-add:hover{ background:#8d4929; }
   
   /* RESPONSIVE */
-  @media (max-width: 640px){
-    .destacados-card{
-      grid-template-columns: 1fr;
-      text-align: center;
-    }
-    .destacados-info{ justify-items: center; }
+@media (max-width: 640px){
+  .destacados-card{
+    grid-template-columns: 1fr;
+    text-align: center;
   }
+  .destacados-info{ justify-items: center; }
+}
 
 /* Ajustes responsive */
 @media (max-width: 768px){

@@ -1,4 +1,4 @@
-/* Tarjeta del formulario (más cálida + sombra + acento) */
+/* Tarjeta del formulario*/
 .formulario-contacto{
     background: linear-gradient(180deg, #FFF7EE 0%, #FFFFFF 100%);
     border: 1px solid rgba(160,82,45,.15);   
@@ -94,14 +94,12 @@
     background:#A0522D; color:#fff;
   }
 
-  /* Hover con elevación */
   .formulario-contacto .boton_enviar:hover,
   .formulario-contacto .boton_resetear:hover{
     transform: translateY(-1px);
     box-shadow:0 10px 22px rgba(0,0,0,.16);
   }
 
-  /* Accesibilidad: foco visible */
   .formulario-contacto .boton_enviar:focus-visible,
   .formulario-contacto .boton_resetear:focus-visible{
     outline:3px solid rgba(160,82,45,.35);  
@@ -118,7 +116,6 @@
     box-shadow:0 0 0 3px rgba(135,169,107,.18) !important;
   }
   
-  /* Feedback global del form */
   .formulario-contacto #form-feedback{
     display:none;
     margin-top:12px;
@@ -141,8 +138,6 @@
     border-left:4px solid #C47A6D;
   }
 
-  
- 
   @media (max-width:480px){
     .formulario-contacto{ margin:.5rem; padding:.8rem; border-radius:.4rem; }
     .formulario-contacto .formulario-titulo{ font-size:1.25rem; }

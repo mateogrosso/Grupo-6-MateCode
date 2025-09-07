@@ -55,9 +55,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       contenedorProductos.innerHTML = lista.map(renderTarjetaProducto).join('');
     };
   
-    // “Fetch” simulado del catálogo global 
-     // const traerCatalogo = () =>
-      //new Promise((ok) => setTimeout(() => ok(window.CATALOGO || []), 400));
     const traerCatalogo = () => new Promise((resolve, reject) => {
        setTimeout(() => { 
          if (window.CATALOGO) {

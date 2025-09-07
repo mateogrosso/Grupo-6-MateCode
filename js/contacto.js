@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   
-    // Validación en tiempo real: : cada vez que el usuario escribe, chequeamos el campo y actualizamos su estado visual.
+    // Validación en tiempo real: cada vez que el usuario escribe, chequeamos el campo y actualizamos su estado visual.
     nombre.addEventListener('input', () => setState(nombre, errNombre, validators.nombre(nombre.value)));
     email.addEventListener('input', () => setState(email, errEmail, validators.email(email.value)));
     mensaje.addEventListener('input', () => setState(mensaje, errMensaje, validators.mensaje(mensaje.value)));
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const m2 = validators.email(email.value);
       const m3 = validators.mensaje(mensaje.value);
 
-      // // Pinta cada campo según corresponda
+      // Pinta cada campo según corresponda
       setState(nombre, errNombre, m1);
       setState(email, errEmail, m2);
       setState(mensaje, errMensaje, m3);
