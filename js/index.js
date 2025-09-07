@@ -66,16 +66,16 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Flujo principal: traigo → renderizo → engancho eventos
   try {
-    // 1) “Pido” los destacados (async/await)
+    // “Pido” los destacados (async/await)
     const listaDestacados = await traerDestacados();
 
-    // 2) Renderizamos todas las tarjetas de una
+    // Renderizamos todas las tarjetas de una
     contenedorDestacados.innerHTML = listaDestacados.map(renderTarjetaProducto).join('');
 
-    // 3) Al cargar la página, pinto el número del carrito
+    // Al cargar la página, pinto el número del carrito
     refrescarContadorCarrito();
 
-    // 4) Delegación de eventos: si se hace click en un .btn-add dentro del contenedor, sumo al carrito
+    // Si se hace click en un .btn-add dentro del contenedor, sumo al carrito
     contenedorDestacados.addEventListener('click', (evento) => {
       const botonSumar = evento.target.closest('.btn-add');
       if (!botonSumar) return;

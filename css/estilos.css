@@ -6,8 +6,8 @@
 }
 
 html, body {
-    font-size: 16px; /*Esto es para que 1rem = 16px*/
-    height: 100%;      /* que el body ocupe toda la altura */
+    font-size: 16px; 
+    height: 100%;      
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -15,11 +15,11 @@ html, body {
 }
 
 main {
-    flex: 1;           /* ocupa todo el espacio disponible */
+    flex: 1;          
 }
 
 footer {
-    margin-top: auto;  /* empuja el footer al final */
+    margin-top: auto;  
 }
 
 /*HEADER*/
@@ -44,7 +44,7 @@ header {
 
 .header-logo {
     justify-self: center;
-    width: 7.5rem; /*Si se quiere cambiar el tamaño del logo, se cambia aca*/
+    width: 7.5rem; 
 }
 
 .header-logo img{
@@ -67,7 +67,7 @@ header {
 .header-lista a{
     text-decoration: none;
     font-weight: 400;
-    font-size: 0.875rem; /*0.875rem = 14px*/
+    font-size: 0.875rem; 
     color: #A0522D;
 }
 
@@ -76,7 +76,7 @@ header {
 }
 
 .carritoCompras-logo{
-    width: 1.25rem; /*1.25rem = 20px*/
+    width: 1.25rem; 
     height: auto;
 }
 
@@ -86,10 +86,9 @@ footer {
     display: flex;
     flex-direction: column;
     width: 100%;
-    /*background-color:rgb(246, 213, 151);*/
     font-size: 0.75rem;  
     color: #A0522D;      
-    padding: 0.625rem 0;  /*0.625rem = 10px*/
+    padding: 0.625rem 0; 
 }
 
 .footer-lista{
@@ -117,7 +116,6 @@ footer {
     justify-content: center;
 }
 
-/* NAV: botones tipo "pill" + activo + carrito */
 .header-lista .nav-btn{
     display:inline-block;
     padding:.45rem .9rem;
@@ -147,7 +145,6 @@ footer {
     border-color:#A0522D;
   }
   
-  /* Accesibilidad: foco visible */
   .header-lista .nav-btn:focus-visible{
     outline:3px solid rgba(160,82,45,.35);
     outline-offset:2px;

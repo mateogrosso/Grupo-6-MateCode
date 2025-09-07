@@ -77,13 +77,13 @@
   box-shadow: 0 12px 26px rgba(0,0,0,.10);
 }
 
-/*Celular: etiqueta arriba, valor abajo (1 columna) */
+/*Para el celular: etiqueta arriba, valor abajo (1 columna) */
 .ficha-list li{
   display: grid;
-  grid-template-columns: 1fr;   /* 1 columna en móvil */
+  grid-template-columns: 1fr;  
   align-items: center;
-  background: #fff;             /* <- sin degradado en móvil */
-  padding: 0;                   /* dejamos el padding a sus hijos */
+  background: #fff;             
+  padding: 0;                
   min-height: 52px;
 }
 .ficha-list li + li{ border-top: 1px solid #F0E6DA; }
