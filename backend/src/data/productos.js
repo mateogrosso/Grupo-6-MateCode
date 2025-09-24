@@ -1,0 +1,191 @@
+const productos = [
+  {
+    id:'uspallata',
+    nombre:'Aparador Uspallata',
+    precio: 99990,
+    img:'/media/Aparador Uspallata.png',
+    href:'producto.html?id=uspallata',
+    destacado:false,
+    descripcion:
+      'Aparador de seis puertas fabricado en nogal sostenible con tiradores metálicos en acabado latón. Su silueta minimalista realza el veteado natural de la madera, creando una pieza que combina funcionalidad y elegancia atemporal para espacios contemporáneos.',
+    ficha: [
+      { label:'Medidas',     valor:'180 × 45 × 75 cm' },
+      { label:'Materiales',  valor:'Nogal macizo FSC®, herrajes de latón' },
+      { label:'Acabado',     valor:'Aceite natural ecológico' },
+      { label:'Peso',        valor:'68 kg' },
+      { label:'Capacidad',   valor:'6 compartimentos interiores' },
+    ],
+  },
+  {
+    id:'recoleta',
+    nombre:'Biblioteca Recoleta',
+    precio: 349990,
+    img:'/media/Biblioteca Recoleta.png',
+    href:'producto.html?id=recoleta',
+    destacado:true,
+    descripcion:
+      'Sistema modular de estantes abierto que combina estructura de acero Sage Green y repisas en roble claro. Perfecta para colecciones y objetos de diseño, su diseño versátil se adapta a cualquier espacio contemporáneo con elegancia funcional.',
+    ficha: [
+      { label:'Medidas',     valor:'100 × 35 × 200 cm' },
+      { label:'Materiales',  valor:'Estructura de acero, estantes de roble' },
+      { label:'Acabado',     valor:'Laca mate ecológica' },
+      { label:'Capacidad',   valor:'45 kg por estante' },
+      { label:'Modulares',   valor:'5 estantes ajustables' },
+    ],
+  },
+  {
+    id:'mendoza',
+    nombre:'Butaca Mendoza',
+    precio: 149990,
+    img:'/media/Butaca Mendoza.png',
+    href:'producto.html?id=mendoza',
+    destacado:false,
+    descripcion:
+      'Butaca tapizada en bouclé Dusty Rose con base de madera de guatambú. El respaldo curvo abraza el cuerpo y ofrece máximo confort, mientras que su diseño orgánico aporta calidez y sofisticación a cualquier ambiente contemporáneo.',
+    ficha: [
+      { label:'Medidas',     valor:'80 × 75 × 85 cm' },
+      { label:'Materiales',  valor:'Guatambú macizo, tela bouclé' },
+      { label:'Acabado',     valor:'Cera vegetal, tapizado premium' },
+      { label:'Tapizado',    valor:'Repelente al agua y manchas' },
+      { label:'Confort',     valor:'Espuma de alta densidad' },
+    ],
+  },
+  {
+    id:'copacabana',
+    nombre:'Sillón Copacabana',
+    precio: 199990,
+    img:'/media/Sillón Copacabana.png',
+    href:'producto.html?id=copacabana',
+    destacado:true,
+    descripcion:
+      'Sillón lounge en cuero cognac con base giratoria en acero Burnt Sienna. Inspirado en la estética brasilera moderna de los 60, combina comodidad excepcional con un diseño icónico que trasciende tendencias y épocas.',
+    ficha: [
+      { label:'Medidas',     valor:'90 × 85 × 95 cm' },
+      { label:'Materiales',  valor:'Cuero curtido vegetal, acero pintado' },
+      { label:'Acabado',     valor:'Cuero anilina premium' },
+      { label:'Rotación',    valor:'360° silenciosa y suave' },
+      { label:'Garantía',    valor:'10 años en estructura' },
+    ],
+  },
+  {
+    id:'araucaria',
+    nombre:'Mesa de Centro Araucaria',
+    precio: 69990,
+    img:'/media/Mesa de Centro Araucaria.png',
+    href:'producto.html?id=araucaria',
+    destacado:false,
+    descripcion:
+      'Mesa de centro con sobre circular de mármol Patagonia y base de tres patas en madera de nogal. Su diseño minimalista se convierte en el punto focal perfecto para cualquier sala de estar contemporánea, combinando la frialdad del mármol con la calidez de la madera.',
+    ficha: [
+      { label:'Medidas',     valor:'90 × 90 × 45 cm' },
+      { label:'Materiales',  valor:'Mármol Patagonia (sobre), patas de nogal' },
+      { label:'Acabado',     valor:'Mármol pulido, aceite natural en madera' },
+      { label:'Peso',        valor:'42 kg' },
+      { label:'Carga máxima',valor:'25 kg distribuidos' },
+    ],
+  },
+  {
+    id:'aconcagua',
+    nombre:'Mesa de Noche Aconcagua',
+    precio: 59990,
+    img:'/media/Mesa de Noche Aconcagua.png',
+    href:'producto.html?id=aconcagua',
+    destacado:false,
+    descripcion:
+      'Mesa de noche con cajón oculto y repisa inferior en roble certificado FSC®. Su diseño limpio y funcional permite convivir con diferentes estilos de dormitorio, ofreciendo almacenamiento discreto y elegante para objetos personales.',
+    ficha: [
+      { label:'Medidas',       valor:'45 × 35 × 60 cm' },
+      { label:'Materiales',    valor:'Roble macizo FSC®, herrajes soft-close' },
+      { label:'Acabado',       valor:'Barniz mate de poliuretano' },
+      { label:'Almacenamiento',valor:'1 cajón + repisa inferior' },
+      { label:'Características',valor:'Cajón con cierre suave' },
+    ],
+  },
+  {
+    id:'belgrano',
+    nombre:'Silla de Trabajo Belgrano',
+    precio: 299990,
+    img:'/media/Silla de Trabajo Belgrano.png',
+    href:'producto.html?id=belgrano',
+    destacado:false,
+    descripcion:
+      'Silla ergonómica regulable en altura con respaldo de malla transpirable y asiento tapizado en tejido reciclado. Diseñada para largas jornadas de trabajo con máximo confort y apoyo lumbar, ideal para oficinas en casa y espacios de coworking.',
+    ficha: [
+      { label:'Medidas',      valor:'60 × 60 × 90-100 cm' },
+      { label:'Materiales',   valor:'Malla técnica, tejido reciclado' },
+      { label:'Acabado',      valor:'Base cromada, tapizado premium' },
+      { label:'Regulación',   valor:'Altura + inclinación de respaldo' },
+      { label:'Certificación',valor:'Ergonomía europea EN 1335' },
+    ],
+  },
+  {
+    id:'cordoba',
+    nombre:'Sillas Córdoba',
+    precio: 149990,
+    img:'/media/Sillas Córdoba.png',
+    href:'producto.html?id=cordoba',
+    destacado:false,
+    descripcion:
+      'Set de cuatro sillas apilables en contrachapado moldeado de nogal y estructura tubular pintada en Sage Green. Su diseño ergonómico y materiales de calidad garantizan comodidad y durabilidad en el uso diario, perfectas para comedores contemporáneos.',
+    ficha: [
+      { label:'Medidas',     valor:'45 × 52 × 80 cm (cada una)' },
+      { label:'Materiales',  valor:'Contrachapado nogal, tubo de acero' },
+      { label:'Acabado',     valor:'Laca mate, pintura epoxi' },
+      { label:'Apilables',   valor:'Hasta 6 sillas' },
+      { label:'Incluye',     valor:'Set de 4 sillas' },
+    ],
+  },
+  {
+    id:'costa',
+    nombre:'Escritorio Costa',
+    precio: 374990,
+    img:'/media/Escritorio Costa.png',
+    href:'producto.html?id=costa',
+    destacado:true,
+    descripcion:
+      'Escritorio compacto con cajón organizado y tapa pasacables integrada en bambú laminado. Ideal para espacios de trabajo en casa, combina funcionalidad moderna con estética minimalista y sostenible, perfecto para el trabajo remoto.',
+    ficha: [
+      { label:'Medidas',       valor:'120 × 60 × 75 cm' },
+      { label:'Materiales',    valor:'Bambú laminado, herrajes ocultos' },
+      { label:'Acabado',       valor:'Laca mate resistente' },
+      { label:'Almacenamiento',valor:'1 cajón con organizador' },
+      { label:'Cables',        valor:'Pasacables integrado' },
+    ],
+  },
+  {
+    id:'pampa',
+    nombre:'Mesa Comedor Pampa',
+    precio: 49990,
+    img:'/media/Mesa Comedor Pampa.png',
+    href:'producto.html?id=pampa',
+    destacado:false,
+    descripcion:
+      'Mesa extensible de roble macizo con tablero biselado y sistema de apertura suave. Su diseño robusto y elegante se adapta perfectamente a reuniones íntimas o grandes celebraciones familiares, extendiéndose de 6 a 10 comensales.',
+    ficha: [
+      { label:'Medidas',     valor:'160-240 × 90 × 75 cm' },
+      { label:'Materiales',  valor:'Roble macizo FSC®, mecanismo alemán' },
+      { label:'Acabado',     valor:'Aceite-cera natural' },
+      { label:'Capacidad',   valor:'6-10 comensales' },
+      { label:'Extensión',   valor:'Sistema de mariposa central' },
+    ],
+  },
+  {
+    id:'patagonia',
+    nombre:'Sofá Patagonia',
+    precio: 699990,
+    img:'/media/Sofá Patagonia.png',
+    href:'producto.html?id=patagonia',
+    destacado:true,
+    descripcion:
+      'Sofá de tres cuerpos tapizado en lino Warm Alabaster con patas cónicas de madera. Los cojines combinan espuma de alta resiliencia con plumón reciclado, ofreciendo comodidad duradera y sostenible para el hogar moderno.',
+    ficha: [
+      { label:'Medidas',     valor:'220 × 90 × 80 cm' },
+      { label:'Estructura',  valor:'Madera de eucalipto certificada FSC®' },
+      { label:'Tapizado',    valor:'Lino 100% natural premium' },
+      { label:'Relleno',     valor:'Espuma HR + plumón reciclado' },
+      { label:'Sostenibilidad', valor:'Materiales 100% reciclables' },
+    ],
+  },
+];
+
+module.exports = productos;
