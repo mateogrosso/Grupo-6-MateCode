@@ -6,7 +6,7 @@ function getProductos (req, res) {
 
 function getProductoById (req, res) {
     const id = req.params.id;
-    const producto = productos.find(p => p.id === id);
+    const producto = productos.find(p => p.id.toLowerCase() === id.toLowerCase());
     if (!producto) {
     return res.status(404).json({ mensaje: 'Producto no encontrado' });
     }
