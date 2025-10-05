@@ -1,65 +1,65 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import React, { useState } from 'react';
 import '../styles/main.css';
 import '../styles/detalle_producto.css';
 
-export default function ProductDetail() {
-  const { id } = useParams();
-  const [producto, setProducto] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+export default function ProductDetail({ product, onAddToCart, onGoBack }) {
+  const [cantidad, setCantidad] = useState(1);
 
-  useEffect(() => {
-    fetch(`http://localhost:4000/api/productos/${id}`)
-      .then(res => {
-        if (!res.ok) throw new Error('Producto no encontrado');
-        return res.json();
-      })
-      .then(data => {
-        setProducto(data);
-        setLoading(false);
-      })
-      .catch(err => {
-        setError(err.message);
-        setLoading(false);
-      });
-  }, [id]);
+  if (!product) {
+    return <p>No se encontró el producto.</p>;
+  }
 
-  if (loading) return <p className="estado-carga">Cargando producto...</p>;
-  if (error) return <p className="estado-error">{error}</p>;
-  if (!producto) return <p>No se encontró el producto.</p>;
+  const handleAdd = () => {
+    onAddToCart(product, cantidad);
+  };
 
   return (
     <main>
       <section className="seccion-productoIndividual">
         <div className="imagen-productoIndividual">
-          <img src={producto.img} alt={producto.nombre} />
+          <img src={product.img} alt={product.nombre} />
         </div>
 
         <div className="info-detallada-productoIndividual">
-          <h2 className="nombre-productoIndividual">{producto.nombre}</h2>
-          <p className="prod-desc">{producto.descripcion}</p>
+          <h2 className="nombre-productoIndividual">{product.nombre}</h2>
+          <p className="prod-desc">{product.descripcion}</p>
 
-          <h3 className="ficha-titulo">Ficha técnica</h3>
-          <ul className="ficha-list">
-            {producto.ficha.map((item, index) => (
-              <li key={index}>
-                <strong>{item.label}</strong>
-                <span className="f-value">{item.valor}</span>
-              </li>
-            ))}
-          </ul>
+          {/* Ficha técnica opcional */}
+          {product.ficha && product.ficha.length > 0 && (
+            <>
+              <h3 className="ficha-titulo">Ficha técnica</h3>
+              <ul className="ficha-list">
+                {product.ficha.map((item, index) => (
+                  <li key={index}>
+                    <strong>{item.label}</strong>
+                    <span className="f-value">{item.valor}</span>
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
 
-          <p className="precioIndividual">${producto.precio}</p>
+          <p className="precioIndividual">${product.precio}</p>
 
           <div className="acciones-detalle">
-            <button id="btn-add" className="btn-add">
+            <div className="cantidad-control">
+              <label>Cantidad:</label>
+              <input
+                type="number"
+                value={cantidad}
+                min="1"
+                onChange={(e) => setCantidad(Number(e.target.value))}
+                className="input-cantidad"
+              />
+            </div>
+
+            <button id="btn-add" className="btn-add" onClick={handleAdd}>
               Añadir al carrito
             </button>
 
-            <Link to="/productos" className="btn-volver">
+            <button className="btn-volver" onClick={onGoBack}>
               Volver al catálogo
-            </Link>
+            </button>
           </div>
         </div>
       </section>

@@ -1,8 +1,7 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
 import '../styles/main.css';
 
-export default function Navbar() {
+export default function Navbar({ cartCount, onNavigate }) {
   return (
     <header>
       <div className="header-titulo">
@@ -17,35 +16,47 @@ export default function Navbar() {
         <nav>
           <ul className="header-lista">
             <li>
-              <NavLink className="nav-btn" to="/" end>
+              <button
+                className="nav-btn"
+                onClick={() => onNavigate('catalog')}
+              >
                 Inicio
-              </NavLink>
+              </button>
             </li>
+
             <li>
-              <NavLink className="nav-btn" to="/productos">
+              <button
+                className="nav-btn"
+                onClick={() => onNavigate('catalog')}
+              >
                 Productos
-              </NavLink>
+              </button>
             </li>
+
             <li>
-              <NavLink className="nav-btn" to="/contacto">
+              <button
+                className="nav-btn"
+                onClick={() => onNavigate('contact')}
+              >
                 Contacto
-              </NavLink>
+              </button>
             </li>
+
             <li>
-              <Link to="#" className="nav-cart" aria-label="Carrito">
+              <button className="nav-cart" aria-label="Carrito">
                 <img
                   className="carritoCompras-logo"
                   src="/media/carrito-de-compras.png"
                   alt="Carrito de compras"
                 />
                 <span id="cart-count" className="cart-count">
-                  0
+                  {cartCount}
                 </span>
-              </Link>
+              </button>
             </li>
           </ul>
         </nav>
       </div>
     </header>
-  );
+  );
 }

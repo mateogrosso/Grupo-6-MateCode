@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../styles/main.css';
 import '../styles/contacto.css';
 
-export default function ContactForm() {
+export default function ContactForm({ onGoBack }) {
   const [formData, setFormData] = useState({
     nombre: '',
     email: '',
@@ -10,9 +10,9 @@ export default function ContactForm() {
   });
   const [estado, setEstado] = useState(''); // '', 'ok', 'err'
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleReset = () => {
@@ -20,23 +20,23 @@ export default function ContactForm() {
     setEstado('');
   };
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     if (!formData.nombre || !formData.email || !formData.mensaje) {
       setEstado('err');
       return;
     }
-  
+
     try {
       const res = await fetch('http://localhost:4000/api/contacto', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
-  
+
       if (!res.ok) throw new Error('Error en el servidor');
-  
+
       setEstado('ok');
       setFormData({ nombre: '', email: '', mensaje: '' });
     } catch (error) {
@@ -56,12 +56,12 @@ export default function ContactForm() {
           type="text"
           id="nombre"
           name="nombre"
-          className={`Username ${
-            formData.nombre ? 'is-valid' : estado === 'err' ? 'is-invalid' : ''
-          }`}
           placeholder="Tu nombre completo"
           value={formData.nombre}
           onChange={handleChange}
+          className={`Username ${
+            formData.nombre ? 'is-valid' : estado === 'err' ? 'is-invalid' : ''
+          }`}
         />
         {estado === 'err' && !formData.nombre && (
           <span className="error-message">Por favor ingresá tu nombre.</span>
@@ -73,12 +73,12 @@ export default function ContactForm() {
           type="email"
           id="email"
           name="email"
-          className={`Usermail ${
-            formData.email ? 'is-valid' : estado === 'err' ? 'is-invalid' : ''
-          }`}
           placeholder="tucorreo@ejemplo.com"
           value={formData.email}
           onChange={handleChange}
+          className={`Usermail ${
+            formData.email ? 'is-valid' : estado === 'err' ? 'is-invalid' : ''
+          }`}
         />
         {estado === 'err' && !formData.email && (
           <span className="error-message">Por favor ingresá un correo válido.</span>
@@ -90,12 +90,12 @@ export default function ContactForm() {
           id="mensaje"
           name="mensaje"
           rows="5"
-          className={`MensajedeContacto ${
-            formData.mensaje ? 'is-valid' : estado === 'err' ? 'is-invalid' : ''
-          }`}
           placeholder="Escribí tu mensaje..."
           value={formData.mensaje}
           onChange={handleChange}
+          className={`MensajedeContacto ${
+            formData.mensaje ? 'is-valid' : estado === 'err' ? 'is-invalid' : ''
+          }`}
         ></textarea>
         {estado === 'err' && !formData.mensaje && (
           <span className="error-message">El mensaje no puede estar vacío.</span>
@@ -109,9 +109,12 @@ export default function ContactForm() {
           <button type="reset" className="boton_resetear">
             Limpiar campos
           </button>
+          <button type="button" className="boton_volver" onClick={onGoBack}>
+            Volver al catálogo
+          </button>
         </div>
 
-        {/* Mensaje de estado */}
+        {/* Estado */}
         {estado === 'ok' && (
           <div id="form-feedback" className="ok">
             ¡Gracias por contactarnos! Te responderemos pronto.
