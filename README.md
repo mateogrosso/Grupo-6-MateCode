@@ -1,59 +1,85 @@
-# E-commerce - Mueblería Hermanos Jota
-# Grupo 6 - CodeMate
-
-## Integrantes
-- Grosso, Mateo 
-- Ferreyra. Tomás Alejo
-- Pereson, Mariano
-- García, Franco
-- Ballardini, Florencia 
+# 🪑 E-commerce - Mueblería Hermanos Jota  
+# 💻 Grupo 6 - CodeMate  
 
 ---
 
-## Descripción del Proyecto
-Este proyecto corresponde a la **Fase 1 del e-commerce de Mueblería Hermanos Jota**.  
-El objetivo fue construir la **fachada digital** de la tienda: un sitio web responsive que permita a los usuarios explorar productos, ver detalles individuales, simular la selección en un carrito y contactarse a través de un formulario.  
-
-Toda la lógica se implementa con **tecnologías del lado del cliente** (HTML, CSS y JavaScript), sin conexión a un backend.  
-
----
-
-## Funcionalidades Implementadas
-- **Página de Inicio (index.html)**  
-  - Hero banner con imágenes destacadas.  
-  - Sección de productos destacados cargados dinámicamente con JavaScript.  
-  - Contador de carrito en el header.  
-
-- **Catálogo de Productos (productos.html)**  
-  - Render dinámico de todo el catálogo desde un array de objetos.  
-  - Búsqueda de productos.  
-  - Botón de añadir al carrito con persistencia en `localStorage`.  
-
-- **Detalle de Producto (producto.html)**  
-  - Vista individual con imagen, descripción, precio.  
-
-- **Contacto (contacto.html)**  
-  - Formulario con validación en tiempo real (nombre, email y mensaje).  
-  - Mensajes de error accesibles y confirmación de envío en el DOM.  
-
-- **Carrito Simulado (global)**  
-  - Cada botón **"Añadir"** incrementa un contador visible en el header.  
-  - El valor se guarda en `localStorage` para persistencia entre páginas.  
+## 👥 Integrantes
+- Grosso, Mateo  
+- Ferreyra, Tomás Alejo  
+- Pereson, Mariano  
+- García, Franco  
+- Ballardini, Florencia  
 
 ---
 
-## Tecnologías Utilizadas
-- **HTML5**   
-- **CSS** 
-- **JavaScript**
+## 🧠 Descripción del Proyecto
+Este proyecto corresponde a la **Fase 2 (Sprints 3 y 4)** del e-commerce **Mueblería Hermanos Jota**.  
+El objetivo fue reconstruir completamente la tienda digital utilizando tecnologías modernas del lado del cliente y del servidor:  
+- **Frontend:** React.js (SPA con componentes reutilizables).  
+- **Backend:** Node.js + Express (API REST propia).  
+
+La aplicación ahora funciona como una **Single Page Application (SPA)** conectada a un **servidor Express** que provee los datos en formato JSON.  
 
 ---
 
-## Estructura Principal
-- `index.html` → Inicio con productos destacados.  
-- `productos.html` → Catálogo dinámico.  
-- `producto.html` → Detalle de un producto.  
-- `contacto.html` → Formulario validado con JS.  
-- `/css/` → Hojas de estilos globales y específicos de cada html.  
-- `/js/` → Scripts de lógica para cada sección.  
-- `/media/` → Recursos de imágenes y logo.  
+## ⚙️ Funcionalidades Implementadas
+- **Inicio (Home.jsx)**  
+  - Hero banner con imagen principal.  
+  - Sección de productos destacados obtenidos desde `/api/productos/destacados`.  
+  - Contador de carrito sincronizado con `sessionStorage`.  
+
+- **Catálogo (ProductList.jsx)**  
+  - Render dinámico de todo el catálogo (`/api/productos`).  
+  - Buscador de productos por nombre o descripción.  
+  - Botón "Ver detalle" que navega al producto.  
+
+- **Detalle (ProductDetail.jsx)**  
+  - Información completa del producto seleccionado.  
+  - Botón “Añadir al carrito” con cantidad configurable.  
+  - Botón “Volver al catálogo”.  
+
+- **Contacto (ContactForm.jsx)**  
+  - Formulario controlado con validación en tiempo real.  
+  - Envío al endpoint `/api/contacto`.  
+  - Mensajes de error y confirmación en la interfaz.  
+
+- **Carrito (estado global)**  
+  - Estado manejado en `App.js`.  
+  - Persistencia temporal con `sessionStorage`.  
+  - Contador visible en el `Navbar`.  
+
+---
+
+## 🧱 Arquitectura del Proyecto
+
+```plaintext
+📦 Mueblería-Hermanos-Jota/
+├── backend/              # Servidor Express (API REST)
+│   ├── src/
+│   │   ├── app.js
+│   │   ├── server.js
+│   │   ├── controllers/
+│   │   │   └── productos.controller.js
+│   │   ├── routes/
+│   │   │   └── productosRoutes.js
+│   │   ├── data/
+│   │   │   └── productos.js
+│   │   └── middlewares/
+│   │       ├── logger.js
+│   │       └── error404.js
+├── client/               # Aplicación React (SPA)
+│   ├── src/
+│   │   ├── App.js
+│   │   ├── index.jsx
+│   │   ├── Components/
+│   │   │   ├── Navbar.jsx
+│   │   │   ├── Home.jsx
+│   │   │   ├── ProductList.jsx
+│   │   │   ├── ProductDetail.jsx
+│   │   │   └── ContactForm.jsx
+│   │   ├── Services/
+│   │   │   └── ProductService.js
+│   │   └── styles/
+│   └── package.json
+├── ETAPA_1/              # Versión inicial (HTML, CSS, JS puro)
+└── README.md
