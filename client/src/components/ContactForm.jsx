@@ -15,23 +15,34 @@ export default function ContactForm() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
+  const handleReset = () => {
+    setFormData({ nombre: '', email: '', mensaje: '' });
+    setEstado('');
+  };
 
+  const handleSubmit = async e => {
+    e.preventDefault();
+  
     if (!formData.nombre || !formData.email || !formData.mensaje) {
       setEstado('err');
       return;
     }
-
-    // Podrías reemplazar esto por un POST real a tu backend
-    console.log('Formulario enviado:', formData);
-    setEstado('ok');
-    setFormData({ nombre: '', email: '', mensaje: '' });
-  };
-
-  const handleReset = () => {
-    setFormData({ nombre: '', email: '', mensaje: '' });
-    setEstado('');
+  
+    try {
+      const res = await fetch('http://localhost:4000/api/contacto', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+  
+      if (!res.ok) throw new Error('Error en el servidor');
+  
+      setEstado('ok');
+      setFormData({ nombre: '', email: '', mensaje: '' });
+    } catch (error) {
+      console.error(error);
+      setEstado('err');
+    }
   };
 
   return (
@@ -103,12 +114,12 @@ export default function ContactForm() {
         {/* Mensaje de estado */}
         {estado === 'ok' && (
           <div id="form-feedback" className="ok">
-             ¡Gracias por contactarnos! Te responderemos pronto.
+            ¡Gracias por contactarnos! Te responderemos pronto.
           </div>
         )}
         {estado === 'err' && (
           <div id="form-feedback" className="err">
-             Por favor completá todos los campos correctamente.
+            Por favor completá todos los campos correctamente.
           </div>
         )}
       </form>

@@ -38,3 +38,16 @@ app.use((err, _req, res, _next) => {
 app.listen(PORT, () => {
   console.log(`API corriendo en http://localhost:${PORT}`);
 });
+
+// Ruta POST /api/contacto
+app.post('/api/contacto', (req, res) => {
+  const { nombre, email, mensaje } = req.body;
+
+  if (!nombre || !email || !mensaje) {
+    return res.status(400).json({ message: 'Faltan campos obligatorios.' });
+  }
+
+  console.log('Nuevo mensaje de contacto:', { nombre, email, mensaje });
+  // Acá podrías enviar un correo o guardar en BD
+  res.status(200).json({ message: 'Mensaje recibido correctamente.' });
+});
