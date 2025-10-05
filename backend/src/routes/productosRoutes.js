@@ -1,24 +1,20 @@
 const express = require('express');
 const router = express.Router();
-const productos = require('../data/productos.js');
+const {
+  getProductos,
+  getProductoById,
+  getProductosDestacados
+} = require('../controllers/productos.controllers');
 
-// Ruta para obtener todos los productos
-router.get('/', (req, res) => {
-  res.json(productos);
-});
+// /api/productos/destacados
+router.get('/destacados', getProductosDestacados);
 
-// Ruta para obtener un producto por ID
-router.get('/:id', (req, res, next) => {
-  const id = req.params.id.toLowerCase();
-  const producto = productos.find(p => p.id === id);
+// /api/productos
+router.get('/', getProductos);
 
-  if (!producto) {
-    const error = new Error('Producto no encontrado');
-    error.status = 404;
-    return next(error);
-  }
+// /api/productos/:id
+router.get('/:id', getProductoById);
 
-  res.json(producto);
-});
+
 
 module.exports = router;

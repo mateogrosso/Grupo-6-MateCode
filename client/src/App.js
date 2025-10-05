@@ -17,16 +17,17 @@ const VIEW = {
 function App() {
   const [productos, setProductos] = useState([]);
   const [carrito, setCarrito] = useState([]);
-  const [currentView, setCurrentView] = useState(VIEW.CATALOG);
+  const [currentView, setCurrentView] = useState(VIEW.HOME);
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);       // loader del catálogo
+  const [error, setError] = useState(null);            // error del catálogo
 
-  // 🔹 Carga inicial de productos desde la API
+  // Prefetch del catálogo (no bloquea el Home)
   useEffect(() => {
     const loadProducts = async () => {
       try {
-        const data = await fetchProductos();
+        setLoading(true);
+        const data = await fetchProductos(); 
         console.log('✅ Productos cargados desde la API:', data);
         setProductos(data);
       } catch (err) {
@@ -36,40 +37,38 @@ function App() {
         setLoading(false);
       }
     };
-
     loadProducts();
   }, []);
 
-  // 🔹 Agregar al carrito
   const handleAddToCart = (product, quantity = 1) => {
-    setCarrito((prevCarrito) => {
-      const exists = prevCarrito.find((item) => item.id === product.id);
-      if (exists) {
-        return prevCarrito.map((item) =>
-          item.id === product.id
-            ? { ...item, cantidad: item.cantidad + quantity }
-            : item
-        );
-      } else {
-        return [...prevCarrito, { ...product, cantidad: quantity }];
-      }
+    setCarrito(prev => {
+      const exists = prev.find(item => item.id === product.id);
+      return exists
+        ? prev.map(item =>
+            item.id === product.id ? { ...item, cantidad: item.cantidad + quantity } : item
+          )
+        : [...prev, { ...product, cantidad: quantity }];
     });
     alert(`${quantity} x ${product.nombre} añadido al carrito!`);
   };
 
-  // 🔹 Cambiar de vista (catálogo / detalle / contacto)
   const handleChangeView = (view, product = null) => {
     console.log('🧭 Cambio de vista:', view, product);
     setCurrentView(view);
     setSelectedProduct(product);
   };
 
-  // 🔹 Renderizado condicional principal
   const renderContent = () => {
-    if (loading) return <div className="message loading">Cargando catálogo...</div>;
-    if (error) return <div className="message error">{error}</div>;
+    // Loader/error SOLO cuando se muestra el catálogo
+    if (currentView === VIEW.CATALOG) {
+      if (loading) return <div className="message loading">Cargando catálogo...</div>;
+      if (error)   return <div className="message error">{error}</div>;
+    }
 
     switch (currentView) {
+      case VIEW.HOME:
+        return <Home onNavigate={handleChangeView} />;
+
       case VIEW.DETAIL:
         return selectedProduct ? (
           <ProductDetail
@@ -78,24 +77,26 @@ function App() {
             onGoBack={() => handleChangeView(VIEW.CATALOG)}
           />
         ) : (
-          handleChangeView(VIEW.CATALOG)
+          // fallback si no hay producto seleccionado
+          <Home onNavigate={handleChangeView} />
         );
 
       case VIEW.CONTACT:
         return <ContactForm onGoBack={() => handleChangeView(VIEW.CATALOG)} />;
 
       case VIEW.CATALOG:
-      default:
         return (
           <ProductList
             productos={productos}
             onSelectProduct={handleChangeView}
           />
         );
+
+      default:
+        return <Home onNavigate={handleChangeView} />;
     }
   };
 
-  // 🔹 Render principal
   return (
     <div className="App">
       <Navbar

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { fetchProductos } from '../Services/ProductService';
 import '../styles/main.css';
-import '../styles/home.css';
+import '../styles/index.css';
 
 export default function Home({ onNavigate }) {
   const [destacados, setDestacados] = useState([]);
@@ -27,21 +26,30 @@ export default function Home({ onNavigate }) {
   };
 
   // 🔹 Traer productos destacados
-  useEffect(() => {
-    const cargarDestacados = async () => {
-      try {
-        const data = await fetchProductos();
-        // si querés limitar a 4 destacados:
-        const primeros = data.slice(0, 4);
-        setDestacados(primeros);
-      } catch (err) {
-        setError('No se pudieron cargar los productos destacados.');
-      } finally {
-        setLoading(false);
+useEffect(() => {
+  const fetchDestacados = async () => {
+    try {
+      const res = await fetch('http://localhost:4000/api/productos/destacados');
+      if (!res.ok) throw new Error('Error al cargar los destacados');
+      const data = await res.json();
+
+      // En caso de que el backend devuelva array vacío:
+      if (!Array.isArray(data) || data.length === 0) {
+        setError('No hay productos destacados disponibles.');
+      } else {
+        setDestacados(data);
       }
-    };
-    cargarDestacados();
-  }, []);
+    } catch (err) {
+      console.error('Error obteniendo destacados:', err);
+      setError('No se pudieron cargar los productos destacados.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchDestacados();
+}, []);
+
 
   // 🔹 Renderizado condicional
   if (loading) return <p className="message loading">Cargando destacados...</p>;

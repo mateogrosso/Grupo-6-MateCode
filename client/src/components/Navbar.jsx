@@ -18,7 +18,7 @@ export default function Navbar({ cartCount, onNavigate }) {
             <li>
               <button
                 className="nav-btn"
-                onClick={() => onNavigate('catalog')}
+                onClick={() => onNavigate('home')}
               >
                 Inicio
               </button>

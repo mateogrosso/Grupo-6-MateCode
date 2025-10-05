@@ -14,5 +14,14 @@ function getProductoById (req, res) {
     res.status(200).json(producto);
 };
 
+function getProductosDestacados(req, res) {
+  const destacados = productos.filter(p => p.destacado === true);
 
-module.exports = {getProductos, getProductoById};
+  // Si no la hay, devolvemos los primeros 4
+  // los devolveria con const destacados = productos.slice(0, 4);
+
+  res.status(200).json(destacados);
+}
+
+
+module.exports = {getProductos, getProductoById, getProductosDestacados};
