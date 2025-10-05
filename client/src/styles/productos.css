@@ -1,0 +1,151 @@
+/* TITULAR */
+.seccion-productos {
+    padding: 0;
+}
+
+.seccion-productos h2 {
+    font-weight: 500;
+    color: #A0522D;
+    font-style: italic;
+    width: 92vw;
+    max-width: 1100px;
+    margin: 0 auto .8rem;
+    padding-bottom: 1.25rem;
+}
+
+/* BUSCADOR */
+.buscador-producto {
+    display: flex;
+    justify-content: flex-end; 
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1rem 1.5rem;  
+}
+
+.buscador-input {
+    border-radius: 20px;
+    border: 2px solid #A0522D;
+    background: #FFF6ED;
+    padding: 6px 28px 6px 12px;
+    color: #7A3E22;
+    transition: transform .12s ease, box-shadow .12s ease;
+}
+
+.buscador-input::placeholder {
+    color: #A0522D;
+    font-style: italic;
+}
+
+.buscador-input:focus {
+  outline: none;        
+  border: 2px solid #A0522D; 
+  box-shadow: 0 0 5px rgba(160, 82, 45, 0.5);
+}
+
+/* GRID DE TARJETAS */
+.productos-grid {
+    width: 92vw;
+    max-width: 360px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 40px;
+}
+
+/* TARJETA */
+.producto-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    width: 100%;
+    max-width: 25rem;
+    background: linear-gradient(180deg, #FFE8C9, #FFE1BE);
+    border: 1px solid rgba(160, 82, 45, .14);
+    border-radius: 14px;
+    box-shadow: 0 12px 26px rgba(0, 0, 0, .10);
+    padding: 16px;
+    transition: transform .12s ease, box-shadow .12s ease;
+}
+
+.producto-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 18px 34px rgba(0, 0, 0, .14);
+}
+
+/* IMAGEN */
+.producto-card img {
+    max-width: 20rem;
+    width: 100%;
+    height: auto;
+}
+
+/* INFO */
+.producto-card a:hover {
+    text-decoration: underline;
+}
+
+.producto-info {
+    display: grid;
+    gap: 8px;
+    justify-items: center;
+}
+
+.producto-title {
+    color: #7A3E22;
+    font-size: 1rem;
+    letter-spacing: .02em;
+}
+
+.producto-price {
+    color: #7A3E22;
+    font-weight: 700;
+    font-size: .95rem;
+}
+
+/* ACCIONES */
+.productos-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 6px;
+    flex-wrap: wrap;
+}
+
+.btn-link {
+    display: inline-block;
+    padding: .5rem .75rem;
+    border-radius: 999px;
+    text-decoration: none;
+    background: #fff;
+    border: 2px solid #A0522D;
+    color: #A0522D;
+    font-weight: 600;
+}
+
+.btn-link:hover {
+    background: #A0522D;
+    color: #fff;
+}
+
+
+@media (min-width: 768px) {
+  .seccion-productos {
+      padding: 1rem 0 2.5rem;
+  }
+  .productos-grid {
+      max-width: 1100px;
+      grid-template-columns: repeat(2, 1fr);
+  }
+  .buscador-producto {
+      max-width: 1100px;
+      padding: 0 2rem 2.5rem;
+  }
+}
+
+@media (min-width: 1200px) {
+    .productos-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

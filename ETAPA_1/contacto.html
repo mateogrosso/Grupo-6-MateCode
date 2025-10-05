@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Contacto - Mueblería Hermanos Jota</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS externo -->
+    <link rel="stylesheet" href="/css/estilos.css">
+    <link rel="stylesheet" href="/css/contacto.css">
+</head>
+<body>
+
+<header>
+    <div class="header-titulo">
+        <h1>Mueblería Hermanos Jota</h1>
+    </div>
+
+    <div class="header-logo">
+        <img src="/media/logo.svg" alt="Logo">
+    </div>
+
+    <div class="header-navegador">
+        <nav>
+            <ul class="header-lista">
+                <li><a class="nav-btn" href="index.html">Inicio</a> </li>
+                <li><a class="nav-btn" href="productos.html">Productos</a> </li>
+                <li><a class="nav-btn" href="contacto.html" aria-current="page">Contacto</a> </li>
+                <li>
+                    <a href="#" class="nav-cart" aria-label="Carrito">
+                      <img class="carritoCompras-logo" src="/media/carrito-de-compras.png" alt="Carrito de compras">
+                      <span id="cart-count" class="cart-count">0</span>
+                    </a>
+                  </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <!-- novalidate para manejar los mensajes con JS -->
+    <form class="formulario-contacto" id="contact-form" action="#" method="POST" novalidate>
+        <h2 class="formulario-titulo">Formulario de Contacto</h2>
+
+        <label for="nombre">Nombre Completo *</label>
+        <input type="text" name="nombre" id="nombre" class="Username" required minlength="3" autocomplete="name">
+        <small class="error-message" id="error-nombre"></small>
+
+        <label for="email">Email *</label>
+        <input type="email" name="email" id="email" class="Usermail" required autocomplete="email">
+        <small class="error-message" id="error-email"></small>
+
+        <label for="mensaje">Mensaje *</label>
+        <textarea name="mensaje" id="mensaje" rows="5" cols="50" class="MensajedeContacto" required minlength="10"></textarea>
+        <small class="error-message" id="error-mensaje"></small>
+
+        <div class="acciones-form">
+            <button type="submit" class="boton_enviar" id="btn-submit">Enviar</button>
+            <button type="reset" class="boton_resetear">Reestablecer</button>
+        </div>
+
+        <!-- Mensaje de éxito / error en el DOM -->
+        <div id="form-feedback" role="status" aria-live="polite"></div>
+        <p class="ayuda">* Campos obligatorios</p>
+    </form>
+</main>
+
+<footer>
+    <ul class="footer-lista">
+        <li><a href="">Whatsapp</a></li>
+        <li><a href="">Instagram</a></li>
+        <li><a href="">Twitter</a></li>
+        <li><a href="">Email</a></li>
+    </ul>
+
+    <p class="footer-copyright">&copy; Todos los derechos reservados - 2025</p>
+</footer>
+
+<script src="/js/contacto.js"></script>
+</body>
+</html>

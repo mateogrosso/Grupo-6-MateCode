@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="/css/estilos.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--esto es para diseño responsivo-->
+    <meta charset="UTF-8">
+    <title>Mueblería Hermanos Jota</title>
+</head>
+<body>
+<!--/* aca va el encabezado */-->
+<header>
+    <div class="header-titulo">
+        <h1>Mueblería Hermanos Jota</h1>
+    </div>
+    <div class="header-logo">
+        <img src="/media/logo.svg" alt="Logo">
+    </div>
+
+    <div class="header-navegador">
+        <nav>
+            <ul class="header-lista">
+                <li><a class="nav-btn" href="index.html" aria-current="page">Inicio</a> </li>
+                <li><a class="nav-btn" href="productos.html">Productos</a> </li>
+                <li><a class="nav-btn" href="contacto.html">Contacto</a> </li>
+                <li>
+                    <a href="#" class="nav-cart" aria-label="Carrito">
+                      <img class="carritoCompras-logo" src="/media/carrito-de-compras.png" alt="Carrito de compras">
+                      <span id="cart-count" class="cart-count">0</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+
+    <section class="hero-banner"> 
+        <img class="hero-banner-logo" src="/media/hero_banner.png" alt="Hero Banner principal">
+    </section>
+    
+    <section class="seccion-destacados">
+        <h2>Productos Destacados</h2>
+        
+        <div id="destacados-grid" class="destacados-grid" aria-live="polite"></div>
+    </section>
+    
+</main>
+
+
+    <footer>
+        <ul class="footer-lista">
+            <li> <a href="">Whatsapp</a> </li>
+            <li> <a href="" target="_blank" rel="noopener noreferrer">Instagram</a> </li>
+            <li> <a href="">Twitter</a> </li>
+            <li> <a href="">Email</a> </li>
+        </ul>
+
+        <p class="footer-copyright">&copy; Todos los derechos reservados - 2025</p>
+
+    </footer>
+    <script src="/js/data/catalogo.js" defer></script>
+    <script src="/js/index.js" defer></script>
+</body>
+</html>
