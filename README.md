@@ -25,18 +25,14 @@ La aplicación ahora funciona como una **Single Page Application (SPA)** conecta
 
 ### Backend
 1. Ir a la carpeta `backend/src/`  
-2. Instalar dependencias  
-   `npm install`
-3. Ejecutar el servidor con nodemon
-    `npm run dev'
+2. Instalar dependencias `npm install`
+3. Ejecutar el servidor con nodemon `npm run dev`
 4. El servidor quedará corriendo en http://localhost:4000
 
 ### Frontend
 1. Ir a la carpeta `client/src/`  
-2. Instalar dependencias  
-   `npm install`
-3. Ejecutar el servidor con nodemon
-    `npm start'
+2. Instalar dependencias `npm install`
+3. Iniciar la aplicación React `npm start`
 4. La app abrirá automáticamente en http://localhost:3000
 
 ---
