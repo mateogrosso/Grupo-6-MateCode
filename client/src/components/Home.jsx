@@ -2,15 +2,12 @@ import React, { useEffect, useState } from 'react';
 import '../styles/main.css';
 import '../styles/index.css';
 
-export default function Home({ onNavigate }) {
+export default function Home({ onNavigate, onAddToCart }) {
   const [destacados, setDestacados] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [cartCount, setCartCount] = useState(
-    Number(sessionStorage.getItem('hj_cart_count') || 0)
-  );
 
-  // Helper para formatear a moneda
+  // Formato de moneda ARS
   const aMonedaARS = (n) =>
     new Intl.NumberFormat('es-AR', {
       style: 'currency',
@@ -18,43 +15,37 @@ export default function Home({ onNavigate }) {
       maximumFractionDigits: 0,
     }).format(n);
 
-  // Incrementar carrito
-  const sumarAlCarrito = () => {
-    const nuevo = cartCount + 1;
-    setCartCount(nuevo);
-    sessionStorage.setItem('hj_cart_count', String(nuevo));
+  // Añadir al carrito usando la función global
+  const agregarAlCarrito = (producto) => {
+    onAddToCart(producto, 1);
   };
 
-  // Traer productos destacados
-useEffect(() => {
-  const fetchDestacados = async () => {
-    try {
-      const res = await fetch('http://localhost:4000/api/productos/destacados');
-      if (!res.ok) throw new Error('Error al cargar los destacados');
-      const data = await res.json();
+  // Traer productos destacados desde el backend
+  useEffect(() => {
+    const fetchDestacados = async () => {
+      try {
+        const res = await fetch('http://localhost:4000/api/productos/destacados');
+        if (!res.ok) throw new Error('Error al cargar los destacados');
+        const data = await res.json();
 
-      // En caso de que el backend devuelva array vacío:
-      if (!Array.isArray(data) || data.length === 0) {
-        setError('No hay productos destacados disponibles.');
-      } else {
-        setDestacados(data);
+        if (!Array.isArray(data) || data.length === 0) {
+          setError('No hay productos destacados disponibles.');
+        } else {
+          setDestacados(data);
+        }
+      } catch (err) {
+        console.error('Error obteniendo destacados:', err);
+        setError('No se pudieron cargar los productos destacados.');
+      } finally {
+        setLoading(false);
       }
-    } catch (err) {
-      console.error('Error obteniendo destacados:', err);
-      setError('No se pudieron cargar los productos destacados.');
-    } finally {
-      setLoading(false);
-    }
-  };
+    };
 
-  fetchDestacados();
-}, []);
+    fetchDestacados();
+  }, []);
 
-
-  // Renderizado condicional
   if (loading) return <p className="message loading">Cargando destacados...</p>;
-  if (error)
-    return <p className="message error">{error}</p>;
+  if (error) return <p className="message error">{error}</p>;
 
   return (
     <main>
@@ -67,7 +58,7 @@ useEffect(() => {
         />
       </section>
 
-      {/* Sección de destacados */}
+      {/* Sección de productos destacados */}
       <section className="seccion-destacados">
         <h2>Productos Destacados</h2>
 
@@ -100,7 +91,7 @@ useEffect(() => {
 
                     <button
                       className="btn-add"
-                      onClick={sumarAlCarrito}
+                      onClick={() => agregarAlCarrito(prod)}
                     >
                       Añadir
                     </button>
