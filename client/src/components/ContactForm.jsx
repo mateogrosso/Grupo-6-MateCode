@@ -103,12 +103,11 @@ export default function ContactForm({ onGoBack }) {
 
         {/* Botones */}
         <div className="acciones-form">
-          <button type="submit" className="boton_enviar">
-            Enviar mensaje
-          </button>
-          <button type="reset" className="boton_resetear">
-            Limpiar campos
-          </button>
+          <div className="fila-botones">
+            <button type="submit" className="boton_enviar">Enviar mensaje</button>
+            <button type="reset" className="boton_resetear">Limpiar campos</button>
+          </div>
+
           <button type="button" className="boton_volver" onClick={onGoBack}>
             Volver al catálogo
           </button>

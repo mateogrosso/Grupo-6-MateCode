@@ -42,20 +42,34 @@ export default function ProductDetail({ product, onAddToCart, onGoBack }) {
           <p className="precioIndividual">${product.precio}</p>
 
           <div className="acciones-detalle">
-            <div className="cantidad-control">
-              <label>Cantidad:</label>
-              <input
-                type="number"
-                value={cantidad}
-                min="1"
-                onChange={(e) => setCantidad(Number(e.target.value))}
-                className="input-cantidad"
-              />
-            </div>
+            <div className="bloque-compra">
+              <div className="cantidad-control">
+                <label>Cantidad:</label>
+                <div className="selector-cantidad">
+                  <button
+                    type="button"
+                    className="btn-cantidad"
+                    onClick={() => setCantidad(Math.max(1, cantidad - 1))}
+                  >
+                    −
+                  </button>
 
-            <button id="btn-add" className="btn-add" onClick={handleAdd}>
-              Añadir al carrito
-            </button>
+                  <span className="valor-cantidad">{cantidad}</span>
+
+                  <button
+                    type="button"
+                    className="btn-cantidad"
+                    onClick={() => setCantidad(cantidad + 1)}
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+
+              <button id="btn-add" className="btn-add" onClick={handleAdd}>
+                Añadir al carrito
+              </button>
+            </div>
 
             <button className="btn-volver" onClick={onGoBack}>
               Volver al catálogo
