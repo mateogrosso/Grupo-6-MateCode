@@ -37,6 +37,27 @@ La aplicación ahora funciona como una **Single Page Application (SPA)** conecta
 
 ---
 
+### Backend – API REST con Express
+El servidor fue desarrollado con Node.js y Express, siguiendo buenas prácticas de modularización y middlewares.
+## Endpoints disponibles
+
+### 🌐 Endpoints disponibles
+
+| Método | Ruta                         | Descripción |
+|:--------|:-----------------------------|:-------------|
+| **GET** | `/api/productos`             | Devuelve el listado completo de productos. |
+| **GET** | `/api/productos/:id`         | Devuelve los datos de un producto específico según su ID. |
+| **GET** | `/api/productos/destacados`  | Devuelve la lista de productos destacados. |
+| **POST** | `/api/contacto`             | Recibe los datos del formulario de contacto enviados desde el frontend. |
+| **(404)** | `*`                        | Respuesta del middleware `error404` para rutas inexistentes. |
+
+## Middlewares
+- **logger.js:** imprime en consola el método y URL de cada petición.
+- **express.json():** permite procesar el cuerpo JSON de las peticiones POST.
+- **error404.js:** captura rutas inexistentes y devuelve un mensaje de error 404.
+
+---
+
 ## Funcionalidades Implementadas
 - **Inicio (Home.jsx)**  
   - Hero banner con imagen principal.  
