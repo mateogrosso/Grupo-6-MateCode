@@ -8,7 +8,6 @@
 - Ferreyra, Tomás Alejo  
 - Pereson, Mariano  
 - García, Franco  
-- Ballardini, Florencia  
 
 ---
 
