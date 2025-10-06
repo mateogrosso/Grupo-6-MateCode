@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import Home from './Components/Home';
-import Navbar from './Components/Navbar';
-import ProductList from './Components/ProductList';
-import ProductDetail from './Components/ProductDetail';
-import ContactForm from './Components/ContactForm';
-import { fetchProductos } from './Services/ProductService';
+import Home from './components/Home';
+import Navbar from './components/Navbar';
+import ProductList from './components/ProductList';
+import ProductDetail from './components/ProductDetail';
+import ContactForm from './components/ContactForm';
+import { fetchProductos } from './services/ProductService';
 import './styles/main.css';
 
 const VIEW = { 
@@ -28,10 +28,10 @@ function App() {
       try {
         setLoading(true);
         const data = await fetchProductos(); 
-        console.log('✅ Productos cargados desde la API:', data);
+        console.log('Productos cargados desde la API:', data);
         setProductos(data);
       } catch (err) {
-        console.error('❌ Error al conectar con la API:', err);
+        console.error('Error al conectar con la API:', err);
         setError('Error al conectar con la API.');
       } finally {
         setLoading(false);
@@ -53,7 +53,7 @@ function App() {
   };
 
   const handleChangeView = (view, product = null) => {
-    console.log('🧭 Cambio de vista:', view, product);
+    console.log('Cambio de vista:', view, product);
     setCurrentView(view);
     setSelectedProduct(product);
   };

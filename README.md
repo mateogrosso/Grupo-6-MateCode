@@ -1,9 +1,9 @@
-# 🪑 E-commerce - Mueblería Hermanos Jota  
-# 💻 Grupo 6 - CodeMate  
+# E-commerce - Mueblería Hermanos Jota  
+# Grupo 6 - CodeMate  
 
 ---
 
-## 👥 Integrantes
+## Integrantes
 - Grosso, Mateo  
 - Ferreyra, Tomás Alejo  
 - Pereson, Mariano  
@@ -12,7 +12,7 @@
 
 ---
 
-## 🧠 Descripción del Proyecto
+## Descripción del Proyecto
 Este proyecto corresponde a la **Fase 2 (Sprints 3 y 4)** del e-commerce **Mueblería Hermanos Jota**.  
 El objetivo fue reconstruir completamente la tienda digital utilizando tecnologías modernas del lado del cliente y del servidor:  
 - **Frontend:** React.js (SPA con componentes reutilizables).  
@@ -22,7 +22,7 @@ La aplicación ahora funciona como una **Single Page Application (SPA)** conecta
 
 ---
 
-## ⚙️ Funcionalidades Implementadas
+## Funcionalidades Implementadas
 - **Inicio (Home.jsx)**  
   - Hero banner con imagen principal.  
   - Sección de productos destacados obtenidos desde `/api/productos/destacados`.  
@@ -50,11 +50,11 @@ La aplicación ahora funciona como una **Single Page Application (SPA)** conecta
 
 ---
 
-## 🧱 Arquitectura del Proyecto
+## Arquitectura del Proyecto
 
 ```plaintext
-📦 Mueblería-Hermanos-Jota/
-├── backend/              # Servidor Express (API REST)
+Mueblería-Hermanos-Jota/
+├── backend/              # Servidor Express
 │   ├── src/
 │   │   ├── app.js
 │   │   ├── server.js
@@ -67,7 +67,7 @@ La aplicación ahora funciona como una **Single Page Application (SPA)** conecta
 │   │   └── middlewares/
 │   │       ├── logger.js
 │   │       └── error404.js
-├── client/               # Aplicación React (SPA)
+├── client/               # Aplicación React
 │   ├── src/
 │   │   ├── App.js
 │   │   ├── index.jsx
