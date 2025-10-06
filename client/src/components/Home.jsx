@@ -10,7 +10,7 @@ export default function Home({ onNavigate }) {
     Number(sessionStorage.getItem('hj_cart_count') || 0)
   );
 
-  // 🔹 Helper para formatear a moneda
+  // Helper para formatear a moneda
   const aMonedaARS = (n) =>
     new Intl.NumberFormat('es-AR', {
       style: 'currency',
@@ -18,14 +18,14 @@ export default function Home({ onNavigate }) {
       maximumFractionDigits: 0,
     }).format(n);
 
-  // 🔹 Incrementar carrito
+  // Incrementar carrito
   const sumarAlCarrito = () => {
     const nuevo = cartCount + 1;
     setCartCount(nuevo);
     sessionStorage.setItem('hj_cart_count', String(nuevo));
   };
 
-  // 🔹 Traer productos destacados
+  // Traer productos destacados
 useEffect(() => {
   const fetchDestacados = async () => {
     try {
@@ -51,7 +51,7 @@ useEffect(() => {
 }, []);
 
 
-  // 🔹 Renderizado condicional
+  // Renderizado condicional
   if (loading) return <p className="message loading">Cargando destacados...</p>;
   if (error)
     return <p className="message error">{error}</p>;

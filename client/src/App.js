@@ -109,16 +109,49 @@ function App() {
       </main>
 
       <footer>
-        <ul className="footer-lista">
-          <li><a href="#whatsapp" onClick={(e) => e.preventDefault()}>Whatsapp</a></li>
-          <li><a href="#instagram" onClick={(e) => e.preventDefault()}>Instagram</a></li>
-          <li><a href="#twitter" onClick={(e) => e.preventDefault()}>Twitter</a></li>
-          <li><a href="#email" onClick={(e) => e.preventDefault()}>Email</a></li>
-        </ul>
-        <p className="footer-copyright">
-          © Todos los derechos reservados - {new Date().getFullYear()}
-        </p>
-      </footer>
+      <ul className="footer-lista">
+        <li>
+          <a 
+            href="https://wa.me/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+          >
+            Whatsapp
+          </a>
+        </li>
+        <li>
+          <a 
+            href="https://www.instagram.com/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+          >
+            Instagram
+          </a>
+        </li>
+        <li>
+          <a 
+            href="https://twitter.com/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+          >
+            Twitter
+          </a>
+        </li>
+        <li>
+          <a 
+            href="mailto:contacto@muebleriajota.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+          >
+            Email
+          </a>
+        </li>
+      </ul>
+
+      <p className="footer-copyright">
+        © Todos los derechos reservados - {new Date().getFullYear()}
+      </p>
+    </footer>
     </div>
   );
 }
