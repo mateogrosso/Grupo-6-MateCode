@@ -41,8 +41,6 @@ La aplicación ahora funciona como una **Single Page Application (SPA)** conecta
 El servidor fue desarrollado con Node.js y Express, siguiendo buenas prácticas de modularización y middlewares.
 ## Endpoints disponibles
 
-### 🌐 Endpoints disponibles
-
 | Método | Ruta                         | Descripción |
 |:--------|:-----------------------------|:-------------|
 | **GET** | `/api/productos`             | Devuelve el listado completo de productos. |
