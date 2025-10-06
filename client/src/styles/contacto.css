@@ -1,155 +1,208 @@
-/* Tarjeta del formulario*/
-.formulario-contacto{
-    background: linear-gradient(180deg, #FFF7EE 0%, #FFFFFF 100%);
-    border: 1px solid rgba(160,82,45,.15);   
-    border-left: 6px solid #A0522D;        
-    border-radius: 12px;
-    box-shadow: 0 12px 30px rgba(0,0,0,.08);
-    max-width: 37.5rem;     /* 600px */
-    margin: 1.25rem auto;
-    padding: 1.25rem;
+/* --- Tarjeta del formulario --- */
+.formulario-contacto {
+  background: linear-gradient(180deg, #FFF7EE 0%, #FFFFFF 100%);
+  border: 1px solid rgba(160,82,45,.15);
+  border-left: 6px solid #A0522D;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.08);
+  max-width: 37.5rem; /* 600px */
+  margin: 1.25rem auto;
+  padding: 1.25rem;
+}
+
+/* --- Título --- */
+.formulario-contacto .formulario-titulo {
+  color: #A0522D;
+  padding-bottom: .6rem;
+}
+
+/* --- Labels --- */
+.formulario-contacto label {
+  display: block;
+  margin-top: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* --- Campos de texto y textarea --- */
+.formulario-contacto .Username,
+.formulario-contacto .Usermail,
+.formulario-contacto .MensajedeContacto {
+  width: 100%;
+  margin-top: .4rem;
+  padding: .75rem .9rem;
+  border: 1.5px solid #E6D6C9;
+  border-radius: 10px;
+  background: #fff;
+  color: #333;
+  font: inherit;
+  transition: border-color .2s, box-shadow .2s, background .2s;
+}
+.formulario-contacto .MensajedeContacto { resize: none; }
+
+.formulario-contacto .Username:focus,
+.formulario-contacto .Usermail:focus,
+.formulario-contacto .MensajedeContacto:focus {
+  outline: none;
+  border-color: #A0522D;
+  box-shadow: 0 0 0 3px rgba(160,82,45,.15);
+  background: #fff;
+}
+
+/* --- Mensajes de error --- */
+.formulario-contacto .error-message {
+  display: block;
+  min-height: 18px;
+  font-size: .9rem;
+  color: #C47A6D;
+  margin-top: 4px;
+}
+
+/* --- Validación --- */
+.formulario-contacto .is-invalid {
+  border-color: #C47A6D !important;
+  box-shadow: 0 0 0 3px rgba(196,122,109,.18) !important;
+}
+.formulario-contacto .is-valid {
+  border-color: #87A96B !important;
+  box-shadow: 0 0 0 3px rgba(135,169,107,.18) !important;
+}
+
+/* --- Mensajes de feedback --- */
+.formulario-contacto #form-feedback {
+  display: none;
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+.formulario-contacto #form-feedback.ok {
+  display: block;
+  background: #F3FBF5;
+  color: #1d4b2a;
+  border: 1px solid #87A96B;
+  border-left: 4px solid #87A96B;
+}
+.formulario-contacto #form-feedback.err {
+  display: block;
+  background: #FFF0F0;
+  color: #5a1d1b;
+  border: 1px solid #C47A6D;
+  border-left: 4px solid #C47A6D;
+}
+
+/* --- Contenedor de botones --- */
+.formulario-contacto .acciones-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+/* --- Fila 1: Enviar + Limpiar --- */
+.formulario-contacto .fila-botones {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 480px;
+  flex-wrap: wrap;
+}
+
+/* --- Botones principales --- */
+.formulario-contacto .boton_enviar,
+.formulario-contacto .boton_resetear,
+.formulario-contacto .boton_volver {
+  flex: 1;
+  min-width: 150px;
+  padding: .75rem 1.25rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0,0,0,.06);
+  transition: background .2s, color .2s, transform .12s, box-shadow .12s;
+}
+
+/* --- Botón Enviar --- */
+.formulario-contacto .boton_enviar {
+  border: 2px solid #A0522D;
+  background: #A0522D;
+  color: #fff;
+}
+.formulario-contacto .boton_enviar:hover {
+  background: #8d4929;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 26px rgba(0,0,0,.12);
+}
+
+/* --- Botón Limpiar --- */
+.formulario-contacto .boton_resetear {
+  border: 2px solid #D4A437;
+  background: #D4A437;
+  color: rgba(0,0,0,.75);
+}
+.formulario-contacto .boton_resetear:hover {
+  background: #A0522D;
+  border-color: #A0522D;
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 26px rgba(0,0,0,.12);
+}
+
+/* --- Botón Volver al catálogo --- */
+.formulario-contacto .boton_volver {
+  width: 100%;
+  max-width: 480px;
+  border: 2px solid #A0522D;
+  background: #fff;
+  color: #A0522D;
+  text-decoration: none;
+  min-height: 46px;
+  margin-top: 6px;
+}
+.formulario-contacto .boton_volver:hover {
+  background: #A0522D;
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 26px rgba(0,0,0,.12);
+}
+
+/* --- Estados de enfoque accesibles --- */
+.formulario-contacto .boton_enviar:focus-visible,
+.formulario-contacto .boton_resetear:focus-visible,
+.formulario-contacto .boton_volver:focus-visible {
+  outline: 3px solid rgba(160,82,45,.35);
+  outline-offset: 2px;
+}
+
+/* --- Responsive --- */
+@media (max-width: 480px) {
+  .formulario-contacto {
+    margin: .5rem;
+    padding: .8rem;
+    border-radius: .4rem;
   }
-  
-  /* Título */
-  .formulario-contacto .formulario-titulo{
-    color:#A0522D;
-    padding-bottom:.6rem;
+  .formulario-contacto .formulario-titulo {
+    font-size: 1.25rem;
   }
-  
-  /* Labels */
-  .formulario-contacto label{
-    display:block;
-    margin-top:14px;
-    font-weight:600;
-    color:#333;
-  }
-  
-  /* Campos */
   .formulario-contacto .Username,
   .formulario-contacto .Usermail,
-  .formulario-contacto .MensajedeContacto{
-    width:100%;
-    margin-top:.4rem;
-    padding:.75rem .9rem;
-    border:1.5px solid #E6D6C9; 
-    border-radius:10px;
-    background:#fff;
-    color:#333;
-    font:inherit;
-    transition:border-color .2s, box-shadow .2s, background .2s;
+  .formulario-contacto .MensajedeContacto {
+    font-size: .9rem;
+    padding: .6rem;
   }
-  
-  .formulario-contacto .MensajedeContacto{ resize:none; }
-  
-  .formulario-contacto .Username:focus,
-  .formulario-contacto .Usermail:focus,
-  .formulario-contacto .MensajedeContacto:focus{
-    outline:none;
-    border-color:#A0522D;
-    box-shadow:0 0 0 3px rgba(160,82,45,.15);
-    background:#fff;
+  .formulario-contacto .fila-botones {
+    flex-direction: column;
+    gap: 10px;
   }
-  
-
-  .formulario-contacto .error-message{
-    display:block;
-    min-height:18px;
-    font-size:.9rem;
-    color:#C47A6D;
-    margin-top:4px;
-  }
-  
-  /* Botones*/
-  .formulario-contacto .acciones-form{
-    display:flex;
-    gap:10px;
-    align-items:center;
-    flex-wrap:wrap;
-    margin-top:16px;
-    justify-content:center;              
-  }
-  
   .formulario-contacto .boton_enviar,
-  .formulario-contacto .boton_resetear{
-    width:auto;                         
-    min-width:11rem;                     
-    padding:.7rem 1.1rem;
-    border-radius:.5rem;
-    border:0;
-    cursor:pointer;
-    font-weight:700;
-    box-shadow:0 6px 16px rgba(0,0,0,.12);       
-    transition: transform .12s ease, box-shadow .12s ease, background-color .2s;
+  .formulario-contacto .boton_resetear,
+  .formulario-contacto .boton_volver {
+    width: 100%;
+    font-size: .9rem;
+    padding: .6rem;
   }
-  
-  .formulario-contacto .boton_enviar{
-    background:#A0522D; color:#fff;
-  }
-  .formulario-contacto .boton_enviar:hover{ background:#8d4929; }
-  
-  .formulario-contacto .boton_resetear{
-    background:#D4A437; color:rgba(0,0,0,.75);
-  }
-  .formulario-contacto .boton_resetear:hover{
-    background:#A0522D; color:#fff;
-  }
-
-  .formulario-contacto .boton_enviar:hover,
-  .formulario-contacto .boton_resetear:hover{
-    transform: translateY(-1px);
-    box-shadow:0 10px 22px rgba(0,0,0,.16);
-  }
-
-  .formulario-contacto .boton_enviar:focus-visible,
-  .formulario-contacto .boton_resetear:focus-visible{
-    outline:3px solid rgba(160,82,45,.35);  
-    outline-offset:2px;
-  }
-  
-  /* Estados de validación */
-  .formulario-contacto .is-invalid{
-    border-color:#C47A6D !important;
-    box-shadow:0 0 0 3px rgba(196,122,109,.18) !important;
-  }
-  .formulario-contacto .is-valid{
-    border-color:#87A96B !important;
-    box-shadow:0 0 0 3px rgba(135,169,107,.18) !important;
-  }
-  
-  .formulario-contacto #form-feedback{
-    display:none;
-    margin-top:12px;
-    padding:12px 14px;
-    border-radius:10px;
-    font-weight:600;
-  }
-  .formulario-contacto #form-feedback.ok{
-    display:block;
-    background:#F3FBF5;
-    color:#1d4b2a;
-    border:1px solid #87A96B;
-    border-left:4px solid #87A96B;
-  }
-  .formulario-contacto #form-feedback.err{
-    display:block;
-    background:#FFF0F0;
-    color:#5a1d1b;
-    border:1px solid #C47A6D;
-    border-left:4px solid #C47A6D;
-  }
-
-  @media (max-width:480px){
-    .formulario-contacto{ margin:.5rem; padding:.8rem; border-radius:.4rem; }
-    .formulario-contacto .formulario-titulo{ font-size:1.25rem; }
-    .formulario-contacto .Username,
-    .formulario-contacto .Usermail,
-    .formulario-contacto .MensajedeContacto{ font-size:.9rem; padding:.6rem; }
-
-
-    .formulario-contacto .boton_enviar,
-    .formulario-contacto .boton_resetear{
-      width:100%;
-      min-width:0;
-      font-size:.9rem; padding:.6rem;
-    }
-  }
+}

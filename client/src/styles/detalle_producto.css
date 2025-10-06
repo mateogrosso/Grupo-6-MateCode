@@ -129,23 +129,83 @@
   text-align:center;
   font-weight:800;
   font-size: clamp(1.1rem, 2.3vw, 1.35rem);
+  margin-bottom: .1rem;
 }
 
-.acciones-detalle{
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
-  margin-top: .5rem;
+.acciones-detalle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-top: 0.1rem; 
+  width: 100%;
 }
-.acciones-detalle > *{
-  display:flex; justify-content:center; align-items:center;
-  text-align:center; font: inherit;
-  min-height: 42px; border-radius: 999px; padding: .75rem 1rem;
+
+/* --- Fila 1: cantidad + añadir al carrito --- */
+.bloque-compra {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  max-width: 480px; /* controla el ancho máximo */
+  margin-top: 0.25rem; /* lo sube cerca del precio */
+}
+
+/* Label arriba y centrado */
+.bloque-compra .cantidad-control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: #7A3E22;
+  font-weight: 600;
+}
+
+/* Selector dentro del bloque */
+.selector-cantidad {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border: 1px solid rgba(160,82,45,.2);
+  border-radius: 999px;
+  padding: 4px 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,.05);
+}
+
+.btn-cantidad {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: #A0522D;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.btn-cantidad:hover { background: #8d4929; transform: scale(1.05); }
+.btn-cantidad:active { transform: scale(0.95); }
+
+.valor-cantidad {
+  min-width: 32px;
+  text-align: center;
   font-weight: 700;
+  font-size: 1rem;
+  color: #3C2A1F;
 }
 
-/* Botón “Añadir” */
-#btn-add{
+/* Botón “Añadir al carrito” */
+.bloque-compra .btn-add {
+  flex: 1;
+  height: 48px;
+  padding: 0 28px;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 700;
+  white-space: nowrap;
   border: 2px solid #A0522D;
   background: #A0522D;
   color: #fff;
@@ -153,21 +213,39 @@
   box-shadow: 0 8px 22px rgba(0,0,0,.14);
   transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
 }
-#btn-add:hover{ background:#8d4929; transform: translateY(-1px); }
-#btn-add:active{ transform: translateY(0); box-shadow: 0 6px 16px rgba(0,0,0,.12); }
+.bloque-compra .btn-add:hover { background: #8d4929; transform: translateY(-1px); }
+.bloque-compra .btn-add:active { transform: translateY(0); box-shadow: 0 6px 16px rgba(0,0,0,.12); }
 
-/* Botón “Volver” */
-.btn-volver{
-  display:flex; align-items:center; justify-content:center; gap:.5rem;
-  border:2px solid #A0522D; color:#A0522D; background:#fff;
-  text-decoration:none;
-  box-shadow:0 8px 20px rgba(0,0,0,.06);
+/* --- Fila 2: botón “Volver al catálogo” --- */
+.btn-volver {
+  width: 100%;
+  max-width: 480px; /* igual ancho que el bloque de compra */
+  border: 2px solid #A0522D;
+  color: #A0522D;
+  background: #fff;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(0,0,0,.06);
+  font-weight: 700;
+  min-height: 46px;
+  border-radius: 999px;
   transition: background .2s, color .2s, transform .12s, box-shadow .12s;
 }
-.btn-volver:hover{
-  background:#A0522D; color:#fff;
+.btn-volver:hover {
+  background: #A0522D;
+  color: #fff;
   transform: translateY(-1px);
-  box-shadow:0 12px 26px rgba(0,0,0,.12);
+  box-shadow: 0 12px 26px rgba(0,0,0,.12);
+}
+
+@media (max-width: 560px) {
+  .bloque-compra {
+    flex-direction: column;
+    border-radius: 18px;
+    padding: 12px;
+  }
+  .bloque-compra .btn-add {
+    width: 100%;
+  }
 }
 
 @media (min-width: 560px){
@@ -182,9 +260,15 @@
     border-bottom: 0;
   }
 
-  /* Botones lado a lado */
   .acciones-detalle{
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 700px) {
+  .bloque-compra {
+    flex-wrap: nowrap;
+    justify-content: center;
   }
 }
 
@@ -207,3 +291,5 @@
     width: clamp(380px, 36vw, 560px);
   }
 }
+
+
