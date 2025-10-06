@@ -9,10 +9,25 @@ export default function ProductList({ productos, onSelectProduct }) {
         onSelectProduct('detail', product);
     };
 
-    const productosFiltrados = productos.filter(prod =>
-        prod.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
-        (prod.descripcion && prod.descripcion.toLowerCase().includes(busqueda.toLowerCase()))
-    );
+    const normalizar = (str) =>
+    (str || '')
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '');
+
+
+    const productosFiltrados = productos.filter((prod) => {
+        const q = normalizar(busqueda.trim());
+        if (!q) return true; // si está vacío, mostrar todo
+
+        const nombre = normalizar(prod.nombre);
+
+        if (q.length === 1) {
+            return nombre.startsWith(q);
+        }
+
+        return nombre.includes(q);
+    });
 
     return (
         <main>
