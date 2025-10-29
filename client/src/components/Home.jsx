@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/main.css';
 import '../styles/index.css';
 
-export default function Home({ onNavigate, onAddToCart }) {
+export default function Home({ onAddToCart }) {
   const [destacados, setDestacados] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Formato de moneda ARS
+  const navigate = useNavigate();
+
   const aMonedaARS = (n) =>
     new Intl.NumberFormat('es-AR', {
       style: 'currency',
@@ -15,12 +17,12 @@ export default function Home({ onNavigate, onAddToCart }) {
       maximumFractionDigits: 0,
     }).format(n);
 
-  // Añadir al carrito usando la función global
+
   const agregarAlCarrito = (producto) => {
-    onAddToCart(producto, 1);
+    if (onAddToCart) onAddToCart(producto, 1);
   };
 
-  // Traer productos destacados desde el backend
+
   useEffect(() => {
     const fetchDestacados = async () => {
       try {
@@ -49,7 +51,6 @@ export default function Home({ onNavigate, onAddToCart }) {
 
   return (
     <main>
-      {/* Banner principal */}
       <section className="hero-banner">
         <img
           className="hero-banner-logo"
@@ -58,7 +59,6 @@ export default function Home({ onNavigate, onAddToCart }) {
         />
       </section>
 
-      {/* Sección de productos destacados */}
       <section className="seccion-destacados">
         <h2>Productos Destacados</h2>
 
@@ -84,7 +84,7 @@ export default function Home({ onNavigate, onAddToCart }) {
                   <div className="destacados-actions">
                     <button
                       className="btn-link"
-                      onClick={() => onNavigate('detail', prod)}
+                      onClick={() => navigate(`/productos/${prod.id}`)}
                     >
                       Ver producto
                     </button>
@@ -102,6 +102,6 @@ export default function Home({ onNavigate, onAddToCart }) {
           )}
         </div>
       </section>
-    </main>
-  );
+    </main>
+  );
 }

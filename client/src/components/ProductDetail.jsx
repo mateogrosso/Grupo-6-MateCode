@@ -1,45 +1,91 @@
-import React, { useState } from 'react';
-import '../styles/main.css';
-import '../styles/detalle_producto.css';
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import "../styles/main.css";
+import "../styles/detalle_producto.css";
+import { fetchProductos } from "../services/ProductService";
 
-export default function ProductDetail({ product, onAddToCart, onGoBack }) {
+export default function ProductDetail({ onAddToCart }) {
+
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  const [producto, setProducto] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [cantidad, setCantidad] = useState(1);
 
-  if (!product) {
-    return <p>No se encontró el producto.</p>;
+  useEffect(() => {
+    const obtenerProducto = async () => {
+      try {
+        setLoading(true);
+        const data = await await fetchProductos();
+        if (!Array.isArray(data)) {
+          throw new Error("Datos inválidos");
+        }
+
+        const encontrado = data.find(u => String(u.id) === String(id));
+
+        if (!encontrado) {
+          throw new Error('Producto no encontrado');
+        }
+
+        setProducto(encontrado);
+        setError(null);
+      }catch (err) {
+        setError(err?.message || "Error al cargar producto");
+      }finally {
+        setLoading(false);
+      }
+    }
+    obtenerProducto();
+  }, [id]);
+
+  if (loading) return <p>Cargando producto...</p>;
+  if (error) {
+    return (
+      <main>
+        <p>{error}</p>
+        <button className="btn-volver" onClick={() => navigate(-1)}>
+          Volver
+        </button>
+      </main>
+    );
   }
-
-  const handleAdd = () => {
-    onAddToCart(product, cantidad);
-  };
-
+  if (!producto) {
+    return (
+      <main>
+        <p>Producto no disponible.</p>
+        <button className="btn-volver" onClick={() => navigate(-1)}>
+          Volver
+        </button>
+      </main>
+    );
+  }
   return (
     <main>
       <section className="seccion-productoIndividual">
         <div className="imagen-productoIndividual">
-          <img src={product.img} alt={product.nombre} />
+          <img src={producto.img} alt={producto.nombre} />
         </div>
 
         <div className="info-detallada-productoIndividual">
-          <h2 className="nombre-productoIndividual">{product.nombre}</h2>
-          <p className="prod-desc">{product.descripcion}</p>
+          <h2 className="nombre-productoIndividual">{producto.nombre}</h2>
+          <p className="prod-desc">{producto.descripcion}</p>
 
-          {/* Ficha técnica opcional */}
-          {product.ficha && product.ficha.length > 0 && (
+          {producto.ficha && producto.ficha.length > 0 && (
             <>
               <h3 className="ficha-titulo">Ficha técnica</h3>
               <ul className="ficha-list">
-                {product.ficha.map((item, index) => (
+                {producto.ficha.map((item, index) => (
                   <li key={index}>
-                    <strong>{item.label}</strong>
-                    <span className="f-value">{item.valor}</span>
+                    <strong>{item.label}:</strong> {item.valor}
                   </li>
                 ))}
               </ul>
             </>
           )}
 
-          <p className="precioIndividual">${product.precio}</p>
+          <p className="precioIndividual">${producto.precio}</p>
 
           <div className="acciones-detalle">
             <div className="bloque-compra">
@@ -51,7 +97,6 @@ export default function ProductDetail({ product, onAddToCart, onGoBack }) {
                     className="btn-cantidad"
                     onClick={() => setCantidad(Math.max(1, cantidad - 1))}
                   >
-                    −
                   </button>
 
                   <span className="valor-cantidad">{cantidad}</span>
@@ -66,17 +111,21 @@ export default function ProductDetail({ product, onAddToCart, onGoBack }) {
                 </div>
               </div>
 
-              <button id="btn-add" className="btn-add" onClick={handleAdd}>
+              <button
+                id="btn-add"
+                className="btn-add"
+                onClick={() => onAddToCart(producto, cantidad)}
+              >
                 Añadir al carrito
               </button>
             </div>
 
-            <button className="btn-volver" onClick={onGoBack}>
-              Volver al catálogo
+            <button className="btn-volver" onClick={() => navigate(-1)}>
+              Volver
             </button>
           </div>
         </div>
       </section>
-    </main>
-  );
+    </main>
+  );
 }

@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // ✅ importamos navigate
 import '../styles/main.css';
 import '../styles/contacto.css';
 
-export default function ContactForm({ onGoBack }) {
+export default function ContactForm() {
+  const navigate = useNavigate(); // ✅ inicializamos navigate
+
   const [formData, setFormData] = useState({
     nombre: '',
     email: '',
@@ -50,7 +53,7 @@ export default function ContactForm({ onGoBack }) {
       <form className="formulario-contacto" onSubmit={handleSubmit} onReset={handleReset}>
         <h2 className="formulario-titulo">Contacto</h2>
 
-        {/* Nombre */}
+
         <label htmlFor="nombre">Nombre</label>
         <input
           type="text"
@@ -59,15 +62,14 @@ export default function ContactForm({ onGoBack }) {
           placeholder="Tu nombre completo"
           value={formData.nombre}
           onChange={handleChange}
-          className={`Username ${
-            formData.nombre ? 'is-valid' : estado === 'err' ? 'is-invalid' : ''
-          }`}
+          className={`Username ${formData.nombre ? 'is-valid' : estado === 'err' ? 'is-invalid' : ''
+            }`}
         />
         {estado === 'err' && !formData.nombre && (
           <span className="error-message">Por favor ingresá tu nombre.</span>
         )}
 
-        {/* Email */}
+
         <label htmlFor="email">Correo electrónico</label>
         <input
           type="email"
@@ -76,15 +78,13 @@ export default function ContactForm({ onGoBack }) {
           placeholder="tucorreo@ejemplo.com"
           value={formData.email}
           onChange={handleChange}
-          className={`Usermail ${
-            formData.email ? 'is-valid' : estado === 'err' ? 'is-invalid' : ''
-          }`}
+          className={`Usermail ${formData.email ? 'is-valid' : estado === 'err' ? 'is-invalid' : ''
+            }`}
         />
         {estado === 'err' && !formData.email && (
           <span className="error-message">Por favor ingresá un correo válido.</span>
         )}
 
-        {/* Mensaje */}
         <label htmlFor="mensaje">Mensaje</label>
         <textarea
           id="mensaje"
@@ -93,27 +93,29 @@ export default function ContactForm({ onGoBack }) {
           placeholder="Escribí tu mensaje..."
           value={formData.mensaje}
           onChange={handleChange}
-          className={`MensajedeContacto ${
-            formData.mensaje ? 'is-valid' : estado === 'err' ? 'is-invalid' : ''
-          }`}
+          className={`MensajedeContacto ${formData.mensaje ? 'is-valid' : estado === 'err' ? 'is-invalid' : ''
+            }`}
         ></textarea>
         {estado === 'err' && !formData.mensaje && (
           <span className="error-message">El mensaje no puede estar vacío.</span>
         )}
 
-        {/* Botones */}
+
         <div className="acciones-form">
           <div className="fila-botones">
             <button type="submit" className="boton_enviar">Enviar mensaje</button>
             <button type="reset" className="boton_resetear">Limpiar campos</button>
           </div>
 
-          <button type="button" className="boton_volver" onClick={onGoBack}>
+          <button
+            type="button"
+            className="boton_volver"
+            onClick={() => navigate('/productos')}
+          >
             Volver al catálogo
           </button>
         </div>
 
-        {/* Estado */}
         {estado === 'ok' && (
           <div id="form-feedback" className="ok">
             ¡Gracias por contactarnos! Te responderemos pronto.
@@ -125,6 +127,6 @@ export default function ContactForm({ onGoBack }) {
           </div>
         )}
       </form>
-    </main>
-  );
+    </main>
+  );
 }

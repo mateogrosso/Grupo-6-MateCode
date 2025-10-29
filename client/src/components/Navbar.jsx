@@ -1,49 +1,44 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/main.css';
 
-export default function Navbar({ cartCount, onNavigate }) {
+export default function Navbar({ cartCount = 0 }) {
   return (
-    <header>
+    <header className="header">
       <div className="header-titulo">
         <h1>Mueblería Hermanos Jota</h1>
       </div>
 
       <div className="header-logo">
-        <img src="/media/logo.svg" alt="Logo" />
+        <Link to="/">
+          <img
+            src="/media/logo.svg"
+            alt="Logo Mueblería"
+            className="logo-img"
+          />
+        </Link>
       </div>
-
       <div className="header-navegador">
         <nav>
           <ul className="header-lista">
             <li>
-              <button
-                className="nav-btn"
-                onClick={() => onNavigate('home')}
-              >
+              <Link to="/" className="nav-btn">
                 Inicio
-              </button>
+              </Link>
             </li>
-
             <li>
-              <button
-                className="nav-btn"
-                onClick={() => onNavigate('catalog')}
-              >
+              <Link to="/productos" className="nav-btn">
                 Productos
-              </button>
+              </Link>
             </li>
-
             <li>
-              <button
-                className="nav-btn"
-                onClick={() => onNavigate('contact')}
-              >
+              <Link to="/FormularioDeContacto" className="nav-btn">
                 Contacto
-              </button>
+              </Link>
             </li>
 
             <li>
-              <button className="nav-cart" aria-label="Carrito">
+              <Link to="/productos" className="nav-cart" aria-label="Carrito">
                 <img
                   className="carritoCompras-logo"
                   src="/media/carrito-de-compras.png"
@@ -52,7 +47,7 @@ export default function Navbar({ cartCount, onNavigate }) {
                 <span id="cart-count" className="cart-count">
                   {cartCount}
                 </span>
-              </button>
+              </Link>
             </li>
           </ul>
         </nav>
