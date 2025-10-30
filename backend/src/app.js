@@ -1,11 +1,13 @@
 const express = require('express');
 const cors = require('cors');
 
+
 const productosRoutes = require('./routes/productosRoutes');
 const logger = require('./middlewares/logger');
 const error404 = require('./middlewares/error404');
 
 const app = express();
+
 
 // Middlewares globales
 app.use(cors());
@@ -37,5 +39,8 @@ app.use((err, req, res, next) => {
     mensaje: err.message || 'Error interno del servidor',
   });
 });
+
+
+
 
 module.exports = app;
