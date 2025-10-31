@@ -29,33 +29,13 @@ const getProductoById = async (req, res) => {
 
 const getProductosDestacados = async (req, res) => {
   try {
-    const productosDestacados = await Producto.find({ destacado: true }).limit(4);
+    const productosDestacados = await Producto.find({ destacado: true });
     res.status(200).json(productosDestacados);
   } catch (error) {
     console.error('Error al obtener productos destacados:', error.message);
     res.status(500).json({ mensaje: 'Error al obtener productos destacados' });
   }
 };
-
-// Dejo opcion que si no hay ningun destacado trae 4
-
-// const getProductosDestacados = async (req, res) => {
-//   try {
-//     // Primero buscamos los destacados
-//     let productos = await Producto.find({ destacado: true });
-
-//     // Si no hay ninguno, traemos 4 al azar
-//     if (productos.length === 0) {
-//       productos = await Producto.aggregate([{ $sample: { size: 4 } }]);
-//     }
-
-//     res.status(200).json(productos);
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ mensaje: 'Error al obtener productos destacados' });
-//   }
-// };
-
 
 const crearProducto = async (req, res) => {
   try {
@@ -113,31 +93,3 @@ const eliminarProducto = async (req, res) => {
 };
 
 module.exports = {getProductos, getProductoById, crearProducto, actualizarProducto, eliminarProducto, getProductosDestacados};
-
-// const productos = require('../data/productos');
-
-// function getProductos (req, res) {
-//     res.json(productos);
-// };
-
-// function getProductoById (req, res) {
-//     const id = req.params.id;
-//     const producto = productos.find(p => p.id.toLowerCase() === id.toLowerCase());
-//     if (!producto) {
-//     return res.status(404).json({ mensaje: 'Producto no encontrado' });
-//     }
-
-//     res.status(200).json(producto);
-// };
-
-// function getProductosDestacados(req, res) {
-//   const destacados = productos.filter(p => p.destacado === true);
-
-//   // Si no la hay, devolvemos los primeros 4
-//   // los devolveria con const destacados = productos.slice(0, 4);
-
-//   res.status(200).json(destacados);
-// }
-
-
-// module.exports = {getProductos, getProductoById, getProductosDestacados};
