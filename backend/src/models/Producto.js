@@ -30,14 +30,19 @@ const productoSchema = new mongoose.Schema(
       required: true,
       min: 0,
     },
+    stock: {
+      type: Number,
+      required: true,
+      min: 0,
+    },
     img: {
       type: String,
-      required: true,
+      required: false,
       trim: true,
     },
     href: {
       type: String,
-      required: true,
+      required: false,
       trim: true,
     },
     destacado: {
@@ -46,7 +51,7 @@ const productoSchema = new mongoose.Schema(
     },
     descripcion: {
       type: String,
-      required: true,
+      required: false,
       trim: true,
     },
     ficha: {

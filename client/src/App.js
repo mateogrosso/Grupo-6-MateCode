@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import ProductList from "./components/ProductList";
 import ProductDetail from "./components/ProductDetail";
 import ContactForm from "./components/ContactForm";
+import CrearProducto from "./components/CrearProducto";
 
 import "./styles/main.css";
 
@@ -47,8 +48,9 @@ export default function App() {
             element={<ProductDetail onAddToCart={handleAddToCart} />}
           />
           <Route path="/FormularioDeContacto" element={<ContactForm />} />
+          <Route path="/admin/crear-producto" element={<CrearProducto />} />
         </Routes>
       </div>
     </BrowserRouter>
-  );
+    );
 }

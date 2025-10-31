@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "../styles/main.css";
 import "../styles/detalle_producto.css";
-import { fetchProductos } from "../services/ProductService";
+import { fetchProductoById, fetchEliminarProducto } from "../services/ProductService";
 
 export default function ProductDetail({ onAddToCart }) {
 
@@ -18,25 +18,17 @@ export default function ProductDetail({ onAddToCart }) {
     const obtenerProducto = async () => {
       try {
         setLoading(true);
-        const data = await await fetchProductos();
-        if (!Array.isArray(data)) {
-          throw new Error("Datos inválidos");
-        }
+        const data = await fetchProductoById(id);
 
-        const encontrado = data.find(u => String(u.id) === String(id));
-
-        if (!encontrado) {
-          throw new Error('Producto no encontrado');
-        }
-
-        setProducto(encontrado);
+        setProducto(data);
         setError(null);
-      }catch (err) {
-        setError(err?.message || "Error al cargar producto");
-      }finally {
+      } catch (error) {
+        console.error(error);
+        setError("Error al cargar producto");
+      } finally {
         setLoading(false);
       }
-    }
+    };
     obtenerProducto();
   }, [id]);
 
@@ -61,6 +53,21 @@ export default function ProductDetail({ onAddToCart }) {
       </main>
     );
   }
+
+  const handleEliminar = async () => {
+  const confirmar = window.confirm(`¿Estás seguro de eliminar "${producto.nombre}"?`);
+  if (!confirmar) return;
+
+  try {
+    await fetchEliminarProducto(id);
+    navigate('/productos');
+  } catch (error) {
+    console.error(error);
+    alert('Error al intentar de elimnar el producto');
+  }
+};
+
+
   return (
     <main>
       <section className="seccion-productoIndividual">
@@ -122,6 +129,9 @@ export default function ProductDetail({ onAddToCart }) {
 
             <button className="btn-volver" onClick={() => navigate(-1)}>
               Volver
+            </button>
+            <button className="btn-eliminar" onClick={handleEliminar}>
+              Eliminar
             </button>
           </div>
         </div>

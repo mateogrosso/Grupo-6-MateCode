@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/main.css';
 import '../styles/index.css';
+import { fetchProductosDestacados } from "../services/ProductService";
 
 export default function Home({ onAddToCart }) {
   const [destacados, setDestacados] = useState([]);
@@ -24,26 +25,24 @@ export default function Home({ onAddToCart }) {
 
 
   useEffect(() => {
-    const fetchDestacados = async () => {
+    const obtenerDestacados = async () => {
       try {
-        const res = await fetch('http://localhost:4000/api/productos/destacados');
-        if (!res.ok) throw new Error('Error al cargar los destacados');
-        const data = await res.json();
+        const data = await fetchProductosDestacados();
 
         if (!Array.isArray(data) || data.length === 0) {
-          setError('No hay productos destacados disponibles.');
+          setError("No hay productos destacados disponibles.");
         } else {
           setDestacados(data);
         }
       } catch (err) {
-        console.error('Error obteniendo destacados:', err);
-        setError('No se pudieron cargar los productos destacados.');
+        console.error(err);
+        setError("No se pudieron cargar los productos destacados.");
       } finally {
         setLoading(false);
       }
     };
 
-    fetchDestacados();
+    obtenerDestacados();
   }, []);
 
   if (loading) return <p className="message loading">Cargando destacados...</p>;

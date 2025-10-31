@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // ✅ importamos navigate
+import { useNavigate } from 'react-router-dom';
 import '../styles/main.css';
 import '../styles/contacto.css';
 
 export default function ContactForm() {
-  const navigate = useNavigate(); // ✅ inicializamos navigate
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     nombre: '',
     email: '',
     mensaje: '',
   });
-  const [estado, setEstado] = useState(''); // '', 'ok', 'err'
+  const [estado, setEstado] = useState(''); 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -127,6 +127,6 @@ export default function ContactForm() {
           </div>
         )}
       </form>
-    </main>
-  );
+      </main>
+  );
 }

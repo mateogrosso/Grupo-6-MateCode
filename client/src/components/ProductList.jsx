@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { fetchProductos } from '../services/ProductService';
 import '../styles/main.css';
 import '../styles/productos.css';
+import { fetchProductos } from '../services/ProductService';
 
 export default function ProductList() {
     const [productos, setProductos] = useState([]);

@@ -237,6 +237,27 @@
   box-shadow: 0 12px 26px rgba(0,0,0,.12);
 }
 
+.btn-eliminar {
+  width: 100%;
+  max-width: 480px; /* igual ancho que el bloque de compra */
+  border: 2px solid #A0522D;
+  color: #A0522D;
+  background: #fff;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(0,0,0,.06);
+  font-weight: 700;
+  min-height: 46px;
+  border-radius: 999px;
+  transition: background .2s, color .2s, transform .12s, box-shadow .12s;
+}
+.btn-eliminar:hover {
+  background: #A0522D;
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 26px rgba(0,0,0,.12);
+}
+
+
 @media (max-width: 560px) {
   .bloque-compra {
     flex-direction: column;
