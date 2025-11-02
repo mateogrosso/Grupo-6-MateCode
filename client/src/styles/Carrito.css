@@ -1,22 +1,3 @@
-/*
- * ===================================================================
- * Archivo: Carrito.css
- *
- * ¿Por qué existe este archivo?
- * Este archivo CSS es el único responsable de aplicar los estilos
- * visuales a la página del Carrito de Compras (Carrito.js).
- *
- * Objetivos de este archivo:
- * 1. Definir la estructura completa del carrito: el contenedor
- * principal, la lista de productos, y el resumen de la compra.
- * 2. Mantener la consistencia visual: Asegura que la paleta de
- * colores, la tipografía y el diseño de los botones
- * coincidan con la estética general del sitio web.
- * 3. Implementar un diseño responsive que se adapte a dispositivos
- * móviles.
- * ===================================================================
-*/
-
 /* --- Contenedor Principal --- */
 .cart-container {
   max-width: 900px;
