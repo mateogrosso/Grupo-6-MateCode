@@ -231,11 +231,15 @@ El servidor está desarrollado con Node.js + Express, siguiendo buenas práctica
   [https://matecode-vercel.vercel.app/admin/crear-producto](https://matecode-vercel.vercel.app/admin/crear-producto)
 - Permite **crear nuevos productos** mediante un formulario controlado.
 - Campos disponibles:
-  - Nombre  
-  - Descripción  
-  - Precio  
-  - Stock  
-  - URL de imagen
+  - Id del producto
+  - Nombre
+  - Precio
+  - Stock
+  - Imagen URL
+  - Href (enlace)
+  - Producto destacado
+  - Descripción
+  - Ficha técnica (opcional)
 - Al enviar el formulario, los datos se envían al endpoint:  
   **POST /api/productos**
 - Al crearse correctamente, el producto se guarda en la base de datos (MongoDB Atlas) y se refleja en el catálogo principal.
