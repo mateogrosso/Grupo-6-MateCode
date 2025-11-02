@@ -30,7 +30,7 @@ https://matecode-vercel.vercel.app/admin/crear-producto
 
 ---
 
-## ⚙️ Tecnologías Utilizadas
+## Tecnologías Utilizadas
 
 ### Frontend
 - React.js (SPA con componentes reutilizables)
@@ -46,7 +46,7 @@ https://matecode-vercel.vercel.app/admin/crear-producto
 - CORS (seguridad en peticiones)
 - Despliegue en **Render**
 
-### 🗄️ Base de Datos
+### Base de Datos
 - MongoDB Atlas (cluster gratuito en la nube)
 
 ---
