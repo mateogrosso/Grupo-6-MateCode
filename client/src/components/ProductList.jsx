@@ -9,6 +9,7 @@ export default function ProductList() {
     const [cargando, setCargando] = useState(true);
     const [busqueda, setBusqueda] = useState('');
     const [error, setError] = useState(null);
+    const [sugerenciasAbiertas, setSugerenciasAbiertas] = useState(false);
 
     const navigate = useNavigate();
 
@@ -47,51 +48,82 @@ export default function ProductList() {
         return nombre.includes(q);
     });
 
+    // Sugerencias para el autocompletado (hasta 8 resultados)
+    const sugerencias = (() => {
+        const q = normalizar(busqueda.trim());
+        if (!q) return [];
+        return productos
+            .filter((p) => normalizar(p.nombre).includes(q))
+            .slice(0, 8);
+    })();
+
     if (cargando) return <p>Cargando productos...</p>;
     if (error) return <p>Error: {error}</p>;
 
     return (
         <main>
             <section className="seccion-productos">
-                <h2>Catálogo de productos</h2>
-
-                <div className="buscador-producto">
-                    <input
-                        type="text"
-                        className="buscador-input"
-                        placeholder="Buscar producto..."
-                        value={busqueda}
-                        onChange={(e) => setBusqueda(e.target.value)}
-                    />
-                </div>
-
-                <div className="productos-grid">
-                    {productosFiltrados.length === 0 ? (
-                        <p>No se encontraron productos.</p>
-                    ) : (
-                        productosFiltrados.map((prod) => (
-                            <div key={prod.id} className="producto-card">
-                                <img
-                                    src={prod.img || '/media/placeholder.png'}
-                                    alt={prod.nombre}
+                <div className="catalogo-wrapper">
+                    <div className="catalogo-header">
+                        <h2><strong>Catálogo de productos</strong></h2>
+                        <div className="buscador-producto">
+                            <div className="buscador-wrapper">
+                                <input
+                                    type="text"
+                                    className="buscador-input"
+                                    placeholder="Buscar producto..."
+                                    value={busqueda}
+                                    onChange={(e) => setBusqueda(e.target.value)}
+                                    onFocus={() => setSugerenciasAbiertas(true)}
+                                    onBlur={() => setTimeout(() => setSugerenciasAbiertas(false), 120)}
                                 />
-                                <div className="producto-info">
-                                    <h3 className="producto-title">{prod.nombre}</h3>
-                                    <p className="producto-price">${prod.precio}</p>
-                                    <div className="productos-actions">
-                                        <button
-                                            className="btn-link"
-                                            onClick={() => navigate(`/productos/${prod.id}`)}
-                                        >
-                                            Ver detalle
-                                        </button>
+                                {sugerenciasAbiertas && busqueda && sugerencias.length > 0 && (
+                                    <ul className="sugerencias-list">
+                                        {sugerencias.map((item) => (
+                                            <li
+                                                key={item.id}
+                                                onMouseDown={() => {
+                                                    setBusqueda(item.nombre);
+                                                    setSugerenciasAbiertas(false);
+                                                }}
+                                            >
+                                                {item.nombre}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="productos-grid">
+                        {productosFiltrados.length === 0 ? (
+                            <p>No se encontraron productos.</p>
+                        ) : (
+                            productosFiltrados.map((prod) => (
+                                <div key={prod.id} className="producto-card">
+                                    <img
+                                        src={prod.img || '/media/placeholder.png'}
+                                        alt={prod.nombre}
+                                    />
+                                    <div className="producto-info">
+                                        <h3 className="producto-title">{prod.nombre}</h3>
+                                        <p className="producto-price">${new Intl.NumberFormat('es-AR').format(prod.precio)}</p>
+                                        <div className="productos-actions">
+                                            <button
+                                                className="btn-link"
+                                                onClick={() => navigate(`/productos/${prod.id}`)}
+                                            >
+                                                Ver detalle
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        ))
-                    )}
-                </div>
+                            ))
+                        )}
+                    </div>
+                    </div>
             </section>
         </main>
-    );
+        );
 }

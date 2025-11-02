@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/main.css';
 import '../styles/creacionProducto.css';
@@ -19,6 +19,7 @@ export default function CrearProducto() {
         ficha: [],
     });
 
+    const [precioDisplay, setPrecioDisplay] = useState("");
    
     const [cargando, setCargando] = useState(false);
     const [estado, setEstado] = useState(''); // '', 'ok', 'err
@@ -29,6 +30,48 @@ export default function CrearProducto() {
         ...prev,
         [name]: type === 'radio' ? value === 'true' : value,
         }));
+    };
+
+    const manejarCambioPrecio = (e) => {
+        const raw = e.target.value || "";
+        const digits = raw.replace(/\D/g, "");
+
+        if (digits === "") {
+            setForm((prev) => ({ ...prev, precio: "" }));
+            setPrecioDisplay("");
+            return;
+        }
+
+        const numero = parseInt(digits, 10);
+        setForm((prev) => ({ ...prev, precio: numero }));
+
+        const formateado = new Intl.NumberFormat('es-AR').format(numero);
+        setPrecioDisplay(`$${formateado}`);
+    };
+
+    const manejarKeyDownPrecio = (e) => {
+        const allowedKeys = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Home', 'End', 'Tab'];
+        if (allowedKeys.includes(e.key)) return;
+        // Atajos comunes
+        if ((e.ctrlKey || e.metaKey) && ['a', 'c', 'v', 'x'].includes(e.key.toLowerCase())) return;
+        if (!/^[0-9]$/.test(e.key)) {
+            e.preventDefault();
+        }
+    };
+
+    const manejarCambioStock = (e) => {
+        const raw = e.target.value || "";
+        const digits = raw.replace(/\D/g, "");
+        setForm((prev) => ({ ...prev, stock: digits }));
+    };
+
+    const manejarKeyDownStock = (e) => {
+        const allowedKeys = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Home', 'End', 'Tab'];
+        if (allowedKeys.includes(e.key)) return;
+        if ((e.ctrlKey || e.metaKey) && ['a', 'c', 'v', 'x'].includes(e.key.toLowerCase())) return;
+        if (!/^[0-9]$/.test(e.key)) {
+            e.preventDefault();
+        }
     };
 
     const manejarCambioFicha = (index, campo, valor) => {
@@ -126,10 +169,12 @@ export default function CrearProducto() {
             <input
                 id="precio"
                 name="precio"
-                type="number"
-                placeholder="Precio en ARS"
-                value={form.precio}
-                onChange={manejarCambio}
+                type="text"
+                inputMode="numeric"
+                placeholder="$0"
+                value={precioDisplay}
+                onChange={manejarCambioPrecio}
+                onKeyDown={manejarKeyDownPrecio}
                 className={`Usermail ${form.precio ? 'is-valid' : estado === 'err' ? 'is-invalid' : ''}`}
             />
             {estado === 'err' && !form.precio && (
@@ -142,9 +187,12 @@ export default function CrearProducto() {
                 id="stock"
                 name="stock"
                 type="number"
+                min="0"
+                step="1"
                 placeholder="Cantidad en stock"
                 value={form.stock}
-                onChange={manejarCambio}
+                onChange={manejarCambioStock}
+                onKeyDown={manejarKeyDownStock}
                 className={`Usermail ${form.stock ? 'is-valid' : estado === 'err' ? 'is-invalid' : ''}`}
             />
             {estado === 'err' && !form.stock && (
@@ -254,7 +302,7 @@ export default function CrearProducto() {
                     <button
                         type="button"
                         className="boton_resetear"
-                        onClick={() =>
+                        onClick={() => {
                             setForm({
                                 id: '',
                                 nombre: '',
@@ -265,8 +313,9 @@ export default function CrearProducto() {
                                 destacado: false,
                                 descripcion: '',
                                 ficha: [],
-                            })
-                        }
+                            });
+                            setPrecioDisplay('');
+                        }}
                     >
                         Limpiar campos
                     </button>

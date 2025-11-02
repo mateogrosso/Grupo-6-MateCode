@@ -92,7 +92,7 @@ export default function ProductDetail({ onAddToCart }) {
             </>
           )}
 
-          <p className="precioIndividual">${producto.precio}</p>
+          <p className="precioIndividual">${new Intl.NumberFormat('es-AR').format(producto.precio)}</p>
 
           <div className="acciones-detalle">
             <div className="bloque-compra">
@@ -104,6 +104,7 @@ export default function ProductDetail({ onAddToCart }) {
                     className="btn-cantidad"
                     onClick={() => setCantidad(Math.max(1, cantidad - 1))}
                   >
+                    -
                   </button>
 
                   <span className="valor-cantidad">{cantidad}</span>
