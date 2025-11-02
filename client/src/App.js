@@ -7,6 +7,7 @@ import ProductList from "./components/ProductList";
 import ProductDetail from "./components/ProductDetail";
 import ContactForm from "./components/ContactForm";
 import CrearProducto from "./components/CrearProducto";
+import Carrito from "./components/Carrito";
 
 import "./styles/main.css";
 
@@ -49,6 +50,10 @@ export default function App() {
           />
           <Route path="/FormularioDeContacto" element={<ContactForm />} />
           <Route path="/admin/crear-producto" element={<CrearProducto />} />
+         <Route
+            path="/carrito"
+            element={<Carrito carrito={carrito} setCarrito={setCarrito} />}
+          />
         </Routes>
       </div>
     </BrowserRouter>

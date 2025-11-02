@@ -38,7 +38,7 @@ export default function Navbar({ cartCount = 0 }) {
             </li>
 
             <li>
-              <Link to="/productos" className="nav-cart" aria-label="Carrito">
+              <Link to="/carrito" className="nav-cart" aria-label="Carrito">
                 <img
                   className="carritoCompras-logo"
                   src="/media/carrito-de-compras.png"

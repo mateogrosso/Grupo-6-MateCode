@@ -1,0 +1,248 @@
+/*
+ * ===================================================================
+ * Archivo: Carrito.css
+ *
+ * ¿Por qué existe este archivo?
+ * Este archivo CSS es el único responsable de aplicar los estilos
+ * visuales a la página del Carrito de Compras (Carrito.js).
+ *
+ * Objetivos de este archivo:
+ * 1. Definir la estructura completa del carrito: el contenedor
+ * principal, la lista de productos, y el resumen de la compra.
+ * 2. Mantener la consistencia visual: Asegura que la paleta de
+ * colores, la tipografía y el diseño de los botones
+ * coincidan con la estética general del sitio web.
+ * 3. Implementar un diseño responsive que se adapte a dispositivos
+ * móviles.
+ * ===================================================================
+*/
+
+/* --- Contenedor Principal --- */
+.cart-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem 2.5rem;
+  background: linear-gradient(180deg, #FFF1DF, #FFEAD2);
+  border: 1px solid rgba(160, 82, 45, .14);
+  border-radius: 18px;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, .06);
+}
+
+/* --- Título --- */
+.cart-title {
+  font-weight: 500;
+  color: #A0522D;
+  font-style: italic;
+  margin: 0 0 2rem 0;
+  padding-bottom: 0.75rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(160, 82, 45, .14);
+}
+
+/* --- Carrito Vacío --- */
+.cart-empty {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.cart-empty p {
+  font-size: 1.1rem;
+  margin-bottom: 2.5rem;
+  color: #7A3E22;
+}
+
+/* --- Lista de Items --- */
+.cart-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* --- Item Individual --- */
+.cart-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: left;
+  gap: 1.5rem;
+  background: linear-gradient(180deg, #FFE8C9, #FFE1BE);
+  border: 1px solid rgba(160, 82, 45, .14);
+  border-radius: 14px;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, .10);
+  padding: 1rem;
+}
+
+.cart-item-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.cart-item-img:hover {
+  transform: scale(1.05);
+}
+
+.cart-item-info {
+  flex-grow: 1;
+  display: grid;
+  gap: 0;
+  justify-items: start;
+}
+
+/* --- Textos --- */
+.cart-item-title {
+  color: #7A3E22;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+  text-decoration: none;
+}
+.cart-item-title:hover {
+  text-decoration: underline;
+}
+
+.cart-item-text {
+  margin: 0.25rem 0;
+  color: #7A3E22;
+}
+
+.cart-item-price {
+  color: #7A3E22;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+}
+
+.cart-item-unit-price {
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: #A0522D;
+  margin-left: 0.5rem;
+}
+
+/* --- Botón Eliminar --- */
+.cart-item-remove {
+  padding: 0.5rem 0.75rem;
+  line-height: 1;
+  background-color: #FFF0F0;
+  color: #5a1d1b;
+  border: 1px solid #C47A6D;
+  border-radius: 50%;
+  cursor: pointer;
+  font-weight: 700;
+  transition: all .2s ease;
+  margin-left: auto;
+}
+
+.cart-item-remove:hover {
+  background-color: #C47A6D;
+  color: #fff;
+  transform: scale(1.1);
+}
+
+/* --- Resumen y Total --- */
+.cart-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding-top: 1.5rem;
+  border-top: 2px solid #A0522D;
+  margin-top: 1rem;
+}
+
+.cart-total {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  color: #A0522D;
+  margin-bottom: 1rem;
+}
+
+.cart-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 480px;
+  flex-wrap: wrap;
+}
+
+/* --- Botones de Acción --- */
+.cart-button-primary,
+.cart-button-secondary {
+  flex: 1;
+  min-width: 150px;
+  padding: .75rem 1.25rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0,0,0,.06);
+  transition: background .2s, color .2s, transform .12s, box-shadow .12s;
+  text-align: center;
+}
+
+.cart-button-primary {
+  border: 2px solid #A0522D;
+  background: #A0522D;
+  color: #fff;
+}
+.cart-button-primary:hover {
+  background: #8d4929;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 26px rgba(0,0,0,.12);
+}
+
+.cart-button-secondary {
+  border: 2px solid #A0522D;
+  background: #fff;
+  color: #A0522D;
+}
+.cart-button-secondary:hover {
+  background: #A0522D;
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 26px rgba(0,0,0,.12);
+}
+
+/* --- Responsive --- */
+@media (max-width: 600px) {
+  .cart-container {
+    width: 95vw;
+    padding: 1.5rem 1rem;
+    margin-top: 1rem;
+  }
+  
+  .cart-item {
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .cart-item-img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .cart-item-info {
+    flex-basis: calc(100% - 100px); /* Ocupa el espacio restante */
+  }
+  
+  .cart-item-remove {
+    margin-left: auto;
+  }
+
+  .cart-actions {
+    flex-direction: column;
+  }
+
+  .cart-button-primary,
+  .cart-button-secondary {
+    width: 100%;
+  }
+}
