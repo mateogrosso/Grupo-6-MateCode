@@ -18,7 +18,6 @@ La aplicación ahora está **desplegada en la nube**, funcionando como una **Sin
 ---
 
 ## Deploys del Proyecto
-
 - **Frontend (React - Vercel):**  
   [https://matecode-vercel.vercel.app](https://matecode-vercel.vercel.app)
 
