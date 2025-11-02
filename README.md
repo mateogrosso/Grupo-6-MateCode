@@ -1,119 +1,116 @@
 # E-commerce - Mueblería Hermanos Jota  
-# Grupo 6 - CodeMate  
+**Grupo 6 - CodeMate**
 
----
-
-## Integrantes
+### Integrantes
 - Grosso, Mateo  
 - Ferreyra, Tomás Alejo  
 - Pereson, Mariano  
-- García, Franco  
 
 ---
 
-## Descripción del Proyecto
-Este proyecto corresponde a la **Fase 2 (Sprints 3 y 4)** del e-commerce **Mueblería Hermanos Jota**.  
-El objetivo fue reconstruir completamente la tienda digital utilizando tecnologías modernas del lado del cliente y del servidor:  
-- **Frontend:** React.js (SPA con componentes reutilizables).  
-- **Backend:** Node.js + Express (API REST propia).  
+## 🧾 Descripción del Proyecto
 
-La aplicación ahora funciona como una **Single Page Application (SPA)** conectada a un **servidor Express** que provee los datos en formato JSON.  
+Este proyecto corresponde a la **Fase 3 (Sprints 5 y 6)** del e-commerce **Mueblería Hermanos Jota**.  
+El objetivo fue **conectar la tienda digital a una base de datos real** (MongoDB Atlas) y **completar el ciclo CRUD** mediante una API REST propia desarrollada con Express.
+
+La aplicación ahora está **desplegada en la nube**, funcionando como una **Single Page Application (SPA)** en React que consume los datos de un backend Node.js + Express conectado a MongoDB.
 
 ---
 
-## Instrucciones de Instalación y Ejecución
+## Deploys del Proyecto
 
-### Backend
-1. Ir a la carpeta `backend/src/`  
-2. Instalar dependencias `npm install`
-3. Ejecutar el servidor con nodemon `npm run dev`
-4. El servidor quedará corriendo en http://localhost:4000
+- **Frontend (React - Vercel):**  
+  [https://matecode-vercel.vercel.app](https://matecode-vercel.vercel.app)
+
+- **Backend (Express + MongoDB - Render):**  
+  [https://matecode-backend.onrender.com](https://matecode-backend.onrender.com)
+
+- En el frontend podés acceder al formulario de administración directamente:
+https://matecode-vercel.vercel.app/admin/crear-producto
+
+---
+
+## ⚙️ Tecnologías Utilizadas
 
 ### Frontend
-1. Ir a la carpeta `client/src/`  
-2. Instalar dependencias `npm install`
-3. Iniciar la aplicación React `npm start`
-4. La app abrirá automáticamente en http://localhost:3000
+- React.js (SPA con componentes reutilizables)
+- React Router DOM
+- Fetch API para consumo del backend
+- CSS y componentes modulares
+- Despliegue en **Vercel**
+
+### Backend
+- Node.js + Express
+- Mongoose (ODM para MongoDB Atlas)
+- dotenv (manejo de variables de entorno)
+- CORS (seguridad en peticiones)
+- Despliegue en **Render**
+
+### 🗄️ Base de Datos
+- MongoDB Atlas (cluster gratuito en la nube)
 
 ---
 
-### Backend – API REST con Express
-El servidor fue desarrollado con Node.js y Express, siguiendo buenas prácticas de modularización y middlewares.
+### Instrucciones de Instalación y Ejecución local
+
+### Backend
+1. Ir a la carpeta `backend/`
+2. Instalar dependencias  
+   `npm install`
+3. Crear archivo `.env`
+  PORT=4000
+  MONGO_URI=mongodb+srv://<usuario>:<clave>@<cluster>.mongodb.net/muebleria
+  CLIENT_URL=http://localhost:3000
+4. Ejecutar en desarrollo: `npm run dev`
+5. El servidor quedará corriendo en http://localhost:4000
+   
+### Frontend
+1. Ir a la carpeta client/
+2. Instalar dependencias: `npm i`
+3. Crear archivo `.env`
+4. Inciar la app: `npm start server`
+5. La SPA abrirá en http://localhost:3000
+
+### Backend — API REST con Express
+El servidor está desarrollado con Node.js + Express, siguiendo buenas prácticas de modularización y middlewares.
+
 ## Endpoints disponibles
 
-| Método | Ruta                         | Descripción |
-|:--------|:-----------------------------|:-------------|
-| **GET** | `/api/productos`             | Devuelve el listado completo de productos. |
-| **GET** | `/api/productos/:id`         | Devuelve los datos de un producto específico según su ID. |
-| **GET** | `/api/productos/destacados`  | Devuelve la lista de productos destacados. |
-| **POST** | `/api/contacto`             | Recibe los datos del formulario de contacto enviados desde el frontend. |
-| **(404)** | `*`                        | Respuesta del middleware `error404` para rutas inexistentes. |
+| Método | Ruta | Descripción |
+|:------:|:-----|:-------------|
+| **GET** | `/api/productos` | Devuelve el listado completo de productos. |
+| **GET** | `/api/productos/:id` | Devuelve los datos de un producto por su ID. |
+| **GET** | `/api/productos/destacados` | Devuelve la lista de productos destacados. |
+| **POST** | `/api/productos` | Crea un nuevo producto. |
+| **PUT** | `/api/productos/:id` | Actualiza un producto existente. |
+| **DELETE** | `/api/productos/:id` | Elimina un producto por su ID. |
+| **POST** | `/api/contacto` | Recibe datos del formulario de contacto. |
+| **(404)** | `*` | Middleware `error404` para rutas inexistentes. |
 
-## Middlewares
-- **logger.js:** imprime en consola el método y URL de cada petición.
-- **express.json():** permite procesar el cuerpo JSON de las peticiones POST.
-- **error404.js:** captura rutas inexistentes y devuelve un mensaje de error 404.
 
----
 
-## Funcionalidades Implementadas
-- **Inicio (Home.jsx)**  
-  - Hero banner con imagen principal.  
-  - Sección de productos destacados obtenidos desde `/api/productos/destacados`.  
-  - Contador de carrito sincronizado con `sessionStorage`.  
+### Middlewares Principales
+- express.json(): procesa el cuerpo JSON de las peticiones POST/PUT.
+- cors(): permite solicitudes desde el frontend desplegado.
+- logger.js: imprime en consola el método y URL de cada petición.
+- error404.js: captura rutas inexistentes y devuelve un mensaje de error 404.
 
-- **Catálogo (ProductList.jsx)**  
-  - Render dinámico de todo el catálogo (`/api/productos`).  
-  - Buscador de productos por nombre o descripción.  
-  - Botón "Ver detalle" que navega al producto.  
+### Funcionalidades Implementadas
+### Inicio (Home.jsx)
+- Hero banner con imagen principal.
+- Sección de productos destacados obtenidos desde /api/productos/destacados.
+- Contador de carrito sincronizado con sessionStorage.
 
-- **Detalle (ProductDetail.jsx)**  
-  - Información completa del producto seleccionado.  
-  - Botón “Añadir al carrito” con cantidad configurable.  
-  - Botón “Volver al catálogo”.  
+### Catálogo (ProductList.jsx)
+- Render dinámico de todo el catálogo desde /api/productos.
+- Buscador de productos por nombre o descripción.
+- Botón “Ver detalle” que navega a la vista individual del producto.
 
-- **Contacto (ContactForm.jsx)**  
-  - Formulario controlado con validación en tiempo real.  
-  - Envío al endpoint `/api/contacto`.  
-  - Mensajes de error y confirmación en la interfaz.  
+### Detalle (ProductDetail.jsx)
+- Muestra información completa del producto seleccionado.
+- Botón “Añadir al carrito” con cantidad configurable.
+- Botón “Volver al catálogo”.
+- Panel de Administración
 
-- **Carrito (estado global)**  
-  - Estado manejado en `App.js`.  
-  - Persistencia temporal con `sessionStorage`.  
-  - Contador visible en el `Navbar.jsx`.  
-
----
-
-## Arquitectura del Proyecto
-
-```plaintext
-Mueblería-Hermanos-Jota/
-├── backend/              # Servidor Express
-│   ├── src/
-│   │   ├── app.js
-│   │   ├── server.js
-│   │   ├── controllers/
-│   │   │   └── productos.controller.js
-│   │   ├── routes/
-│   │   │   └── productosRoutes.js
-│   │   ├── data/
-│   │   │   └── productos.js
-│   │   └── middlewares/
-│   │       ├── logger.js
-│   │       └── error404.js
-├── client/               # Aplicación React
-│   ├── src/
-│   │   ├── App.js
-│   │   ├── index.jsx
-│   │   ├── Components/
-│   │   │   ├── Navbar.jsx
-│   │   │   ├── Home.jsx
-│   │   │   ├── ProductList.jsx
-│   │   │   ├── ProductDetail.jsx
-│   │   │   └── ContactForm.jsx
-│   │   ├── Services/
-│   │   │   └── ProductService.js
-│   │   └── styles/
-│   └── package.json
-├── ETAPA_1/              # Versión inicial (HTML, CSS, JS puro)
-└── README.md
+Podés acceder directamente al formulario para crear nuevos productos desde:
+https://matecode-vercel.vercel.app/admin/crear-producto
