@@ -59,7 +59,7 @@ https://matecode-vercel.vercel.app/admin/crear-producto
 3. Crear un archivo `.env` con el siguiente contenido:
    ```env
    PORT=4000
-   MONGO_URI=mongodb+srv://muebleria:muebleria_g6@cluster1.qqqurtf.mongodb.net/?appName=Cluster1
+   MONGO_URI=mongodb+srv://<usuario>:<clave>@<cluster>.mongodb.net/muebleria
    CLIENT_URL=http://localhost:3000
    ```
 4. Ejecutar en desarrollo: `npm run dev`
