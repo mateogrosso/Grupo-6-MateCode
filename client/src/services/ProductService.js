@@ -1,7 +1,9 @@
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:4000';
+
 //Fetch a todos los productos
 export async function fetchProductos() {
   try {
-    const response = await fetch('http://localhost:4000/api/productos');
+    const response = await fetch(`${API_URL}/api/productos`);
 
     if (!response.ok) {
       throw new Error('Error al obtener los productos');
@@ -27,7 +29,7 @@ export async function fetchProductos() {
 //Fetch a producto por ID
 export async function fetchProductoById(id) {
   try {
-    const response = await fetch(`http://localhost:4000/api/productos/${id}`);
+    const response = await fetch(`${API_URL}/api/productos/${id}`);
 
     if (!response.ok) {
       throw new Error("Producto no encontrado");
@@ -44,7 +46,7 @@ export async function fetchProductoById(id) {
 //Fetch a productos destacados
 export async function fetchProductosDestacados() {
   try {
-    const res = await fetch("http://localhost:4000/api/productos/destacados");
+    const res = await fetch(`${API_URL}/api/productos/destacados`);
 
     if (!res.ok) {
       throw new Error("Error al cargar los productos destacados");
@@ -66,7 +68,7 @@ export async function fetchProductosDestacados() {
 // Fetch a producto con ID para eliminarlo
 export async function fetchEliminarProducto(id) {
   try {
-    const response = await fetch(`http://localhost:4000/api/productos/${id}`, {
+    const response = await fetch(`${API_URL}/api/productos/${id}`, {
       method: 'DELETE',
     });
 
@@ -84,7 +86,7 @@ export async function fetchEliminarProducto(id) {
 
 export async function fetchCrearProducto(producto) {
   try {
-    const response = await fetch('http://localhost:4000/api/productos', {
+    const response = await fetch(`${API_URL}/api/productos`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
