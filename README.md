@@ -6,7 +6,6 @@
 - Ferreyra, Tomás Alejo  
 - Pereson, Mariano  
 
----
 
 ## 🧾 Descripción del Proyecto
 
@@ -57,9 +56,9 @@ https://matecode-vercel.vercel.app/admin/crear-producto
 2. Instalar dependencias  
    `npm install`
 3. Crear archivo `.env`
-  PORT=4000
+`PORT=4000
   MONGO_URI=mongodb+srv://<usuario>:<clave>@<cluster>.mongodb.net/muebleria
-  CLIENT_URL=http://localhost:3000
+  CLIENT_URL=http://localhost:3000`
 4. Ejecutar en desarrollo: `npm run dev`
 5. El servidor quedará corriendo en http://localhost:4000
    
@@ -110,6 +109,3 @@ El servidor está desarrollado con Node.js + Express, siguiendo buenas práctica
 - Botón “Añadir al carrito” con cantidad configurable.
 - Botón “Volver al catálogo”.
 - Panel de Administración
-
-Podés acceder directamente al formulario para crear nuevos productos desde:
-https://matecode-vercel.vercel.app/admin/crear-producto
