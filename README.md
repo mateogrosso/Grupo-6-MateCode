@@ -1,11 +1,12 @@
 # E-commerce - Mueblería Hermanos Jota  
 **Grupo 6 - CodeMate**
-
+---
 ### Integrantes
 - Grosso, Mateo  
 - Ferreyra, Tomás Alejo  
 - Pereson, Mariano  
 
+---
 
 ## 🧾 Descripción del Proyecto
 
@@ -55,10 +56,12 @@ https://matecode-vercel.vercel.app/admin/crear-producto
 1. Ir a la carpeta `backend/`
 2. Instalar dependencias  
    `npm install`
-3. Crear archivo `.env`
-`PORT=4000
-  MONGO_URI=mongodb+srv://<usuario>:<clave>@<cluster>.mongodb.net/muebleria
-  CLIENT_URL=http://localhost:3000`
+3. Crear un archivo `.env` con el siguiente contenido:
+   ```env
+   PORT=4000
+   MONGO_URI=mongodb+srv://<usuario>:<clave>@<cluster>.mongodb.net/muebleria
+   CLIENT_URL=http://localhost:3000
+   ```
 4. Ejecutar en desarrollo: `npm run dev`
 5. El servidor quedará corriendo en http://localhost:4000
    
