@@ -122,8 +122,8 @@ export default function ProductList() {
                             ))
                         )}
                     </div>
-                    </div>
+                </div>
             </section>
         </main>
-        );
+    );
 }

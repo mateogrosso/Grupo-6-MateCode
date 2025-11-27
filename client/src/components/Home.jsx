@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/main.css';
 import '../styles/index.css';
 import { fetchProductosDestacados } from "../services/ProductService";
+import { CartContext } from '../context/CartContext';
 
-export default function Home({ onAddToCart }) {
+export default function Home() {
   const [destacados, setDestacados] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const { addToCart } = useContext(CartContext);
 
   const navigate = useNavigate();
 
@@ -20,7 +22,7 @@ export default function Home({ onAddToCart }) {
 
 
   const agregarAlCarrito = (producto) => {
-    if (onAddToCart) onAddToCart(producto, 1);
+    addToCart(producto);
   };
 
 
@@ -101,6 +103,6 @@ export default function Home({ onAddToCart }) {
           )}
         </div>
       </section>
-    </main>
-  );
+    </main>
+  );
 }

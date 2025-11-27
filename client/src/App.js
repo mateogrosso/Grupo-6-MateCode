@@ -8,54 +8,39 @@ import ProductDetail from "./components/ProductDetail";
 import ContactForm from "./components/ContactForm";
 import CrearProducto from "./components/CrearProducto";
 import Carrito from "./components/Carrito";
-
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import ProfilePage from './pages/ProfilePage';
+import OrdersPage from './pages/OrdersPage';
+import ProtectedRoute from './components/ProtectedRoute';
 import "./styles/main.css";
 
 export default function App() {
 
-  const [carrito, setCarrito] = useState(() => {
-    const saved = sessionStorage.getItem("hj_cart");
-    return saved ? JSON.parse(saved) : [];
-  });
-
-  useEffect(() => {
-    sessionStorage.setItem("hj_cart", JSON.stringify(carrito));
-  }, [carrito]);
-
-  const handleAddToCart = (producto, cantidad = 1) => {
-    setCarrito((carritoPrevio) => {
-      const existe = carritoPrevio.find((p) => p.id === producto.id);
-      if (existe) {
-        return carritoPrevio.map((p) =>
-          p.id === producto.id ? { ...p, cantidad: p.cantidad + cantidad } : p );
-      } else {
-        return [...carritoPrevio, { ...producto, cantidad }];
-      }
-    });
-  };
-  
-  const cartCount = carrito.reduce((acc, item) => acc + item.cantidad, 0);
-
   return (
     <BrowserRouter>
       <div>
-        <Navbar cartCount={cartCount} />
+        <Navbar />
 
         <Routes>
-          <Route path="/" element={<Home onAddToCart={handleAddToCart} />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
           <Route path="/productos" element={<ProductList />} />
           <Route
             path="/productos/:id"
-            element={<ProductDetail onAddToCart={handleAddToCart} />}
+            element={<ProductDetail />}
           />
-          <Route path="/FormularioDeContacto" element={<ContactForm />} />
+          <Route path="/FormularioDeContacto" element={<ProtectedRoute><ContactForm /></ProtectedRoute>} />
           <Route path="/admin/crear-producto" element={<CrearProducto />} />
-         <Route
+          <Route
             path="/carrito"
-            element={<Carrito carrito={carrito} setCarrito={setCarrito} />}
+            element={<Carrito />}
           />
+          <Route path="/perfil" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
+          <Route path="/mis-pedidos" element={<ProtectedRoute><OrdersPage /></ProtectedRoute>} />
         </Routes>
       </div>
     </BrowserRouter>
-    );
+  );
 }

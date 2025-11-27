@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "../styles/main.css";
 import "../styles/detalle_producto.css";
 import { fetchProductoById, fetchEliminarProducto } from "../services/ProductService";
+import { CartContext } from '../context/CartContext';
 
-export default function ProductDetail({ onAddToCart }) {
+export default function ProductDetail() {
 
   const { id } = useParams();
   const navigate = useNavigate();
+  const { addToCart } = useContext(CartContext);
 
   const [producto, setProducto] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -55,18 +57,22 @@ export default function ProductDetail({ onAddToCart }) {
   }
 
   const handleEliminar = async () => {
-  const confirmar = window.confirm(`¿Estás seguro de eliminar "${producto.nombre}"?`);
-  if (!confirmar) return;
+    const confirmar = window.confirm(`¿Estás seguro de eliminar "${producto.nombre}"?`);
+    if (!confirmar) return;
 
-  try {
-    await fetchEliminarProducto(id);
-    navigate('/productos');
-  } catch (error) {
-    console.error(error);
-    alert('Error al intentar de elimnar el producto');
-  }
-};
+    try {
+      await fetchEliminarProducto(id);
+      navigate('/productos');
+    } catch (error) {
+      console.error(error);
+      alert('Error al intentar de elimnar el producto');
+    }
+  };
 
+  const handleAddToCart = () => {
+    addToCart({ ...producto, quantity: cantidad });
+    alert("Producto agregado al carrito");
+  };
 
   return (
     <main>
@@ -122,7 +128,7 @@ export default function ProductDetail({ onAddToCart }) {
               <button
                 id="btn-add"
                 className="btn-add"
-                onClick={() => onAddToCart(producto, cantidad)}
+                onClick={handleAddToCart}
               >
                 Añadir al carrito
               </button>
@@ -137,6 +143,6 @@ export default function ProductDetail({ onAddToCart }) {
           </div>
         </div>
       </section>
-    </main>
-  );
+    </main>
+  );
 }
