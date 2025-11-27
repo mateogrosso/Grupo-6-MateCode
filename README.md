@@ -8,7 +8,7 @@
 
 ---
 
-## 🧾 Descripción del Proyecto
+## Descripción del Proyecto
 
 Este proyecto corresponde a la **Entrega Final (Sprints 7 y 8)** del e-commerce "Mueblería Hermanos Jota".
 El objetivo principal de esta etapa fue transformar la aplicación en una plataforma completa y segura, implementando un **sistema de autenticación robusto (JWT)**, gestión de usuarios, rutas protegidas y un flujo de compra real con persistencia de pedidos en base de datos.
