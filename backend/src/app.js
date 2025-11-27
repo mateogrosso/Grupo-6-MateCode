@@ -16,6 +16,8 @@ app.use(logger);
 
 // Rutas principales
 app.use('/api/productos', productosRoutes);
+app.use('/api/usuarios', require('./routes/userRoutes'));
+app.use('/api/orders', require('./routes/orderRoutes'));
 
 // Ruta del formulario de contacto
 app.post('/api/contacto', (req, res) => {

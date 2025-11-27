@@ -1,133 +1,123 @@
-# E-commerce - Mueblería Hermanos Jota  
-**Grupo 6 - CodeMate**
----
+# E-commerce - Mueblería Hermanos Jota
+## Grupo 6 - CodeMate
+
 ### Integrantes
-- Grosso, Mateo  
-- Ferreyra, Tomás Alejo  
-- Pereson, Mariano  
+*   Grosso, Mateo
+*   Ferreyra, Tomás Alejo
+*   Pereson, Mariano
 
 ---
 
 ## 🧾 Descripción del Proyecto
 
-Este proyecto corresponde a la **Fase 3 (Sprints 5 y 6)** del e-commerce **Mueblería Hermanos Jota**.  
-El objetivo fue **conectar la tienda digital a una base de datos real** (MongoDB Atlas) y **completar el ciclo CRUD** mediante una API REST propia desarrollada con Express.
+Este proyecto corresponde a la **Entrega Final (Sprints 7 y 8)** del e-commerce "Mueblería Hermanos Jota".
+El objetivo principal de esta etapa fue transformar la aplicación en una plataforma completa y segura, implementando un **sistema de autenticación robusto (JWT)**, gestión de usuarios, rutas protegidas y un flujo de compra real con persistencia de pedidos en base de datos.
 
-La aplicación ahora está **desplegada en la nube**, funcionando como una **Single Page Application (SPA)** en React que consume los datos de un backend Node.js + Express conectado a MongoDB.
+La aplicación opera como una **Single Page Application (SPA)** en React, consumiendo una API REST segura en Node.js + Express conectada a MongoDB Atlas.
 
----
+### Deploys del Proyecto
 
-## Deploys del Proyecto
-- **Frontend (React - Vercel):**  
-  [https://matecode-vercel.vercel.app](https://matecode-vercel.vercel.app)
+*   **Frontend (React - Vercel):**
+    [https://matecode-vercel.vercel.app](https://matecode-vercel.vercel.app)
 
-- **Backend (Express + MongoDB - Render):**  
-  [https://matecode-backend.onrender.com](https://matecode-backend.onrender.com)
-
-- En el frontend podés acceder al formulario de administración directamente:
-https://matecode-vercel.vercel.app/admin/crear-producto
+*   **Backend (Express + MongoDB - Render):**
+    [https://matecode-backend.onrender.com](https://matecode-backend.onrender.com)
 
 ---
 
 ## Tecnologías Utilizadas
 
 ### Frontend
-- React.js (SPA con componentes reutilizables)
-- React Router DOM
-- Fetch API para consumo del backend
-- CSS y componentes modulares
-- Despliegue en **Vercel**
+*   **React.js** (Hooks, Context API para estado global)
+*   **React Router DOM** (Rutas públicas y protegidas)
+*   **Context API** (Gestión de Autenticación y Carrito)
+*   **CSS Modules** (Diseño responsive y premium)
+*   **Fetch API** (Consumo de endpoints seguros)
 
 ### Backend
-- Node.js + Express
-- Mongoose (ODM para MongoDB Atlas)
-- dotenv (manejo de variables de entorno)
-- CORS (seguridad en peticiones)
-- Despliegue en **Render**
-
-### Base de Datos
-- MongoDB Atlas (cluster gratuito en la nube)
+*   **Node.js + Express**
+*   **MongoDB Atlas + Mongoose** (Base de datos NoSQL)
+*   **JWT (JSON Web Tokens)** (Autenticación segura)
+*   **Bcrypt** (Hashing de contraseñas)
+*   **Dotenv** (Variables de entorno)
+*   **CORS** (Seguridad cross-origin)
 
 ---
 
-### Instrucciones de Instalación y Ejecución local
+## Instrucciones de Instalación y Ejecución local
 
 ### Backend
-1. Ir a la carpeta `backend/`
-2. Instalar dependencias  
-   `npm install`
-3. Crear un archivo `.env` con el siguiente contenido:
-   ```env
-   PORT=4000
-   MONGO_URI=mongodb+srv://<usuario>:<clave>@<cluster>.mongodb.net/muebleria
-   CLIENT_URL=http://localhost:3000
-   ```
-4. Ejecutar en desarrollo: `npm run dev`
-5. El servidor quedará corriendo en http://localhost:4000
-   
+1.  Ir a la carpeta `backend/`
+2.  Instalar dependencias:
+    ```bash
+    npm install
+    ```
+3.  Crear un archivo `.env` con el siguiente contenido:
+    ```env
+    PORT=4000
+    MONGO_URI=mongodb+srv://<usuario>:<clave>@<cluster>.mongodb.net/muebleria
+    JWT_SECRET=tu_clave_secreta_super_segura
+    ```
+4.  Ejecutar en desarrollo:
+    ```bash
+    npm run dev
+    ```
+    El servidor correrá en `http://localhost:4000`
+
 ### Frontend
-1. Ir a la carpeta client/
-2. Instalar dependencias: `npm i`
-3. Crear archivo `.env`
-4. Inciar la app: `npm start`
-5. La SPA abrirá en http://localhost:3000
+1.  Ir a la carpeta `client/`
+2.  Instalar dependencias:
+    ```bash
+    npm install
+    ```
+3.  Iniciar la app:
+    ```bash
+    npm start
+    ```
+    La SPA abrirá en `http://localhost:3000`
 
-### Backend — API REST con Express
-El servidor está desarrollado con Node.js + Express, siguiendo buenas prácticas de modularización y middlewares.
+---
 
-## Endpoints disponibles
+## 🔌 Backend — API REST Segura
 
-| Método | Ruta | Descripción |
-|:------:|:-----|:-------------|
-| **GET** | `/api/productos` | Devuelve el listado completo de productos. |
-| **GET** | `/api/productos/:id` | Devuelve los datos de un producto por su ID. |
-| **GET** | `/api/productos/destacados` | Devuelve la lista de productos destacados. |
-| **POST** | `/api/productos` | Crea un nuevo producto. |
-| **PUT** | `/api/productos/:id` | Actualiza un producto existente. |
-| **DELETE** | `/api/productos/:id` | Elimina un producto por su ID. |
-| **POST** | `/api/contacto` | Recibe datos del formulario de contacto. |
-| **(404)** | `*` | Middleware `error404` para rutas inexistentes. |
+El servidor implementa autenticación mediante **JWT**. Las rutas sensibles están protegidas por un middleware que verifica la validez del token.
 
+### Endpoints Principales
 
+| Método | Ruta | Descripción | Acceso |
+| :--- | :--- | :--- | :--- |
+| **Auth** | | | |
+| `POST` | `/api/usuarios/register` | Registro de nuevos usuarios. | Público |
+| `POST` | `/api/usuarios/login` | Inicio de sesión (devuelve JWT). | Público |
+| `GET` | `/api/usuarios/profile` | Datos del usuario logueado. | **Privado** |
+| **Productos** | | | |
+| `GET` | `/api/productos` | Listado completo de productos. | Público |
+| `GET` | `/api/productos/:id` | Detalle de un producto. | Público |
+| `POST` | `/api/productos` | Crear nuevo producto. | Público (Admin) |
+| **Pedidos** | | | |
+| `POST` | `/api/orders` | Crear un nuevo pedido de compra. | **Privado** |
+| `GET` | `/api/orders` | Ver historial de pedidos del usuario. | **Privado** |
 
-### Middlewares Principales
-- express.json(): procesa el cuerpo JSON de las peticiones POST/PUT.
-- cors(): permite solicitudes desde el frontend desplegado.
-- logger.js: imprime en consola el método y URL de cada petición.
-- error404.js: captura rutas inexistentes y devuelve un mensaje de error 404.
+### Middlewares de Seguridad
+*   **authMiddleware.js**: Intercepta las peticiones a rutas protegidas, verifica el header `Authorization: Bearer <token>` y decodifica el usuario. Si el token es inválido o expiró, deniega el acceso (401/403).
 
-### Funcionalidades Implementadas
-### Inicio (Home.jsx)
-- Hero banner con imagen principal.
-- Sección de productos destacados obtenidos desde /api/productos/destacados.
-- Contador de carrito sincronizado con sessionStorage.
+---
 
-### Catálogo (ProductList.jsx)
-- Render dinámico de todo el catálogo desde /api/productos.
-- Buscador de productos por nombre o descripción.
-- Botón “Ver detalle” que navega a la vista individual del producto.
+## Funcionalidades Implementadas (Sprints 7 y 8)
 
-### Detalle (ProductDetail.jsx)
-- Muestra información completa del producto seleccionado.
-- Botón “Añadir al carrito” con cantidad configurable.
-- Botón “Volver al catálogo”.
-- Panel de Administración
+### 1. Autenticación Completa
+*   **Registro e Inicio de Sesión**: Formularios validados para crear cuenta e ingresar.
+*   **Seguridad**: Las contraseñas se guardan encriptadas (hasheadas) en la base de datos usando `bcrypt`.
+*   **Persistencia**: El usuario permanece logueado al recargar la página gracias al almacenamiento seguro del token.
 
-### Panel de Administración (Crear Producto)
-- Nueva vista accesible desde:  
-  [https://matecode-vercel.vercel.app/admin/crear-producto](https://matecode-vercel.vercel.app/admin/crear-producto)
-- Permite **crear nuevos productos** mediante un formulario controlado.
-- Campos disponibles:
-  - Id del producto
-  - Nombre
-  - Precio
-  - Stock
-  - Imagen URL
-  - Href (enlace)
-  - Producto destacado
-  - Descripción
-  - Ficha técnica (opcional)
-- Al enviar el formulario, los datos se envían al endpoint:  
-  **POST /api/productos**
-- Al crearse correctamente, el producto se guarda en la base de datos (MongoDB Atlas) y se refleja en el catálogo principal.
+### 2. Rutas Protegidas y Navegación Condicional
+*   **Navbar Inteligente**: Muestra "Ingresar/Registrarse" si eres visitante, o tu "Nombre de Usuario" con un menú desplegable (Perfil, Mis Pedidos, Cerrar Sesión) si estás logueado.
+*   **Protección de Rutas**: Intentar acceder a `/perfil`, `/mis-pedidos` o `/carrito` (para pagar) sin estar logueado redirige automáticamente al Login.
 
+### 3. Gestión de Pedidos (Checkout)
+*   **Carrito Persistente**: El estado del carrito se mantiene globalmente.
+*   **Finalizar Compra**: Al confirmar la compra, se genera una orden en la base de datos asociada al usuario actual.
+*   **Historial**: Los usuarios pueden ver sus compras anteriores en la sección "Mis Pedidos".
+
+### 4. Panel de Administración (`/admin/crear-producto`)
+*   Permite la carga de nuevos productos al catálogo, con campos detallados (precio, stock, imágenes, ficha técnica).

@@ -1,17 +1,12 @@
 require('dotenv').config();
-const mongo = require('./db');
 const app = require('./app');
+const conectarDB = require('./config/db');
+
 const PORT = process.env.PORT || 4000;
 
 
-const iniciarServidor = async () => {
-  await mongo.conectarDB();
-
+conectarDB().then(() => {
   app.listen(PORT, () => {
-    console.log(`Servidor escuchando en http://localhost:${PORT}`);
+    console.log(`Servidor corriendo en el puerto ${PORT}`);
   });
-};
-
-iniciarServidor();
-
-
+});

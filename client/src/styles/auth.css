@@ -1,0 +1,109 @@
+.auth-form {
+    background: linear-gradient(180deg, #FFF7EE 0%, #FFFFFF 100%);
+    border: 1px solid rgba(160, 82, 45, .15);
+    border-left: 6px solid #A0522D;
+    border-radius: 12px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, .08);
+    max-width: 25rem;
+    margin: 3rem auto;
+    padding: 2rem;
+}
+
+
+.auth-title {
+    color: #A0522D;
+    padding-bottom: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+
+.auth-form label {
+    display: block;
+    margin-top: 1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.auth-input {
+    width: 100%;
+    padding: .75rem .9rem;
+    border: 1.5px solid #E6D6C9;
+    border-radius: 10px;
+    background: #fff;
+    color: #333;
+    font: inherit;
+    transition: border-color .2s, box-shadow .2s, background .2s;
+}
+
+.auth-input:focus {
+    outline: none;
+    border-color: #A0522D;
+    box-shadow: 0 0 0 3px rgba(160, 82, 45, .15);
+    background: #fff;
+}
+
+
+.error-message {
+    display: block;
+    font-size: .9rem;
+    color: #C47A6D;
+    margin-top: 0.5rem;
+    text-align: center;
+    background: #FFF0F0;
+    border: 1px solid #C47A6D;
+    padding: 0.5rem;
+    border-radius: 8px;
+}
+
+
+.auth-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    width: 100%;
+}
+
+
+.auth-button {
+    width: 100%;
+    padding: .75rem 1.25rem;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .06);
+    transition: background .2s, color .2s, transform .12s, box-shadow .12s;
+    border: 2px solid #A0522D;
+    background: #A0522D;
+    color: #fff;
+}
+
+.auth-button:hover {
+    background: #8d4929;
+    transform: translateY(-1px);
+    box-shadow: 0 12px 26px rgba(0, 0, 0, .12);
+}
+
+
+.auth-link {
+    color: #A0522D;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.auth-link:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+    .auth-form {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+}
