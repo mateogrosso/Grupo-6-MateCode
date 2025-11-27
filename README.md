@@ -56,7 +56,7 @@ La aplicación opera como una **Single Page Application (SPA)** en React, consum
     ```env
     PORT=4000
     MONGO_URI=mongodb+srv://<usuario>:<clave>@<cluster>.mongodb.net/muebleria
-    JWT_SECRET=tu_clave_secreta_super_segura
+    JWT_SECRET=clave_secreta
     ```
 4.  Ejecutar en desarrollo:
     ```bash
