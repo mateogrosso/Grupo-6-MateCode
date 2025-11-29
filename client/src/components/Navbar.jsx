@@ -85,7 +85,7 @@ export default function Navbar() {
                     Ingresar
                   </Link>
                 </li>
-                <li>
+                <li className='btn-register-li'>
                   <Link to="/register" className="nav-btn">
                     Registrarse
                   </Link>

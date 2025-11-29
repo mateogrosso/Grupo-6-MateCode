@@ -42,7 +42,7 @@ router.post('/register', async (req, res) => {
             },
         });
     } catch (error) {
-        console.        console.error('Error en registro:', error);
+        console.error('Error en registro:', error);
         res.status(500).json({ message: 'Error interno del servidor' });
     }
 });

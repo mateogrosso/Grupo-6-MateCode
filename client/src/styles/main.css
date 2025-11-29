@@ -73,6 +73,28 @@ header {
   text-decoration: underline;
 }
 
+.header-lista .nav-btn {
+  display: inline-block;
+  padding: .45rem .9rem;
+  border-radius: 999px;
+  border: 2px solid #A0522D;
+  color: #A0522D;
+  background: transparent;
+  font-weight: 400;
+  font-size: 0.875rem;
+  text-decoration: none;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, .04);
+  transition: background-color .2s, color .2s, border-color .2s,
+    transform .12s, box-shadow .12s;
+}
+
+.header-lista .nav-btn:hover {
+  background: #A0522D;
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, .12);
+}
+
 .carritoCompras-logo {
   width: 1.25rem;
   height: auto;
@@ -116,28 +138,6 @@ footer {
 .footer-copyright {
   text-align: center;
   margin: 0;
-}
-
-.header-lista .nav-btn {
-  display: inline-block;
-  padding: .45rem .9rem;
-  border-radius: 999px;
-  border: 2px solid #A0522D;
-  color: #A0522D;
-  background: transparent;
-  font-weight: 400;
-  font-size: 0.875rem;
-  text-decoration: none;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, .04);
-  transition: background-color .2s, color .2s, border-color .2s,
-    transform .12s, box-shadow .12s;
-}
-
-.header-lista .nav-btn:hover {
-  background: #A0522D;
-  color: #fff;
-  transform: translateY(-1px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, .12);
 }
 
 /* Página activa */
@@ -286,6 +286,17 @@ footer {
 
   .header-lista a {
     font-size: 0.75rem;
+  }
+  .btn-register-li {
+    display: none;    
+  }
+    
+  .header-titulo{
+    display: none;
+  }
+
+  .header-titulo h1 {
+    display: none;
   }
 
 }
