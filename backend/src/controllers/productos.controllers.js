@@ -68,12 +68,13 @@ const actualizarProducto = async (req,res) => {
       return res.status(404).json({ mensaje: 'Producto no encontrado' });
     }
 
-    res.status().json(productoActualizado);
-  } catch (error) {
-    console.error(error);
-    res.status(400).json( { mensaje: `Error al actualizar el producto`} )
-  }
+    res.status(200).json(productoActualizado); 
+    } catch (error) {
+      console.error(error);
+      res.status(400).json( { mensaje: `Error al actualizar el producto`} )
+    }
 }
+
 
 const eliminarProducto = async (req, res) => {
   try {
