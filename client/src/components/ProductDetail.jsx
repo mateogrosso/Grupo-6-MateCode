@@ -4,6 +4,7 @@ import "../styles/main.css";
 import "../styles/detalle_producto.css";
 import { fetchProductoById, fetchEliminarProducto } from "../services/ProductService";
 import { CartContext } from '../context/CartContext';
+import Swal from "sweetalert2";
 
 export default function ProductDetail() {
 
@@ -57,21 +58,49 @@ export default function ProductDetail() {
   }
 
   const handleEliminar = async () => {
-    const confirmar = window.confirm(`¿Estás seguro de eliminar "${producto.nombre}"?`);
-    if (!confirmar) return;
+    const result = await Swal.fire({
+      title: "¿Eliminar producto?",
+      text: `¿Estás seguro de eliminar "${producto.nombre}"?`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Eliminar",
+      cancelButtonText: "Cancelar",
+      customClass: {
+        confirmButton: "cart-button-primary",
+        cancelButton: "cart-button-secondary"
+      },
+      buttonsStyling: false
+    });
+
+    if (!result.isConfirmed) return;
 
     try {
       await fetchEliminarProducto(id);
       navigate('/productos');
     } catch (error) {
       console.error(error);
-      alert('Error al intentar de elimnar el producto');
+      await Swal.fire({
+        title: "Error",
+        text: "Error al intentar eliminar el producto.",
+        icon: "error",
+        confirmButtonText: "Aceptar",
+        customClass: { confirmButton: "cart-button-primary" },
+        buttonsStyling: false
+      });
     }
   };
 
   const handleAddToCart = () => {
     addToCart({ ...producto, quantity: cantidad });
-    alert("Producto agregado al carrito");
+    Swal.fire({
+      title: "¡Producto agregado!",
+      text: `"${producto.nombre}" se agregó al carrito.`,
+      icon: "success",
+      confirmButtonText: "Aceptar",
+      customClass: { confirmButton: "cart-button-primary" },
+      buttonsStyling: false,
+    });
+
   };
 
   return (

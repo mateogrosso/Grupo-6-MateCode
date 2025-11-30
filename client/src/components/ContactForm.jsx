@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/main.css';
 import '../styles/contacto.css';
+import Swal from "sweetalert2";
 
 export default function ContactForm() {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ export default function ContactForm() {
     email: '',
     mensaje: '',
   });
-  const [estado, setEstado] = useState(''); 
+  const [estado, setEstado] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,7 +28,15 @@ export default function ContactForm() {
     e.preventDefault();
 
     if (!formData.nombre || !formData.email || !formData.mensaje) {
-      setEstado('err');
+      await Swal.fire({
+        title: "Campos incompletos",
+        text: "Por favor completá todos los campos antes de enviar.",
+        icon: "warning",
+        confirmButtonText: "Aceptar",
+        customClass: { confirmButton: "cart-button-primary" },
+        buttonsStyling: false
+      });
+      setEstado("err");
       return;
     }
 
@@ -40,11 +49,29 @@ export default function ContactForm() {
 
       if (!res.ok) throw new Error('Error en el servidor');
 
-      setEstado('ok');
-      setFormData({ nombre: '', email: '', mensaje: '' });
+      await Swal.fire({
+        title: "Mensaje enviado",
+        text: "¡Gracias por contactarnos! Te responderemos pronto.",
+        icon: "success",
+        confirmButtonText: "Aceptar",
+        customClass: { confirmButton: "cart-button-primary" },
+        buttonsStyling: false
+      });
+
+      setEstado("ok");
+      setFormData({ nombre: "", email: "", mensaje: "" });
     } catch (error) {
       console.error(error);
-      setEstado('err');
+      await Swal.fire({
+        title: "Error al enviar",
+        text: "Hubo un problema al enviar el mensaje. Intentá nuevamente.",
+        icon: "error",
+        confirmButtonText: "Aceptar",
+        customClass: { confirmButton: "cart-button-primary" },
+        buttonsStyling: false
+      });
+
+      setEstado("err");
     }
   };
 
@@ -127,6 +154,6 @@ export default function ContactForm() {
           </div>
         )}
       </form>
-      </main>
+    </main>
   );
 }

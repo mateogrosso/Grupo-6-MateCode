@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 import { AuthContext } from '../context/AuthContext';
+import Swal from "sweetalert2";
 import '../styles/Carrito.css';
 
 export default function Carrito() {
@@ -17,16 +18,37 @@ export default function Carrito() {
       maximumFractionDigits: 0,
     }).format(n);
 
-  const eliminarDelCarrito = (idProducto) => {
-    const confirmar = window.confirm('¿Quitar este producto del carrito?');
-    if (confirmar) {
+  const eliminarDelCarrito = async (idProducto) => {
+    const result = await Swal.fire({
+      title: '¿Quitar este producto?',
+      text: 'Esta acción no se puede deshacer.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Eliminar',
+      cancelButtonText: 'Cancelar',
+      customClass: {
+        confirmButton: 'cart-button-primary',
+        cancelButton: 'cart-button-secondary'
+      },
+      buttonsStyling: false
+    });
+
+    if (result.isConfirmed) {
       removeFromCart(idProducto);
     }
   };
 
   const handleCheckout = async () => {
+
     if (!user) {
-      alert("Debes iniciar sesión para finalizar la compra.");
+      await Swal.fire({
+        title: "Inicia sesión",
+        text: "Debes iniciar sesión para finalizar la compra.",
+        icon: "info",
+        confirmButtonText: "Aceptar",
+        customClass: { confirmButton: "cart-button-primary" },
+        buttonsStyling: false
+      });
       navigate('/login');
       return;
     }
@@ -53,10 +75,18 @@ export default function Carrito() {
 
       if (response.ok) {
         clearCart();
-        alert('¡Gracias por tu compra! El pedido se guardó correctamente.');
+
+        await Swal.fire({
+          title: "¡Gracias por tu compra!",
+          text: "El pedido se guardó correctamente.",
+          icon: "success",
+          confirmButtonText: "Aceptar",
+          customClass: { confirmButton: "cart-button-primary" },
+          buttonsStyling: false
+        });
+
         navigate('/');
       } else {
-
         const text = await response.text();
         let errorMessage;
         try {
@@ -66,12 +96,26 @@ export default function Carrito() {
           errorMessage = text;
         }
 
-        console.error('Error del servidor:', errorMessage);
-        alert(`Error ${response.status}: ${errorMessage || "Hubo un error al procesar el pedido."}`);
+        await Swal.fire({
+          title: `Error ${response.status}`,
+          text: errorMessage || "Hubo un error al procesar el pedido.",
+          icon: "error",
+          confirmButtonText: "Aceptar",
+          customClass: { confirmButton: "cart-button-primary" },
+          buttonsStyling: false
+        });
       }
     } catch (error) {
       console.error('Error de red o ejecución:', error);
-      alert(`Error de conexión: ${error.message}`);
+
+      await Swal.fire({
+        title: "Error de conexión",
+        text: error.message,
+        icon: "error",
+        confirmButtonText: "Aceptar",
+        customClass: { confirmButton: "cart-button-primary" },
+        buttonsStyling: false
+      });
     }
   };
 
