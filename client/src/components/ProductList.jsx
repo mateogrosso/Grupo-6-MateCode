@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import '../styles/main.css';
 import '../styles/productos.css';
 import { fetchProductos } from '../services/ProductService';
+import Swal from "sweetalert2";
 
 export default function ProductList() {
     const [productos, setProductos] = useState([]);
@@ -23,6 +24,14 @@ export default function ProductList() {
                 setProductos(respuesta);
             } catch (error) {
                 console.error('Error capturado:', error);
+                await Swal.fire({
+                    title: "Error al cargar productos",
+                    text: error.message || "Hubo un problema al obtener los productos.",
+                    icon: "error",
+                    confirmButtonText: "Aceptar",
+                    customClass: { confirmButton: "cart-button-primary" },
+                    buttonsStyling: false
+                });
                 setError(error.message || 'Error al cargar los productos');
             } finally {
                 setCargando(false);
@@ -58,7 +67,15 @@ export default function ProductList() {
     })();
 
     if (cargando) return <p>Cargando productos...</p>;
-    if (error) return <p>Error: {error}</p>;
+    if (error) {
+        return (
+            <main>
+                <p style={{ textAlign: "center", marginTop: "20px" }}>
+                    Ocurrió un error. Intentá nuevamente más tarde.
+                </p>
+            </main>
+        );
+    }
 
     return (
         <main>

@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import '../styles/main.css';
 import '../styles/creacionProducto.css';
 import { fetchCrearProducto } from '../services/ProductService';
+import Swal from "sweetalert2";
+
 
 export default function CrearProducto() {
     const navigate = useNavigate();
@@ -20,15 +22,15 @@ export default function CrearProducto() {
     });
 
     const [precioDisplay, setPrecioDisplay] = useState("");
-   
+
     const [cargando, setCargando] = useState(false);
     const [estado, setEstado] = useState(''); // '', 'ok', 'err
-    
+
     const manejarCambio = (e) => {
         const { name, value, type } = e.target;
         setForm((prev) => ({
-        ...prev,
-        [name]: type === 'radio' ? value === 'true' : value,
+            ...prev,
+            [name]: type === 'radio' ? value === 'true' : value,
         }));
     };
 
@@ -97,19 +99,50 @@ export default function CrearProducto() {
     const manejarEnvio = async (e) => {
         e.preventDefault();
         if (!form.id) {
-            alert('El id es requerido');
+            await Swal.fire({
+                title: "ID requerido",
+                text: "Debés ingresar el ID del producto.",
+                icon: "warning",
+                confirmButtonText: "Aceptar",
+                customClass: { confirmButton: "cart-button-primary" },
+                buttonsStyling: false
+            });
             return;
         }
+
         if (!form.nombre) {
-            alert('El nombre es requerido');
+            await Swal.fire({
+                title: "Nombre requerido",
+                text: "Debés ingresar el nombre del producto.",
+                icon: "warning",
+                confirmButtonText: "Aceptar",
+                customClass: { confirmButton: "cart-button-primary" },
+                buttonsStyling: false
+            });
             return;
         }
+
         if (!form.precio) {
-            alert('El precio es requerido');
+            await Swal.fire({
+                title: "Precio requerido",
+                text: "Debés ingresar el precio del producto.",
+                icon: "warning",
+                confirmButtonText: "Aceptar",
+                customClass: { confirmButton: "cart-button-primary" },
+                buttonsStyling: false
+            });
             return;
         }
+
         if (!form.stock) {
-            alert('El stock es requerido');
+            await Swal.fire({
+                title: "Stock requerido",
+                text: "Debés ingresar el stock del producto.",
+                icon: "warning",
+                confirmButtonText: "Aceptar",
+                customClass: { confirmButton: "cart-button-primary" },
+                buttonsStyling: false
+            });
             return;
         }
 
@@ -118,12 +151,26 @@ export default function CrearProducto() {
         try {
             await fetchCrearProducto(form);
             setEstado('ok');
-            alert('El producto ha sido creado correctamente');
+            await Swal.fire({
+                title: "Producto creado",
+                text: "El producto ha sido creado correctamente.",
+                icon: "success",
+                confirmButtonText: "Aceptar",
+                customClass: { confirmButton: "cart-button-primary" },
+                buttonsStyling: false
+            });
             navigate('/productos');
         } catch (error) {
             console.error(error);
             setEstado('err');
-            alert('Hubo un error al crear el producto');
+            await Swal.fire({
+                title: "Error",
+                text: "Hubo un error al crear el producto.",
+                icon: "error",
+                confirmButtonText: "Aceptar",
+                customClass: { confirmButton: "cart-button-primary" },
+                buttonsStyling: false
+            });
         } finally {
             setCargando(false);
         }

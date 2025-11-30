@@ -1,0 +1,19 @@
+# Node
+node_modules/
+npm-debug.log
+
+# Dependencies
+backend/node_modules/
+client/node_modules/
+
+# Build output
+client/build/
+backend/dist/
+
+# Environment
+.env
+*.env
+
+# OS junk
+.DS_Store
+Thumbs.db
